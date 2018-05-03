@@ -5,6 +5,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
 const cors = require("cors");
+const router = require("./router/routes.js").router;
 
 // INCLUDE:
 
@@ -19,9 +20,7 @@ server.use(express.static(__dirname + "../dist"));
 server.get("/", (request, response) => {
   response.sendFile(path.join(`${__dirname}/../client/index.html`));
 });
-// ADD: Routes:
 server.use("/api", router);
-
 /*
 Fun Features:
  - Add routes for type.
