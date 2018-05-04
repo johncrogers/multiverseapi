@@ -1,4 +1,7 @@
 // This is the api management index.
+import React from "react";
+import ReactDOM from "react-dom";
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -9,3 +12,5 @@ class App extends React.Component {
     return <h1>Multiverse</h1>;
   }
 }
+
+ReactDOM.render(<App />, document.getElementById("app"));
