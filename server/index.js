@@ -18,7 +18,7 @@ server.use(bodyParser.json());
 server.use(cors());
 server.use(express.static(__dirname + "/../client/dist"));
 server.get("/", (request, response) => {
-  response.sendFile(path.join(`${__dirname}/../client/dist/index.html`));
+  response.sendFile(path.join(`${__dirname}/../client/index.html`));
 });
 server.use("/api", router);
 
