@@ -20,6 +20,11 @@ server.use(express.static(__dirname + "/../client/dist"));
 server.get("/", (request, response) => {
   response.sendFile(path.join(`${__dirname}/../client/index.html`));
 });
+server.get("/docs", (request, response) => {
+  response.sendFile(
+    path.join(`${__dirname}/../client/documentation/docs.html`)
+  );
+});
 server.use("/api", router);
 
 // INITIALIZE:
