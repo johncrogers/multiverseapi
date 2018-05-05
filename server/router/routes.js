@@ -1,10 +1,11 @@
 const router = require("express").Router();
-const jsonhelpers = require("./../model/jsonhelpers.js");
+// const jsonhelpers = require("./../model/jsonhelpers.js");
 
 // GET /api/editions - To retrieve a list of MTG editions. [[editionName, editionId],...]
 router.get("/editions", (req, res) => {
   // JSON
-  let editions = jsonhelpers.retrieveEditionList();
+  let editions = {};
+  // let editions = jsonhelpers.retrieveEditionList();
   res.json(editions);
 
   // add auth to route.
@@ -31,8 +32,9 @@ router.get("/editions", (req, res) => {
 // GET /api/editions/:editionId - Returns detailed data about a specific edition.
 router.get("/editions/:editionId", (req, res) => {
   // JSON
-  let editionId = req.params.editionId;
-  let edition = jsonhelpers.retrieveEditionDetail(editionId);
+  let edition = {};
+  // let editionId = req.params.editionId;
+  // let edition = jsonhelpers.retrieveEditionDetail(editionId);
   res.json(edition);
 
   // promise
@@ -47,8 +49,9 @@ router.get("/editions/:editionId", (req, res) => {
 // // GET /api/editions/:editionId/cards - Returns a list of cards for a specific edition. [{card: info},...]
 router.get("/editions/:editionId/cards", (req, res) => {
   // JSON
-  let editionId = req.params.editionId;
-  let editionCardData = jsonhelpers.retrieveEditionCardData(editionId);
+  let editionCardData = {};
+  // let editionId = req.params.editionId;
+  // let editionCardData = jsonhelpers.retrieveEditionCardData(editionId);
   res.json(editionCardData);
 
   // promise
