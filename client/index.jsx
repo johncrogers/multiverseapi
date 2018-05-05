@@ -1,7 +1,6 @@
 // This is the api management index.
 import React from "react";
 import ReactDOM from "react-dom";
-import axios from "axios";
 import $ from "jquery";
 import Nav from "./components/navigation/Nav.jsx";
 import Body from "./components/body/Body.jsx";
