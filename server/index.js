@@ -11,7 +11,7 @@ const router = require("./router/routes.js").router;
 
 // INSTANTIATE:
 const server = express();
-var port = process.env.PORT || 3000;
+const port = process.env.PORT || 8080;
 
 // ROUTING:
 server.use(bodyParser.json());
@@ -24,5 +24,5 @@ server.use("/api", router);
 
 // INITIALIZE:
 server.listen(port, function() {
-  console.log("listening on port 3000!");
+  console.log(`listening on port ${port}!`);
 });
