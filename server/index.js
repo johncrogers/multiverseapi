@@ -2,10 +2,10 @@
 
 // MODULES:
 const express = require("express");
-const bodyParser = require("body-parser");
+// const bodyParser = require("body-parser");
 const path = require("path");
-const cors = require("cors");
-const router = require("./router/routes.js").router;
+// const cors = require("cors");
+const router = require(path.join(`${__dirname}/router/routes.js`)).router;
 
 // INCLUDE:
 
@@ -14,8 +14,8 @@ const server = express();
 const port = 8080;
 
 // ROUTING:
-server.use(bodyParser.json());
-server.use(cors());
+// server.use(bodyParser.json());
+// server.use(cors());
 server.use(express.static(__dirname + "/../client/dist"));
 server.get("/", (request, response) => {
   response.sendFile(path.join(`${__dirname}/../client/index.html`));

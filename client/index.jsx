@@ -15,17 +15,22 @@ class App extends React.Component {
     this.modifySearchResults.bind(this);
   }
   componentDidMount() {
-    // $.ajax({
-    //   url: "/api/editions/LEA/cards",
-    //   success: data => {
-    //     this.setState({
-    //       searchData: data
-    //     });
-    //   },
-    //   error: err => {
-    //     console.log("err", err);
-    //   }
-    // });
+    $.ajax({
+      url: "/api/editions/LEA/cards",
+      success: data => {
+        this.setState(
+          {
+            searchData: data
+          },
+          () => {
+            console.log(data);
+          }
+        );
+      },
+      error: err => {
+        console.log("err", err);
+      }
+    });
   }
   modifySearchResults(data) {
     console.log("Called modifySearchResults.");
