@@ -11,7 +11,7 @@ const router = require("./router/routes.js").router;
 
 // INSTANTIATE:
 const server = express();
-const port = process.env.PORT || 8080;
+const port = 8080;
 
 // ROUTING:
 server.use(bodyParser.json());
