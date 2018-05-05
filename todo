@@ -1,0 +1,78 @@
+CLIENT:
+  State:
+    ☐ Data:
+      ☐ collectionCards = [{card}]
+      ☐ filterResults = [{card}]
+      ☐ filters = {field: query}
+      ☐ collectionIds = {collectionName: collectionId}
+      ☐ selection = [{card}]
+    ☐ Function bindings:
+      ☐ applyFilters
+      ☐ retrieveCollection
+      ☐ retrieveCollectionIds
+      ☐ selectCard
+      ☐ deselectCard
+      ☐ addFilter
+      ☐ removeFilter
+  Functions:
+    ☐ applyFilters()
+      Applies current filter configuration to collectionData, then calls setState on filterResults.
+    ☐ retrieveCollection(collectionId)
+      Performs AJAX request to /api/editions/editionId.
+    ☐ retrieveCollectionIds()
+      Performs AJAX request to /api/editions.
+    ☐ selectCard(multiverseId)
+      Adds the card data per multiverseId the selection, then sets it's state.
+    ☐ deselectCard(multiverseId)
+      Removes the card data per multiverseId from selected, then sets it's state.
+    ☐ addFilter({field: query})
+      Adds filter to filters, then sets it's state.
+    ☐ removeFilter()
+      Removes filter from filters, then sets it's state.
+    Ajax:
+      ☐ editions
+      ☐ editions/-
+      ☐ editions/-/cards
+      ☐ collections/
+      ☐ collections/-
+      ☐ collections/-/cards
+      ☐ collections/-/cards/-
+  Props:
+    ☐ Data
+    ☐ Functions
+  Functionality:
+    ☐ Display
+    ☐ Modify
+    ☐ AJAX
+
+SERVER:
+  Endpoints:
+    ☐ editions
+    ☐ editions/-
+    ☐ editions/-/cards
+    ☐ collections/
+    ☐ collections/-
+    ☐ collections/-/cards
+    ☐ collections/-/cards/-
+  Models:
+    ☐ editions
+    ☐ editions/-
+    ☐ editions/-/cards
+    ☐ collections/
+    ☐ collections/-
+    ☐ collections/-/cards
+    ☐ collections/-/cards/-
+
+DATABASE:
+  ☐ Build schemas.
+  ☐ Data:
+    ☐ Convert Data
+    ☐ Populate DB.
+  ☐ Queries:
+    ☐ editions
+    ☐ edition/-
+    ☐ editions/-/cards
+    ☐ collections/
+    ☐ collections/-
+    ☐ collections/-/cards
+    ☐ collections/-/cards/-
