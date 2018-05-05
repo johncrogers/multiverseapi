@@ -1,10 +1,11 @@
 const router = require("express").Router();
+const mockData = require("./mockData.js");
 // const jsonhelpers = require("./../model/jsonhelpers.js");
 
 // GET /api/editions - To retrieve a list of MTG editions. [[editionName, editionId],...]
 router.get("/editions", (req, res) => {
   // JSON
-  let editions = {};
+  let editions = mockData.mockEditions;
   // let editions = jsonhelpers.retrieveEditionList();
   res.json(editions);
 
@@ -32,7 +33,7 @@ router.get("/editions", (req, res) => {
 // GET /api/editions/:editionId - Returns detailed data about a specific edition.
 router.get("/editions/:editionId", (req, res) => {
   // JSON
-  let edition = {};
+  let edition = mockData.edition;
   // let editionId = req.params.editionId;
   // let edition = jsonhelpers.retrieveEditionDetail(editionId);
   res.json(edition);
@@ -49,7 +50,7 @@ router.get("/editions/:editionId", (req, res) => {
 // // GET /api/editions/:editionId/cards - Returns a list of cards for a specific edition. [{card: info},...]
 router.get("/editions/:editionId/cards", (req, res) => {
   // JSON
-  let editionCardData = {};
+  let editionCardData = mockData.mockEditionCards;
   // let editionId = req.params.editionId;
   // let editionCardData = jsonhelpers.retrieveEditionCardData(editionId);
   res.json(editionCardData);
