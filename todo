@@ -1,3 +1,15 @@
+A user should be able to:
+    - Go to a deployed website (e.g. "johnsapp.herokuapp.com") []
+    On the deployed website:
+        If the user is already logged in, they should be able to:
+            - See their collection of saved cards []
+            - Filter all cards cards by edition []
+            - Page through cards per edition []
+            - Add cards to their collection and save their new collection []
+        If the user is not logged in, they should be prompted and able to:
+            - Create an account and sign in [],
+            - Sign in with an existing account []
+
 CLIENT:
   State:
     ☐ Data:
@@ -29,6 +41,9 @@ CLIENT:
       Adds filter to filters, then sets it's state.
     ☐ removeFilter()
       Removes filter from filters, then sets it's state.
+    ☐ signin
+    ☐ signup
+    ☐ logout
     Ajax:
       ☐ editions
       ☐ editions/-
@@ -37,13 +52,18 @@ CLIENT:
       ☐ collections/-
       ☐ collections/-/cards
       ☐ collections/-/cards/-
+      ☐ signin
+      ☐ signup
+      ☐ logout
   Props:
     ☐ Data
     ☐ Functions
   Functionality:
-    ☐ Display
+    ☐ Pass Data
     ☐ Modify
+    ☐ Layout
     ☐ AJAX
+    ☐ Design
 
 SERVER:
   Endpoints:
@@ -54,25 +74,31 @@ SERVER:
     ☐ collections/-
     ☐ collections/-/cards
     ☐ collections/-/cards/-
-  Models:
-    ☐ editions
-    ☐ editions/-
-    ☐ editions/-/cards
-    ☐ collections/
-    ☐ collections/-
-    ☐ collections/-/cards
-    ☐ collections/-/cards/-
+    ☐ signin
+    ☐ signup
+    ☐ logout
 
 DATABASE:
-  ☐ Build schemas.
+  ✔ Connection @done(18-05-05 17:54)
+  ☐ Build schemas
   ☐ Data:
     ☐ Convert Data
     ☐ Populate DB.
   ☐ Queries:
-    ☐ editions
-    ☐ edition/-
-    ☐ editions/-/cards
-    ☐ collections/
-    ☐ collections/-
-    ☐ collections/-/cards
-    ☐ collections/-/cards/-
+    ☐ EDITIONS:
+      ☐ retrieveEditions
+      ☐ retrieveEdition
+      ☐ retrieveEditionCards
+    ☐ COLLECTIONS:
+      ☐ saveCollection
+      ☐ retrieveCollection
+      ☐ retrieveUserCollectionIds
+      ☐ deleteCollection
+      ☐ retrieveCollectionCards
+      retrieveCollectionCard
+      updateCollection
+      updateCollectionCards
+    ☐ USER:
+      ☐ signin
+      ☐ signup
+      ☐ logout

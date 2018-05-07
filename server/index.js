@@ -5,7 +5,7 @@ const express = require("express");
 // const bodyParser = require("body-parser");
 const path = require("path");
 // const cors = require("cors");
-const router = require(path.join(`${__dirname}/router/routes.js`)).router;
+const api = require(path.join(`${__dirname}/router/api.js`)).router;
 
 // INCLUDE:
 
@@ -25,7 +25,7 @@ server.get("/docs", (request, response) => {
     path.join(`${__dirname}/../client/documentation/docs.html`)
   );
 });
-server.use("/api", router);
+server.use("/api", api);
 
 // INITIALIZE:
 server.listen(port, function() {
