@@ -8,4 +8,3 @@ module.exports.knex = require("knex")({
     database: process.env.DB_DATABASE
   }
 });
-module.exports.success = "Success";

@@ -1,9 +1,38 @@
 let db = require("./db.js");
-let multiverse = require("./../../data/local/multiverse.js");
+let multiverse = require("./../../data/local/multiverse.js").data;
+let editions = Object.keys(multiverse);
 
-let editions = Object.keys(multiverse.data);
-console.log(db.success);
-console.log(JSON.stringify(editions));
+for (let editionIndex = 0; editionIndex < editions.length; editionIndex++) {
+  let collectionToInsert = [];
+  // editions[editionIndex]
+  multiverse[editions[editionIndex]].cards.forEach((card) => {
+    collectionToInsert.push({
+      "multiverseId": card["multiverseid"],
+      "name": card["name"],
+      "manaCost": card["manaCost"],
+      "type": card["type"],
+      "editionId": editions[editionIndex],
+      "rarity": card["rarity"],
+      "colors": JSON.stringify(card["colors"]),
+      "text": card["text"],
+      "flavor": card["flavor"],
+      "power": card["power"],
+      "toughness": card["toughness"],
+      "loyalty": card["loyalty"],
+      "legality": JSON.stringify(card["legalities"]),
+    });
+  });
+  db.knex("Cards").insert(collectionToInsert)
+    .then(() => {
+      // console.log(`Added ${editions[editionIndex]}`)
+      console.log(`Added ${editions[editionIndex]}`);
+    })
+    .catch((err) => {
+      console.log(err)
+      // console.log(` => Failed to add ${editions[editionIndex]}`)
+    })
+}
+// console.log(totalCount);
 // for (let edition = 0; edition < editions.length; edition++) {
 //   let cards = multiverse[editions[edition]].cards;
 //   let collection = [];
@@ -33,4 +62,29 @@ console.log(JSON.stringify(editions));
 //         console.log(`Error occurred: ${err}`);
 //       })
 //   }
+// }
+// for (let edition of editions) {
+// let collectionToInsert = [];
+//   multiverse[edition].cards.forEach((card) => {
+//     collectionToInsert.push({
+//       "multiverseId": card["multiverseid"],
+//       "name": card["name"],
+//       "manaCost": card["manaCost"],
+//       "type": card["type"],
+//       "editionId": edition,
+//       "rarity": card["rarity"],
+//       "colors": card["colors"],
+//       "text": card["text"],
+//       "flavor": card["flavor"],
+//       "power": card["power"],
+//       "toughness": card["toughness"],
+//       "loyalty": card["loyalty"],
+//       "legality": card["legalities"],
+//     });
+//     db.knex("Cards").insert(collectionToInsert).then(() => {
+//       console.log("Edition inserted.")
+//     }).catch((err) => {
+//       console.log(err)
+//     });
+//   });
 // }
