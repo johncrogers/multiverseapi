@@ -1,14 +1,14 @@
 A user should be able to:
-    - Go to a deployed website (e.g. "johnsapp.herokuapp.com") []
+   ✔ Go to a deployed website (e.g. "johnsapp.herokuapp.com") @done(18-05-07 13:03)
     On the deployed website:
         If the user is already logged in, they should be able to:
-            - See their collection of saved cards []
-            - Filter all cards cards by edition []
-            - Page through cards per edition []
-            - Add cards to their collection and save their new collection []
+           ☐ See their collection of saved cards
+           ☐ Filter all cards cards by edition
+           ☐ Page through cards per edition
+           ☐ Add cards to their collection and save their new collection
         If the user is not logged in, they should be prompted and able to:
-            - Create an account and sign in [],
-            - Sign in with an existing account []
+           ☐ Create an account and sign in
+           ☐ Sign in with an existing account
 
 CLIENT:
   State:
@@ -66,6 +66,7 @@ CLIENT:
     ☐ Design
 
 SERVER:
+  http://pm2.keymetrics.io/
   Endpoints:
     ☐ editions
     ☐ editions/-

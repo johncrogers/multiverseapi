@@ -33,7 +33,7 @@ router.get("/editions", (req, res) => {
 // GET /api/editions/:editionId - Returns detailed data about a specific edition.
 router.get("/editions/:editionId", (req, res) => {
   // JSON
-  let edition = mockData.edition;
+  let edition = mockData.mockEdition;
   // let editionId = req.params.editionId;
   // let edition = jsonhelpers.retrieveEditionDetail(editionId);
   res.json(edition);

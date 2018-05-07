@@ -1,4 +1,4 @@
-var knex = require("knex")({
+module.exports.knex = require("knex")({
   client: "pg",
   version: "7.2",
   connection: {
@@ -8,3 +8,4 @@ var knex = require("knex")({
     database: process.env.DB_DATABASE
   }
 });
+module.exports.success = "Success";
