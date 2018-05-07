@@ -1,5 +1,5 @@
-import db from "db.js";
-import multiverse from "./../../data/local/multiverse.js";
+let db = require("db.js");
+let multiverse = require("./../../data/local/multiverse.js");
 
 let editions = Object.keys(multiverse);
 console.log(db.success);
