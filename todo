@@ -11,6 +11,33 @@ A user should be able to:
            ☐ Sign in with an existing account
 
 CLIENT:
+  Components:
+    ☐ App
+    ☐ Nav
+    ☐ Search
+      ☐ FormatSelectorView
+        ☐ Collections
+        ☐ Editions
+          ☐ Block
+            ☐ Edition
+        ☐ Standard
+        ☐ Modern
+      ☐ ResultsView
+        ☐ ResultsViewHeader
+          ☐ Header
+          ☐ HeaderHider
+        ☐ ResultsViewBody
+          ☐ ResultsListView
+            ☐ ResultsListItem
+          ☐ PageSelector
+      ☐ FiltersView
+        ☐ FilterHeader
+        ☐ FiltersList
+          ☐ FiltersListItem
+      ☐ SelectionView
+        ☐ SelectionHeader
+        ☐ SelectionListView
+          ☐ SelectedListItem
   State:
     ☐ Data:
       ☐ collectionCards = [{card}]
@@ -59,7 +86,6 @@ CLIENT:
     ☐ Data
     ☐ Functions
   Functionality:
-    ☐ Pass Data
     ☐ Modify
     ☐ Layout
     ☐ AJAX
@@ -81,7 +107,12 @@ SERVER:
 
 DATABASE:
   ✔ Connection @done(18-05-05 17:54)
-  ☐ Build schemas
+  ✔ Build schemas: @done(18-05-07 19:27)
+    ✔ Users @done(18-05-07 19:27)
+    ✔ users_collections @done(18-05-07 19:27)
+    ✔ Collections @done(18-05-07 19:27)
+    ✔ cards_collections @done(18-05-07 19:27)
+    ✔ Cards @done(18-05-07 19:10)
   ☐ Data:
     ☐ Convert Data
     ☐ Populate DB.

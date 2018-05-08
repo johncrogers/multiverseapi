@@ -1,5 +1,5 @@
-let db = require("./db.js");
-let multiverse = require("./../../data/local/multiverse.js").data;
+let db = require("./../db.js");
+let multiverse = require("./../../../data/local/multiverse.js").data;
 let editions = Object.keys(multiverse);
 
 for (let editionIndex = 0; editionIndex < editions.length; editionIndex++) {
