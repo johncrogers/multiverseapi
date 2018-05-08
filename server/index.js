@@ -1,25 +1,21 @@
-// This is the api server file.
-
-// MODULES:
+// IMPORT
+const api = require(path.join(`${__dirname}/router/api.js`)).router;
 const express = require("express");
-// const bodyParser = require("body-parser");
 const path = require("path");
 // const cors = require("cors");
-const api = require(path.join(`${__dirname}/router/api.js`)).router;
+// const bodyParser = require("body-parser");
 
-// INCLUDE:
-
-// INSTANTIATE:
-const server = express();
-const port = 8080;
-
-// ROUTING:
+// SETUP
 // server.use(bodyParser.json());
 // server.use(cors());
+const server = express();
+const port = 8080;
 server.use(express.static(__dirname + "/../client/dist"));
 server.get("/", (request, response) => {
   response.sendFile(path.join(`${__dirname}/../client/index.html`));
 });
+
+// ENDPOINTS
 server.get("/docs", (request, response) => {
   response.sendFile(
     path.join(`${__dirname}/../client/documentation/docs.html`)
@@ -27,7 +23,7 @@ server.get("/docs", (request, response) => {
 });
 server.use("/api", api);
 
-// INITIALIZE:
-server.listen(port, function() {
+// RUN:
+server.listen(port, function () {
   console.log(`listening on port ${port}!`);
 });

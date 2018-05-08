@@ -113,23 +113,27 @@ DATABASE:
     ✔ Collections @done(18-05-07 19:27)
     ✔ cards_collections @done(18-05-07 19:27)
     ✔ Cards @done(18-05-07 19:10)
-  ☐ Data:
-    ☐ Convert Data
-    ☐ Populate DB.
-  ☐ Queries:
-    ☐ EDITIONS:
+  ✔ Data: @done(18-05-07 20:56)
+    ✔ Convert Data @done(18-05-07 20:56)
+    ✔ Populate DB. @done(18-05-07 20:56)
+  ☐ MODELS:
+    ✔ Cards: @done(18-05-07 21:57)
       ☐ retrieveEditions
+        {editionName: editionCode}
       ☐ retrieveEdition
+        {edition details}
       ☐ retrieveEditionCards
-    ☐ COLLECTIONS:
+        [{card}]
+    ☐ Collections:
       ☐ saveCollection
-      ☐ retrieveCollection
+        insert({collectionDetails})
+        insert([{cards_collections}])
       ☐ retrieveUserCollectionIds
-      ☐ deleteCollection
+        [["collectionName", "collectionId"]]
+      ☐ retrieveCollection
+        {collection details}
       ☐ retrieveCollectionCards
-      retrieveCollectionCard
-      updateCollection
-      updateCollectionCards
+        [{card}]
     ☐ USER:
       ☐ signin
       ☐ signup

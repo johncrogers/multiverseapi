@@ -23,7 +23,7 @@ for (let editionIndex = 0; editionIndex < editions.length; editionIndex++) {
   });
   db.knex("Cards").insert(collectionToInsert)
     .then(() => {
-      console.log(`Added ${editions[editionIndex]}`);
+      console.log(`Added ${editions[editionIndex]} card data.`);
     })
     .catch((err) => {
       console.log(err)

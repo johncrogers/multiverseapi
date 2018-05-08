@@ -28,7 +28,7 @@ for (let editionIndex = 0; editionIndex < editions.length; editionIndex++) {
   db.knex("Editions")
     .insert(edition)
     .then(() => {
-      console.log(`Added ${editions[editionIndex]}`)
+      console.log(`Added ${editions[editionIndex]} edition data.`)
     })
     .catch((err) => {
       console.log(err);
