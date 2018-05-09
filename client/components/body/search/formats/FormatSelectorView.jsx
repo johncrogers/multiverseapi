@@ -7,10 +7,10 @@ class FormatSelectorView extends React.Component {
   render() {
     return (
       <div>
-        <div onClick={this.props.modifySearchResults}>Collections</div>
-        <div onClick={this.props.modifySearchResults}>Editions</div>
-        <div onClick={this.props.modifySearchResults}>Standard</div>
-        <div onClick={this.props.modifySearchResults}>Modern</div>
+        <div>Collections</div>
+        <div>Editions</div>
+        <div>Standard</div>
+        <div>Modern</div>
       </div>
     );
   }

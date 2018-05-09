@@ -84,9 +84,9 @@ router.get("/users/:userId/collections", (req, res) => {
 
 // GET 
 router.get("/users/:userId/collections/:collectionId", (req, res) => {
-  console.log(`GET /users/collections/${req.params.collectionId}`);
+  console.log(`GET /users/${req.params.userId}/collections/${req.params.collectionId}`);
   let filters = {
-    userId: req.params.userId,
+    // userId: req.params.userId,
     id: req.params.collectionId
   }
   new Promise((resolve, reject) => {

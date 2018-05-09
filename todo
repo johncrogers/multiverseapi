@@ -66,8 +66,24 @@ SERVER:
 CLIENT:
   Components:
     ✔ App @done(18-05-08 20:27)
-    ☐ Nav
-    ☐ Search
+    ✔ Nav @done(18-05-09 12:21)
+    ☐ SearchResultsView
+      ☐ NOTICED:
+        ☐ Implement:
+          ☐ Collection:
+            ☐ State:
+              ☐ Details
+              ☐ Cards
+            ☐ Functions:
+              ☐ Details
+              ☐ Cards
+          ☐ Edition:
+            ☐ State:
+              ☐ Details
+              ☐ Cards
+            ☐ Functions:
+              ☐ Details
+              ☐ Cards
       ☐ FormatSelectorView
         ☐ Collections
         ☐ Editions
@@ -92,35 +108,40 @@ CLIENT:
         ☐ SelectionListView
           ☐ SelectedListItem
   State:
-    ☐ Data:
-      ☐ collectionCards = [{card}]
-      ☐ filterResults = [{card}]
-      ☐ filters = {field: query}
-      ☐ collectionIds = {collectionName: collectionId}
-      ☐ selection = [{card}]
-    ☐ Function bindings:
-      ☐ applyFilters
-      ☐ retrieveCollection
-      ☐ retrieveCollectionIds
-      ☐ selectCard
-      ☐ deselectCard
-      ☐ addFilter
-      ☐ removeFilter
+    ✔ Data: @done(18-05-09 16:07)
+      ✔ editionIds: [], @done(18-05-09 16:07)
+      ✔ editionDetails: {}, @done(18-05-09 16:07)
+      ✔ editionCards: [], @done(18-05-09 16:06)
+      ✔ collectionIds: [], @done(18-05-09 16:06)
+      ✔ collectionDetails: {}, @done(18-05-09 16:06)
+      ✔ collectionCards: [], @done(18-05-09 16:06)
+      ✔ filters: {}, @done(18-05-09 16:06)
+      ✔ filterResults: [], @done(18-05-09 16:06)
+      ✔ selection: [] @done(18-05-09 16:06)
+    ✔ Function bindings: @done(18-05-09 16:06)
+      ✔ this.retrieveEditionsIds.bind(this); @done(18-05-09 16:06)
+      ✔ this.retrieveEditionDetails.bind(this); @done(18-05-09 16:06)
+      ✔ this.retrieveEditionCards.bind(this); @done(18-05-09 16:06)
+      ✔ this.retrieveCollectionIds.bind(this); @done(18-05-09 16:06)
+      ✔ this.retrieveCollectionDetails.bind(this); @done(18-05-09 16:06)
+      ✔ this.retrieveCollectionCards.bind(this); @done(18-05-09 16:06)
+      ✔ this.addFilter.bind(this); @done(18-05-09 16:06)
+      ✔ this.removeFilter.bind(this); @done(18-05-09 16:06)
+      ✔ this.applyFilters.bind(this); @done(18-05-09 16:06)
+      ✔ this.selectCard.bind(this); @done(18-05-09 16:06)
+      ✔ this.deselectCard.bind(this); @done(18-05-09 16:06)
   Functions:
-    ☐ applyFilters()
-      Applies current filter configuration to collectionData, then calls setState on filterResults.
-    ☐ retrieveCollection(collectionId)
-      Performs AJAX request to /api/editions/editionId.
-    ☐ retrieveCollectionIds()
-      Performs AJAX request to /api/editions.
-    ☐ selectCard(multiverseId)
-      Adds the card data per multiverseId the selection, then sets it's state.
-    ☐ deselectCard(multiverseId)
-      Removes the card data per multiverseId from selected, then sets it's state.
-    ☐ addFilter({field: query})
-      Adds filter to filters, then sets it's state.
-    ☐ removeFilter()
-      Removes filter from filters, then sets it's state.
+    ✔ retrieveEditionsIds @done(18-05-09 16:08)
+    ✔ retrieveEditionDetails @done(18-05-09 16:08)
+    ✔ retrieveEditionCards @done(18-05-09 16:10)
+    ✔ retrieveCollectionIds @done(18-05-09 16:15)
+    ✔ retrieveCollectionDetails @done(18-05-09 16:56)
+    retrieveCollectionCards
+    addFilter
+    removeFilter
+    applyFilters
+    selectCard
+    deselectCard
   Props:
     ☐ Data
     ☐ Functions:

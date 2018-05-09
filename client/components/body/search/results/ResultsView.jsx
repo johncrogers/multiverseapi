@@ -4,9 +4,7 @@ import ResultsViewBody from "./ResultsViewBody.jsx";
 class ResultsView extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      filterResults: this.props.filteredResults
-    };
+    this.state = {};
   }
   render() {
     return (

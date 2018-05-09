@@ -34,6 +34,7 @@ module.exports.retrieveUserCollectionIds = (filters) => {
 }
 
 module.exports.retrieveCollection = (filters) => {
+  console.log(JSON.stringify(filters));
   console.log(`Retrieving collection id: ${filters.id}.`);
   return db('Collections').select().where(filters)
     .then((DATA) => {
