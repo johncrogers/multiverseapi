@@ -1,7 +1,7 @@
 // IMPORT
-const api = require(path.join(`${__dirname}/router/api.js`)).router;
 const express = require("express");
 const path = require("path");
+const api = require(path.join(`${__dirname}/router/api.js`)).router;
 // const cors = require("cors");
 // const bodyParser = require("body-parser");
 

@@ -10,6 +10,59 @@ A user should be able to:
       ☐ Create an account and sign in
       ☐ Sign in with an existing account
 
+NOTICED:
+  ✔ Back end logging @done(18-05-08 19:20)
+  ☐ JSON fields over JSONified
+    ☐ Update script?
+  ☐ Collections POST
+    Waiting to get front end sorted. Easier to understand the data needs then.
+LEFT UNDONE:
+  ✔ Collections SQL queries @done(18-05-08 19:20)
+  ✔ Routes @done(18-05-08 19:20)
+
+DATABASE:
+  ✔ Connection @done(18-05-05 17:54)
+  ✔ Build schemas: @done(18-05-07 19:27)
+    ✔ Users @done(18-05-07 19:27)
+    ✔ users_collections @done(18-05-07 19:27)
+    ✔ Collections @done(18-05-07 19:27)
+    ✔ cards_collections @done(18-05-07 19:27)
+    ✔ Cards @done(18-05-07 19:10)
+  ✔ Data: @done(18-05-07 20:56)
+    ✔ Convert Data @done(18-05-07 20:56)
+    ✔ Populate DB. @done(18-05-07 20:56)
+  ✔ MODELS: @done(18-05-08 16:43)
+    ✔ Cards: @done(18-05-07 21:57)
+      ✔ retrieveEditions @done(18-05-08 09:59)
+        {editionName: editionCode}
+      ✔ retrieveEdition @done(18-05-08 09:59)
+        {edition details}
+      ✔ retrieveEditionCards @done(18-05-08 10:11)
+        [{card}]
+    ✔ Collections: @done(18-05-08 16:43)
+      ✔ saveCollection @done(18-05-08 11:31)
+        insert({collectionDetails})
+        insert([{cards_collections}])
+      ✔ retrieveUserCollectionIds @done(18-05-08 11:31)
+        [["collectionName", "collectionId"]]
+      ✔ retrieveCollection @done(18-05-08 16:42)
+        {collection details}
+      ✔ retrieveCollectionCards @done(18-05-08 16:42)
+        [{card}]
+
+SERVER:
+  http://pm2.keymetrics.io/
+  Endpoints:
+    Editions:
+      ✔ GET /editions @done(18-05-08 13:58)
+      ✔ GET /editions/- @done(18-05-08 13:58)
+      ✔ GET /editions/-/cards @done(18-05-08 14:10)
+    Collections:
+      ✔ POST /collections @done(18-05-08 18:37)
+      ✔ GET /collections @done(18-05-08 18:37)
+      ✔ GET /collections/- @done(18-05-08 18:37)
+      ✔ GET /collections/-/cards @done(18-05-08 18:37)
+
 CLIENT:
   Components:
     ☐ App
@@ -68,9 +121,11 @@ CLIENT:
       Adds filter to filters, then sets it's state.
     ☐ removeFilter()
       Removes filter from filters, then sets it's state.
-    signin
-    signup
-    logout
+  Props:
+    ☐ Data
+    ☐ Functions:
+      ☐ Pass
+      ☐ Function
   AJAX:
     Editions:
       ☐ GET /editions
@@ -81,65 +136,3 @@ CLIENT:
       ☐ GET /collections
       ☐ GET /collections/-
       ☐ GET /collections/-/cards
-      signin
-      signup
-      logout
-  Props:
-    ☐ Data
-    ☐ Functions
-  Functionality:
-    ☐ Modify
-    ☐ Layout
-    ☐ AJAX
-    ☐ Design
-
-SERVER:
-  http://pm2.keymetrics.io/
-  Endpoints:
-    Editions:
-      ☐ GET /editions
-      ☐ GET /editions/-
-      ☐ GET /editions/-/cards
-    Collections:
-      ☐ POST /collections
-      ☐ GET /collections
-      ☐ GET /collections/-
-      ☐ GET /collections/-/cards
-    Users
-      signin
-      signup
-      logout
-
-DATABASE:
-  ✔ Connection @done(18-05-05 17:54)
-  ✔ Build schemas: @done(18-05-07 19:27)
-    ✔ Users @done(18-05-07 19:27)
-    ✔ users_collections @done(18-05-07 19:27)
-    ✔ Collections @done(18-05-07 19:27)
-    ✔ cards_collections @done(18-05-07 19:27)
-    ✔ Cards @done(18-05-07 19:10)
-  ✔ Data: @done(18-05-07 20:56)
-    ✔ Convert Data @done(18-05-07 20:56)
-    ✔ Populate DB. @done(18-05-07 20:56)
-  ☐ MODELS:
-    ✔ Cards: @done(18-05-07 21:57)
-      ☐ retrieveEditions
-        {editionName: editionCode}
-      ☐ retrieveEdition
-        {edition details}
-      ☐ retrieveEditionCards
-        [{card}]
-    ☐ Collections:
-      ☐ saveCollection
-        insert({collectionDetails})
-        insert([{cards_collections}])
-      ☐ retrieveUserCollectionIds
-        [["collectionName", "collectionId"]]
-      ☐ retrieveCollection
-        {collection details}
-      ☐ retrieveCollectionCards
-        [{card}]
-    ☐ USER:
-      ☐ signin
-      ☐ signup
-      ☐ logout
