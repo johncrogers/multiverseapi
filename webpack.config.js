@@ -1,5 +1,5 @@
 var path = require("path");
-var SRC_DIR = path.join(__dirname, "/client");
+var SRC_DIR = path.join(__dirname, "/client/components");
 var DIST_DIR = path.join(__dirname, "/client/dist");
 
 module.exports = {
@@ -9,15 +9,13 @@ module.exports = {
     path: DIST_DIR
   },
   module: {
-    loaders: [
-      {
-        test: /\.jsx?/,
-        include: SRC_DIR,
-        loader: "babel-loader",
-        query: {
-          presets: ["react", "es2015"]
-        }
+    loaders: [{
+      test: /\.jsx?/,
+      include: SRC_DIR,
+      loader: "babel-loader",
+      query: {
+        presets: ["react", "es2015"]
       }
-    ]
+    }]
   }
 };

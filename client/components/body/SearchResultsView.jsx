@@ -1,8 +1,8 @@
 import React from "react";
-import FormatSelectorView from "./formats/FormatSelectorView.jsx";
-import ResultsView from "./results/ResultsView.jsx";
-import FiltersView from "./filters/FiltersView.jsx";
-import SelectionView from "./selection/SelectionView.jsx";
+import FormatSelectorView from "./search/formats/FormatSelectorView.jsx";
+import ResultsView from "./search/results/ResultsView.jsx";
+import FiltersView from "./search/filters/FiltersView.jsx";
+import SelectionView from "./search/selection/SelectionView.jsx";
 
 class Body extends React.Component {
   constructor(props) {
