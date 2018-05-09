@@ -22,9 +22,11 @@ class Body extends React.Component {
     this.retrieveEditionsIds.bind(this);
     this.retrieveEditionDetails.bind(this);
     this.retrieveEditionCards.bind(this);
+    this.selectEdition.bind(this);
     this.retrieveCollectionIds.bind(this);
     this.retrieveCollectionDetails.bind(this);
     this.retrieveCollectionCards.bind(this);
+    this.selectCollection.bind(this);
     this.addFilter.bind(this);
     this.removeFilter.bind(this);
     this.applyFilters.bind(this);
@@ -54,7 +56,7 @@ class Body extends React.Component {
       .get(`/api/editions/${editionId}`)
       .then(response => {
         this.setState({ editionDetails: response.data }, () => {
-          // console.log(this.state.editionDetails);
+          console.log(this.state);
         });
       })
       .catch(err => {
@@ -68,11 +70,22 @@ class Body extends React.Component {
       .get(`/api/editions/${editionId}/cards`)
       .then(response => {
         this.setState({ editionCards: response.data }, () => {
-          // console.log(this.state.editionCards);
+          console.log(this.state);
         });
       })
       .catch(err => {
         console.log(err);
+      });
+  }
+  selectEdition(editionId) {
+    new Promise((resolve, reject) => {
+      resolve(this.retrieveEditionDetails(editionId));
+    })
+      .then(() => {
+        this.retrieveEditionCards(editionId);
+      })
+      .catch(() => {
+        console.log(`ERROR retrieving edition.`);
       });
   }
   retrieveCollectionIds(userId) {
@@ -98,7 +111,7 @@ class Body extends React.Component {
         console.log(response);
 
         this.setState({ collectionDetails: response.data }, () => {
-          console.log(this.state.collectionDetails);
+          console.log(this.state);
         });
       })
       .catch(err => {
@@ -112,11 +125,22 @@ class Body extends React.Component {
       .then(response => {
         console.log(`retrieveCollectionCards`);
         this.setState({ collectionCards: response.data }, () => {
-          console.log(this.state.collectionCards);
+          console.log(this.state);
         });
       })
       .catch(err => {
         console.log(err);
+      });
+  }
+  selectCollection(userId, collectionId) {
+    new Promise((resolve, reject) => {
+      resolve(this.retrieveCollectionDetails(userId, collectionId));
+    })
+      .then(() => {
+        this.retrieveCollectionCards(userId, collectionId);
+      })
+      .catch(() => {
+        console.log(`ERROR retrieving collection.`);
       });
   }
   // FILTER:
@@ -144,7 +168,7 @@ class Body extends React.Component {
       <div>
         <button
           onClick={() => {
-            this.retrieveCollectionCards(1, 1);
+            this.selectCollection(0, 1);
           }}
         >
           Function Tester

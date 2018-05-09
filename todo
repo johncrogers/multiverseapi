@@ -122,9 +122,11 @@ CLIENT:
       ✔ this.retrieveEditionsIds.bind(this); @done(18-05-09 16:06)
       ✔ this.retrieveEditionDetails.bind(this); @done(18-05-09 16:06)
       ✔ this.retrieveEditionCards.bind(this); @done(18-05-09 16:06)
+      ✔ this.selectEdition.bind(this); @done(18-05-09 17:19)
       ✔ this.retrieveCollectionIds.bind(this); @done(18-05-09 16:06)
       ✔ this.retrieveCollectionDetails.bind(this); @done(18-05-09 16:06)
       ✔ this.retrieveCollectionCards.bind(this); @done(18-05-09 16:06)
+      ✔ this.selectCollection.bind(this); @done(18-05-09 17:19)
       ✔ this.addFilter.bind(this); @done(18-05-09 16:06)
       ✔ this.removeFilter.bind(this); @done(18-05-09 16:06)
       ✔ this.applyFilters.bind(this); @done(18-05-09 16:06)
@@ -134,9 +136,11 @@ CLIENT:
     ✔ retrieveEditionsIds @done(18-05-09 16:08)
     ✔ retrieveEditionDetails @done(18-05-09 16:08)
     ✔ retrieveEditionCards @done(18-05-09 16:10)
+    ✔ selectEdition @done(18-05-09 17:18)
     ✔ retrieveCollectionIds @done(18-05-09 16:15)
     ✔ retrieveCollectionDetails @done(18-05-09 16:56)
-    retrieveCollectionCards
+    ✔ retrieveCollectionCards @done(18-05-09 17:06)
+    ✔ selectCollection @done(18-05-09 17:18)
     addFilter
     removeFilter
     applyFilters
