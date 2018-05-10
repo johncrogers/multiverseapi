@@ -19,7 +19,7 @@ class Body extends React.Component {
       filterResults: [],
       selection: []
     };
-    this.retrieveEditionsIds = this.retrieveEditionsIds.bind(this);
+    this.retrieveEditionIds = this.retrieveEditionIds.bind(this);
     this.retrieveEditionDetails = this.retrieveEditionDetails.bind(this);
     this.retrieveEditionCards = this.retrieveEditionCards.bind(this);
     this.selectEdition = this.selectEdition.bind(this);
@@ -34,15 +34,15 @@ class Body extends React.Component {
     this.deselectCard = this.deselectCard.bind(this);
   }
   // RETRIEVE:
-  retrieveEditionsIds() {
+  retrieveEditionIds() {
     // axios.get mrrogers.design/api/editions
-    // console.log("retrieveEditionsIds");
+    // console.log("retrieveEditionIds");
     axios
       .get("/api/editions")
       .then(response => {
         // console.log(response);
         this.setState({ editionIds: response.data }, () => {
-          // console.log(this.state.editionIds);
+          // console.log("editionIds", this.state.editionIds);
         });
       })
       .catch(err => {
@@ -56,7 +56,7 @@ class Body extends React.Component {
       .get(`/api/editions/${editionId}`)
       .then(response => {
         this.setState({ editionDetails: response.data }, () => {
-          // console.log(this.state);
+          // console.log("editionDetails", this.state.editionDetails);
         });
       })
       .catch(err => {
@@ -70,7 +70,7 @@ class Body extends React.Component {
       .get(`/api/editions/${editionId}/cards`)
       .then(response => {
         this.setState({ editionCards: response.data }, () => {
-          // console.log(this.state);
+          // console.log("editionCards", this.state.editionCards);
         });
       })
       .catch(err => {
@@ -95,7 +95,7 @@ class Body extends React.Component {
       .get(`/api/users/${userId}/collections`)
       .then(response => {
         this.setState({ collectionIds: response.data }, () => {
-          // console.log(this.state.collectionIds);
+          // console.log("collectionIds", this.state.collectionIds);
         });
       })
       .catch(err => {
@@ -109,7 +109,7 @@ class Body extends React.Component {
       .get(`/api/users/${userId}/collections/${collectionId}`)
       .then(response => {
         this.setState({ collectionDetails: response.data }, () => {
-          console.log(this.state);
+          // console.log("collectionDetails", this.state.collectionDetails);
         });
       })
       .catch(err => {
@@ -123,7 +123,7 @@ class Body extends React.Component {
       .then(response => {
         // console.log(`retrieveCollectionCards`);
         this.setState({ collectionCards: response.data }, () => {
-          console.log(this.state);
+          // console.log("collectionCards", this.state.collectionCards);
         });
       })
       .catch(err => {
@@ -159,7 +159,9 @@ class Body extends React.Component {
     //
   }
   componentDidMount() {
-    //
+    this.retrieveCollectionIds("1");
+    this.retrieveEditionIds();
+    this.selectEdition("LEA");
   }
   render() {
     return (
@@ -174,6 +176,8 @@ class Body extends React.Component {
         <FormatSelectorView
           selectEdition={this.selectEdition}
           selectCollection={this.selectCollection}
+          editionIds={this.state.editionIds}
+          collectionIds={this.state.collectionIds}
         />
         <ResultsView />
         <FiltersView />

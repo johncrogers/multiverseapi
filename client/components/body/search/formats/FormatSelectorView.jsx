@@ -1,5 +1,6 @@
 import React from "react";
 import CollectionSelector from "./CollectionSelector.jsx";
+import EditionSelector from "./EditionSelector.jsx";
 class FormatSelectorView extends React.Component {
   constructor(props) {
     super(props);
@@ -8,10 +9,14 @@ class FormatSelectorView extends React.Component {
   render() {
     return (
       <div>
-        <CollectionSelector selectCollection={this.props.selectCollection} />
-        <div>Editions</div>
-        {/* <div>Standard</div> */}
-        {/* <div>Modern</div> */}
+        <CollectionSelector
+          selectCollection={this.props.selectCollection}
+          collectionIds={this.props.collectionIds}
+        />
+        <EditionSelector
+          selectEdition={this.props.selectEdition}
+          editionIds={this.props.editionIds}
+        />
       </div>
     );
   }

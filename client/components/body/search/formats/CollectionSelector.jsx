@@ -6,21 +6,30 @@ class CollectionSelector extends React.Component {
       value: "select"
     };
   }
-  handleChange() {
-    //
-  }
   render() {
     return (
-      <select
-        value={this.state.value}
-        onChange={event => {
-          this.props.selectCollection(0, event.target.value);
-          this.setState({ value: event.target.value });
-        }}
-      >
-        <option value="select">Select a collection</option>
-        {/* <option value="2">Another Test Collection</option> */}
-      </select>
+      <div>
+        <select
+          value={this.state.value}
+          onChange={event => {
+            this.props.selectCollection(0, event.target.value);
+            this.setState({ value: event.target.value });
+          }}
+        >
+          <option value="select">Select a collection</option>
+          {this.props.collectionIds ? (
+            this.props.collectionIds.map((collection, key) => {
+              return (
+                <option value={collection.id} key={key}>
+                  {collection.name}
+                </option>
+              );
+            })
+          ) : (
+            <option value="select">No collections loaded.</option>
+          )}
+        </select>
+      </div>
     );
   }
 }
