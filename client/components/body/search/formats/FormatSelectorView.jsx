@@ -9,10 +9,10 @@ class FormatSelectorView extends React.Component {
   render() {
     return (
       <div>
-        <CollectionSelector
+        {/* <CollectionSelector
           selectCollection={this.props.selectCollection}
           collectionIds={this.props.collectionIds}
-        />
+        /> */}
         <EditionSelector
           selectEdition={this.props.selectEdition}
           editionIds={this.props.editionIds}
