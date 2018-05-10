@@ -19,19 +19,19 @@ class Body extends React.Component {
       filterResults: [],
       selection: []
     };
-    this.retrieveEditionsIds.bind(this);
-    this.retrieveEditionDetails.bind(this);
-    this.retrieveEditionCards.bind(this);
-    this.selectEdition.bind(this);
-    this.retrieveCollectionIds.bind(this);
-    this.retrieveCollectionDetails.bind(this);
-    this.retrieveCollectionCards.bind(this);
-    this.selectCollection.bind(this);
-    this.addFilter.bind(this);
-    this.removeFilter.bind(this);
-    this.applyFilters.bind(this);
-    this.selectCard.bind(this);
-    this.deselectCard.bind(this);
+    this.retrieveEditionsIds = this.retrieveEditionsIds.bind(this);
+    this.retrieveEditionDetails = this.retrieveEditionDetails.bind(this);
+    this.retrieveEditionCards = this.retrieveEditionCards.bind(this);
+    this.selectEdition = this.selectEdition.bind(this);
+    this.retrieveCollectionIds = this.retrieveCollectionIds.bind(this);
+    this.retrieveCollectionDetails = this.retrieveCollectionDetails.bind(this);
+    this.retrieveCollectionCards = this.retrieveCollectionCards.bind(this);
+    this.selectCollection = this.selectCollection.bind(this);
+    this.addFilter = this.addFilter.bind(this);
+    this.removeFilter = this.removeFilter.bind(this);
+    this.applyFilters = this.applyFilters.bind(this);
+    this.selectCard = this.selectCard.bind(this);
+    this.deselectCard = this.deselectCard.bind(this);
   }
   // RETRIEVE:
   retrieveEditionsIds() {
@@ -56,7 +56,7 @@ class Body extends React.Component {
       .get(`/api/editions/${editionId}`)
       .then(response => {
         this.setState({ editionDetails: response.data }, () => {
-          console.log(this.state);
+          // console.log(this.state);
         });
       })
       .catch(err => {
@@ -70,7 +70,7 @@ class Body extends React.Component {
       .get(`/api/editions/${editionId}/cards`)
       .then(response => {
         this.setState({ editionCards: response.data }, () => {
-          console.log(this.state);
+          // console.log(this.state);
         });
       })
       .catch(err => {
@@ -95,7 +95,7 @@ class Body extends React.Component {
       .get(`/api/users/${userId}/collections`)
       .then(response => {
         this.setState({ collectionIds: response.data }, () => {
-          console.log(this.state.collectionIds);
+          // console.log(this.state.collectionIds);
         });
       })
       .catch(err => {
@@ -104,12 +104,10 @@ class Body extends React.Component {
   }
   retrieveCollectionDetails(userId, collectionId) {
     // axios.get mrrogers.design/api/users/:userId/collections/:collectionId
-    console.log("retrieveCollectionDetails");
+    // console.log("retrieveCollectionDetails");
     axios
       .get(`/api/users/${userId}/collections/${collectionId}`)
       .then(response => {
-        console.log(response);
-
         this.setState({ collectionDetails: response.data }, () => {
           console.log(this.state);
         });
@@ -123,7 +121,7 @@ class Body extends React.Component {
     axios
       .get(`/api/users/${userId}/collections/${collectionId}/cards`)
       .then(response => {
-        console.log(`retrieveCollectionCards`);
+        // console.log(`retrieveCollectionCards`);
         this.setState({ collectionCards: response.data }, () => {
           console.log(this.state);
         });
@@ -139,8 +137,8 @@ class Body extends React.Component {
       .then(() => {
         this.retrieveCollectionCards(userId, collectionId);
       })
-      .catch(() => {
-        console.log(`ERROR retrieving collection.`);
+      .catch(err => {
+        console.log(err);
       });
   }
   // FILTER:
@@ -166,14 +164,17 @@ class Body extends React.Component {
   render() {
     return (
       <div>
-        <button
+        {/* <button
           onClick={() => {
             this.selectCollection(0, 1);
           }}
         >
           Function Tester
-        </button>
-        <FormatSelectorView />
+        </button> */}
+        <FormatSelectorView
+          selectEdition={this.selectEdition}
+          selectCollection={this.selectCollection}
+        />
         <ResultsView />
         <FiltersView />
         <SelectionView />

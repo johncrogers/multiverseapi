@@ -1,4 +1,5 @@
 import React from "react";
+import CollectionSelector from "./CollectionSelector.jsx";
 class FormatSelectorView extends React.Component {
   constructor(props) {
     super(props);
@@ -7,10 +8,10 @@ class FormatSelectorView extends React.Component {
   render() {
     return (
       <div>
-        <div>Collections</div>
+        <CollectionSelector selectCollection={this.props.selectCollection} />
         <div>Editions</div>
-        <div>Standard</div>
-        <div>Modern</div>
+        {/* <div>Standard</div> */}
+        {/* <div>Modern</div> */}
       </div>
     );
   }
