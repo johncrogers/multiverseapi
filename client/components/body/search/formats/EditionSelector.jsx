@@ -13,7 +13,9 @@ class EditionSelector extends React.Component {
           value={this.state.value}
           onChange={event => {
             this.props.selectEdition(event.target.value);
-            this.setState({ value: event.target.value });
+            this.setState({ value: event.target.value }, () => {
+              this.props.selectView("edition");
+            });
           }}
         >
           {this.props.editionIds.length ? (

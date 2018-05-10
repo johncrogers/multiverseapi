@@ -169,7 +169,9 @@ class Body extends React.Component {
           view: type
         },
         () => {
-          this.changeView();
+          setTimeout(() => {
+            this.changeView();
+          }, 500);
         }
       );
     }
@@ -179,12 +181,17 @@ class Body extends React.Component {
           view: type
         },
         () => {
-          this.changeView();
+          setTimeout(() => {
+            this.changeView();
+          }, 500);
         }
       );
     }
   }
   changeView() {
+    console.log(
+      `Select > Onchange > setState > selectView > if edition > setState > changeView`
+    );
     if (this.state.view === "collection") {
       this.setState(
         {
@@ -219,18 +226,12 @@ class Body extends React.Component {
   render() {
     return (
       <div>
-        {/* <button
-          onClick={() => {
-            this.selectCollection(0, 1);
-          }}
-        >
-          Function Tester
-        </button> */}
         <FormatSelectorView
           selectEdition={this.selectEdition}
           selectCollection={this.selectCollection}
           editionIds={this.state.editionIds}
           collectionIds={this.state.collectionIds}
+          selectView={this.selectView}
         />
         <ResultsView
           editionDetails={this.state.editionDetails}
