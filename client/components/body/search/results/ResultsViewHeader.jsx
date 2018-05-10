@@ -8,10 +8,30 @@ class ResultsViewHeader extends React.Component {
     return (
       <div>
         <div>
-          Results Header
-          <div>Sort Results</div>
+          <h1>{this.props.viewDetails.name}</h1>
+          <h3>{this.props.viewDetails.releaseDate}</h3>
         </div>
-        <div>Hide Results Header</div>
+        <div>
+          <a
+            href="#"
+            onClick={() => {
+              this.props.selectView("edition");
+            }}
+          >
+            Edition
+          </a>
+          &nbsp;||&nbsp;
+          <a
+            href="#"
+            onClick={() => {
+              this.props.selectView("collection");
+            }}
+          >
+            Collection
+          </a>
+        </div>
+        {/* <div>Sort Results</div> */}
+        {/* <div>Hide Results Header</div> */}
       </div>
     );
   }

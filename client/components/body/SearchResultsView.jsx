@@ -17,7 +17,10 @@ class Body extends React.Component {
       collectionCards: [],
       filters: {},
       filterResults: [],
-      selection: []
+      selection: [],
+      view: "edition",
+      viewDetails: {},
+      viewCards: {}
     };
     this.retrieveEditionIds = this.retrieveEditionIds.bind(this);
     this.retrieveEditionDetails = this.retrieveEditionDetails.bind(this);
@@ -32,6 +35,7 @@ class Body extends React.Component {
     this.applyFilters = this.applyFilters.bind(this);
     this.selectCard = this.selectCard.bind(this);
     this.deselectCard = this.deselectCard.bind(this);
+    this.selectView = this.selectView.bind(this);
   }
   // RETRIEVE:
   retrieveEditionIds() {
@@ -158,10 +162,59 @@ class Body extends React.Component {
   deselectCard() {
     //
   }
+  selectView(type) {
+    if (type === "collection") {
+      this.setState(
+        {
+          view: type
+        },
+        () => {
+          this.changeView();
+        }
+      );
+    }
+    if (type === "edition") {
+      this.setState(
+        {
+          view: type
+        },
+        () => {
+          this.changeView();
+        }
+      );
+    }
+  }
+  changeView() {
+    if (this.state.view === "collection") {
+      this.setState(
+        {
+          viewDetails: this.state.collectionDetails,
+          viewCards: this.state.collectionCards
+        },
+        () => {
+          console.log(this.state);
+        }
+      );
+    }
+    if (this.state.view === "edition") {
+      this.setState(
+        {
+          viewDetails: this.state.editionDetails,
+          viewCards: this.state.editionCards
+        },
+        () => {
+          console.log(this.state);
+        }
+      );
+    }
+  }
   componentDidMount() {
     this.retrieveCollectionIds("1");
     this.retrieveEditionIds();
     this.selectEdition("LEA");
+    setTimeout(() => {
+      this.selectView("edition");
+    }, 500);
   }
   render() {
     return (
@@ -179,7 +232,15 @@ class Body extends React.Component {
           editionIds={this.state.editionIds}
           collectionIds={this.state.collectionIds}
         />
-        <ResultsView />
+        <ResultsView
+          editionDetails={this.state.editionDetails}
+          editionCards={this.state.editionCards}
+          collectionDetails={this.state.collectionDetails}
+          collectionCards={this.state.collectionCards}
+          viewDetails={this.state.viewDetails}
+          viewCards={this.state.viewCards}
+          selectView={this.selectView}
+        />
         <FiltersView />
         <SelectionView />
       </div>

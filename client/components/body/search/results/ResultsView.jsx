@@ -6,11 +6,15 @@ class ResultsView extends React.Component {
     super(props);
     this.state = {};
   }
+
   render() {
     return (
       <div>
-        <ResultsViewHeader />
-        <ResultsViewBody />
+        <ResultsViewHeader
+          viewDetails={this.props.viewDetails}
+          selectView={this.props.selectView}
+        />
+        <ResultsViewBody viewCards={this.props.viewCards} />
       </div>
     );
   }

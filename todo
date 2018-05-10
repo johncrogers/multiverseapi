@@ -16,6 +16,13 @@ NOTICED:
     ☐ Update script?
   ☐ Collections POST
     Waiting to get front end sorted. Easier to understand the data needs then.
+  ☐ Show default edition header when get data.
+  ☐ Re-render edition / collection view when new data.
+  ☐ Create user functionaity:
+    ☐ sign up
+    ☐ login
+    ☐ logout
+    ☐ onSignIn => load collection data > drop down
 LEFT UNDONE:
   ✔ Collections SQL queries @done(18-05-08 19:20)
   ✔ Routes @done(18-05-08 19:20)
