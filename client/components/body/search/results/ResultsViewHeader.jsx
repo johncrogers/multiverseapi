@@ -1,4 +1,7 @@
 import React from "react";
+import ResultsViewToggler from "./ResultsViewToggler.jsx";
+import ResultsViewSorter from "./ResultsViewSorter.jsx";
+import ResultsViewHeaderHider from "./ResultsViewHeaderHider.jsx";
 class ResultsViewHeader extends React.Component {
   constructor(props) {
     super(props);
@@ -9,29 +12,11 @@ class ResultsViewHeader extends React.Component {
       <div>
         <div>
           <h1>{this.props.viewDetails.name}</h1>
-          <h3>{this.props.viewDetails.releaseDate}</h3>
+          {/* <h3>{this.props.viewDetails.releaseDate}</h3> */}
         </div>
-        <div>
-          <a
-            href="#"
-            onClick={() => {
-              this.props.selectView("edition");
-            }}
-          >
-            Edition
-          </a>
-          &nbsp;||&nbsp;
-          <a
-            href="#"
-            onClick={() => {
-              this.props.selectView("collection");
-            }}
-          >
-            Collection
-          </a>
-        </div>
-        {/* <div>Sort Results</div> */}
-        {/* <div>Hide Results Header</div> */}
+        <ResultsViewToggler selectView={this.props.selectView} />
+        {/* <ResultsViewSorter /> */}
+        {/* <ResultsViewHeaderHider /> */}
       </div>
     );
   }

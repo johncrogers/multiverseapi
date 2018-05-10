@@ -6,9 +6,9 @@ const Nav = () => {
         <img src="/images/logo.png" alt="" width="50" height="50" />
         {/* <h1>MultiverseAPI</h1> */}
       </span>
-      <span>
+      {/* <span>
         <a href="#">Login | Sign Up</a>
-      </span>
+      </span> */}
     </div>
   );
 };

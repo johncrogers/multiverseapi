@@ -17,7 +17,7 @@ class CollectionSelector extends React.Component {
           }}
         >
           <option value="select">Select a collection</option>
-          {this.props.collectionIds ? (
+          {this.props.collectionIds.length ? (
             this.props.collectionIds.map((collection, key) => {
               return (
                 <option value={collection.id} key={key}>
