@@ -22,7 +22,8 @@ class Body extends React.Component {
       viewDetails: {},
       viewCards: {},
       currentView: [],
-      cardsPerPage: 50
+      cardsPerPage: 25,
+      page: 1
     };
     this.retrieveEditionIds = this.retrieveEditionIds.bind(this);
     this.retrieveEditionDetails = this.retrieveEditionDetails.bind(this);
@@ -39,6 +40,9 @@ class Body extends React.Component {
     this.deselectCard = this.deselectCard.bind(this);
     this.selectView = this.selectView.bind(this);
     this.setCurrentView = this.setCurrentView.bind(this);
+    this.changePage = this.changePage.bind(this);
+    this.handlePageChangeClick = this.handlePageChangeClick.bind(this);
+    this.addCardToSelection = this.addCardToSelection.bind(this);
   }
   // RETRIEVE:
   retrieveEditionIds() {
@@ -57,8 +61,6 @@ class Body extends React.Component {
       });
   }
   retrieveEditionDetails(editionId) {
-    // axios.get mrrogers.design/api/editions/:editionId
-    // console.log("retrieveEditionDetails");
     axios
       .get(`/api/editions/${editionId}`)
       .then(response => {
@@ -238,6 +240,28 @@ class Body extends React.Component {
       }
     );
   }
+  changePage(num) {
+    this.setCurrentView(num);
+  }
+  handlePageChangeClick(direction) {
+    if (direction === "prev") {
+      this.setState({ page: this.state.page - 1 }, () => {
+        this.changePage(this.state.page - 1);
+      });
+    }
+    if (direction === "next") {
+      this.setState({ page: this.state.page + 1 }, () => {
+        this.changePage(this.state.page + 1);
+      });
+    }
+  }
+  addCardToSelection(card) {
+    let newSelection = this.state.selection;
+    newSelection.push(card);
+    this.setState({ selection: newSelection }, () => {
+      // console.log("Selection:", this.state.selection);
+    });
+  }
   componentDidMount() {
     this.retrieveCollectionIds("1");
     this.retrieveEditionIds();
@@ -267,9 +291,11 @@ class Body extends React.Component {
           currentView={this.state.currentView}
           setCurrentView={this.setCurrentView}
           cardsPerPage={this.state.cardsPerPage}
+          handlePageChangeClick={this.handlePageChangeClick}
+          addCardToSelection={this.addCardToSelection}
         />
-        <FiltersView />
-        <SelectionView />
+        {/* <FiltersView /> */}
+        {/* <SelectionView /> */}
       </div>
     );
   }

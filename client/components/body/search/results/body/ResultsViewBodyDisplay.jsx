@@ -10,7 +10,13 @@ class ResultsViewBodyDisplay extends React.Component {
       <div>
         {this.props.currentView.length
           ? this.props.currentView.map((card, key) => {
-              return <Card key={key} card={card} />;
+              return (
+                <Card
+                  key={key}
+                  card={card}
+                  addCardToSelection={this.props.addCardToSelection}
+                />
+              );
             })
           : "No cards loaded."}
         {/* Card */}

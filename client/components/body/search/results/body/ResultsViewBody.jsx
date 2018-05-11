@@ -15,10 +15,15 @@ class ResultsViewBody extends React.Component {
       <div>
         <ResultsViewBodyPageSelector
           setCurrentView={this.props.setCurrentView}
+          handlePageChangeClick={this.props.handlePageChangeClick}
         />
-        <ResultsViewBodyDisplay currentView={this.props.currentView} />
+        <ResultsViewBodyDisplay
+          currentView={this.props.currentView}
+          addCardToSelection={this.props.addCardToSelection}
+        />
         <ResultsViewBodyPageSelector
           setCurrentView={this.props.setCurrentView}
+          handlePageChangeClick={this.props.handlePageChangeClick}
         />
       </div>
     );

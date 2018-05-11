@@ -14,11 +14,14 @@ class ResultsView extends React.Component {
           viewDetails={this.props.viewDetails}
           selectView={this.props.selectView}
         />
+
         <ResultsViewBody
           viewCards={this.props.viewCards}
           setCurrentView={this.props.setCurrentView}
           currentView={this.props.currentView}
           cardsPerPage={this.props.cardsPerPage}
+          handlePageChangeClick={this.props.handlePageChangeClick}
+          addCardToSelection={this.props.addCardToSelection}
         />
       </div>
     );

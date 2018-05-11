@@ -7,7 +7,13 @@ class Card extends React.Component {
   render() {
     return (
       <div>
-        {/* {console.log(this.props.card)} */}
+        <button
+          onClick={() => {
+            this.props.addCardToSelection(this.props.card);
+          }}
+        >
+          Card
+        </button>
         <span>{this.props.card.name}</span>
         <span>{this.props.card.manaCost}</span>
         <span>{this.props.card.type}</span>
