@@ -15,7 +15,7 @@ class Login extends React.Component {
         >
           Login
         </a>{" "}
-        || <a href="#">Sign Up</a>
+        {/* || <a href="#">Sign Up</a> */}
       </div>
     );
   }

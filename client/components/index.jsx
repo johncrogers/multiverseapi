@@ -24,7 +24,7 @@ class App extends React.Component {
   render() {
     return (
       <div id="app">
-        <Nav logout={this.logout} />
+        <Nav logout={this.logout} username={this.state.username} />
         {this.state.username ? (
           <SearchResultsView />
         ) : (

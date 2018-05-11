@@ -6,11 +6,13 @@ class Nav extends React.Component {
     this.state = {};
   }
   render() {
+    const username = this.props.username;
+    const button = username ? <Logout logout={this.props.logout} /> : <span />;
     return (
       <div>
         <span>
           <img src="/images/logo.png" alt="" width="50" height="50" />
-          {this.props.username ? <Logout logout={this.props.logout} /> : null}
+          {button}
         </span>
       </div>
     );
