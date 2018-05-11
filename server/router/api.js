@@ -12,7 +12,7 @@ router.get("/editions", (req, res) => {
     })
     .then((DATA) => {
       console.log(` -> success`);
-      res.status(200).json(DATA);
+      res.status(200).json(DATA).end();
     })
     .catch((err) => {
       console.log(`Error occurred: `, err);
@@ -31,7 +31,7 @@ router.get("/editions/:editionId", (req, res) => {
     })
     .then((DATA) => {
       console.log(` -> success`);
-      res.status(200).json(DATA[0]);
+      res.status(200).json(DATA[0]).end();
     })
     .catch((err) => {
       console.log(`Error occurred: `, err);
@@ -50,7 +50,7 @@ router.get("/editions/:editionId/cards", (req, res) => {
     })
     .then((DATA) => {
       console.log(` -> success`);
-      res.status(200).json(DATA);
+      res.status(200).json(DATA).end();
     })
     .catch((err) => {
       console.log(`Error occurred: `, err);
@@ -74,7 +74,7 @@ router.get("/users/:userId/collections", (req, res) => {
     })
     .then((DATA) => {
       console.log(` -> success`);
-      res.status(200).json(DATA);
+      res.status(200).json(DATA).end();
     })
     .catch((err) => {
       console.log(`Error occurred: `, err);
@@ -94,7 +94,7 @@ router.get("/users/:userId/collections/:collectionId", (req, res) => {
     })
     .then((DATA) => {
       console.log(` -> success`);
-      res.status(200).json(DATA[0]);
+      res.status(200).json(DATA[0]).end();
     })
     .catch((err) => {
       console.log(`Error occurred: `, err);
@@ -113,7 +113,7 @@ router.get("/users/:userId/collections/:collectionId/cards", (req, res) => {
     })
     .then((DATA) => {
       console.log(` -> success`);
-      res.status(200).json(DATA.rows);
+      res.status(200).json(DATA.rows).end();
     })
     .catch((err) => {
       console.log(`Error occurred: `, err);

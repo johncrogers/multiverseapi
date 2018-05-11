@@ -3,8 +3,8 @@ A user should be able to:
   On the deployed website:
     If the user is already logged in, they should be able to:
       ☐ See their collection of saved cards
-      ☐ Filter all cards cards by edition
-      ☐ Page through cards per edition
+      ✔ Filter all cards cards by edition @done(18-05-11 13:23)
+      ✔ Page through cards per edition @done(18-05-11 13:23)
       ☐ Add cards to their collection and save their new collection
     If the user is not logged in, they should be prompted and able to:
       ☐ Create an account and sign in
@@ -16,13 +16,16 @@ NOTICED:
     ☐ Update script?
   ☐ Collections POST
     Waiting to get front end sorted. Easier to understand the data needs then.
-  ☐ Show default edition header when get data.
-  ☐ Re-render edition / collection view when new data.
+  ☐ Re-render view when new data.:
+    ☐ edition
+    ☐ collection
   ☐ Create user functionaity:
     ☐ sign up
     ☐ login
     ☐ logout
     ☐ onSignIn => load collection data > drop down
+  ☐ pagination runs off
+  ☐ split requests with amazon???
 LEFT UNDONE:
   ✔ Collections SQL queries @done(18-05-08 19:20)
   ✔ Routes @done(18-05-08 19:20)

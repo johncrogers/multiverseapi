@@ -21,7 +21,8 @@ class Body extends React.Component {
       view: "edition",
       viewDetails: {},
       viewCards: {},
-      currentView: []
+      currentView: [],
+      cardsPerPage: 50
     };
     this.retrieveEditionIds = this.retrieveEditionIds.bind(this);
     this.retrieveEditionDetails = this.retrieveEditionDetails.bind(this);
@@ -204,7 +205,7 @@ class Body extends React.Component {
           // console.log(this.state);
           setTimeout(() => {
             this.setCurrentView(1);
-          }, 250);
+          }, 500);
         }
       );
     }
@@ -218,15 +219,14 @@ class Body extends React.Component {
           // console.log(this.state.viewCards);
           setTimeout(() => {
             this.setCurrentView(1);
-          }, 250);
+          }, 500);
         }
       );
     }
   }
   setCurrentView(page) {
-    let cardsPerPage = 50;
-    let end = page * cardsPerPage;
-    let begin = end - cardsPerPage;
+    let end = page * this.state.cardsPerPage;
+    let begin = end - this.state.cardsPerPage;
     // console.log("viewCards", this.state.viewCards);
     // console.log(`begin`, begin);
     // console.log(`end`, end);
@@ -234,7 +234,7 @@ class Body extends React.Component {
     this.setState(
       { currentView: this.state.viewCards.slice(begin, end) },
       () => {
-        console.log("currentView", this.state.currentView);
+        // console.log("currentView", this.state.currentView);
       }
     );
   }
@@ -266,6 +266,7 @@ class Body extends React.Component {
           selectView={this.selectView}
           currentView={this.state.currentView}
           setCurrentView={this.setCurrentView}
+          cardsPerPage={this.state.cardsPerPage}
         />
         <FiltersView />
         <SelectionView />

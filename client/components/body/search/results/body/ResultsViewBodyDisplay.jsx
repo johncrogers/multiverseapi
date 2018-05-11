@@ -1,4 +1,5 @@
 import React from "react";
+import Card from "./Card.jsx";
 class ResultsViewBodyDisplay extends React.Component {
   constructor(props) {
     super(props);
@@ -8,8 +9,8 @@ class ResultsViewBodyDisplay extends React.Component {
     return (
       <div>
         {this.props.currentView.length
-          ? this.props.currentView.map(card => {
-              return <span>{card.name}</span>;
+          ? this.props.currentView.map((card, key) => {
+              return <Card key={key} card={card} />;
             })
           : "No cards loaded."}
         {/* Card */}

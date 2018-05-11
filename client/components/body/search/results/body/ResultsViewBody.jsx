@@ -14,7 +14,11 @@ class ResultsViewBody extends React.Component {
     return (
       <div>
         <ResultsViewBodyDisplay currentView={this.props.currentView} />
-        <ResultsViewBodyPageSelector setCurrentView={this.setCurrentView} />
+        <ResultsViewBodyPageSelector
+          setCurrentView={this.props.setCurrentView}
+          // cardCount={this.props.viewCards.length}
+          // pageCount={Math.ceil(this.props.cardCount / this.props.cardsPerPage)}
+        />
       </div>
     );
   }

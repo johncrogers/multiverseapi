@@ -7,14 +7,14 @@ class ResultsViewToggler extends React.Component {
   render() {
     return (
       <div>
-        <a
+        {/* <a
           href="#"
           onClick={() => {
             this.props.selectView("edition");
           }}
         >
           Edition
-        </a>
+        </a> */}
         {/* &nbsp;||&nbsp; */}
         {/* <a
           href="#"

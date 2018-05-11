@@ -18,6 +18,7 @@ class ResultsView extends React.Component {
           viewCards={this.props.viewCards}
           setCurrentView={this.props.setCurrentView}
           currentView={this.props.currentView}
+          cardsPerPage={this.props.cardsPerPage}
         />
       </div>
     );
