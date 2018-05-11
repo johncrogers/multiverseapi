@@ -15,15 +15,15 @@ class ResultsViewToggler extends React.Component {
         >
           Edition
         </a>
-        &nbsp;||&nbsp;
-        <a
+        {/* &nbsp;||&nbsp; */}
+        {/* <a
           href="#"
           onClick={() => {
             this.props.selectView("collection");
           }}
         >
           Collection
-        </a>
+        </a> */}
       </div>
     );
   }

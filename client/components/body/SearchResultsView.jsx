@@ -20,7 +20,8 @@ class Body extends React.Component {
       selection: [],
       view: "edition",
       viewDetails: {},
-      viewCards: {}
+      viewCards: {},
+      currentView: []
     };
     this.retrieveEditionIds = this.retrieveEditionIds.bind(this);
     this.retrieveEditionDetails = this.retrieveEditionDetails.bind(this);
@@ -36,6 +37,7 @@ class Body extends React.Component {
     this.selectCard = this.selectCard.bind(this);
     this.deselectCard = this.deselectCard.bind(this);
     this.selectView = this.selectView.bind(this);
+    this.setCurrentView = this.setCurrentView.bind(this);
   }
   // RETRIEVE:
   retrieveEditionIds() {
@@ -189,9 +191,9 @@ class Body extends React.Component {
     }
   }
   changeView() {
-    console.log(
-      `Select > Onchange > setState > selectView > if edition > setState > changeView`
-    );
+    // console.log(
+    //   `Select > Onchange > setState > selectView > if edition > setState > changeView`
+    // );
     if (this.state.view === "collection") {
       this.setState(
         {
@@ -199,7 +201,10 @@ class Body extends React.Component {
           viewCards: this.state.collectionCards
         },
         () => {
-          console.log(this.state);
+          // console.log(this.state);
+          setTimeout(() => {
+            this.setCurrentView(1);
+          }, 250);
         }
       );
     }
@@ -210,10 +215,28 @@ class Body extends React.Component {
           viewCards: this.state.editionCards
         },
         () => {
-          console.log(this.state);
+          // console.log(this.state.viewCards);
+          setTimeout(() => {
+            this.setCurrentView(1);
+          }, 250);
         }
       );
     }
+  }
+  setCurrentView(page) {
+    let cardsPerPage = 50;
+    let end = page * cardsPerPage;
+    let begin = end - cardsPerPage;
+    // console.log("viewCards", this.state.viewCards);
+    // console.log(`begin`, begin);
+    // console.log(`end`, end);
+    // console.log(`slice`, this.state.viewCards.slice(begin, end));
+    this.setState(
+      { currentView: this.state.viewCards.slice(begin, end) },
+      () => {
+        console.log("currentView", this.state.currentView);
+      }
+    );
   }
   componentDidMount() {
     this.retrieveCollectionIds("1");
@@ -241,6 +264,8 @@ class Body extends React.Component {
           viewDetails={this.state.viewDetails}
           viewCards={this.state.viewCards}
           selectView={this.selectView}
+          currentView={this.state.currentView}
+          setCurrentView={this.setCurrentView}
         />
         <FiltersView />
         <SelectionView />

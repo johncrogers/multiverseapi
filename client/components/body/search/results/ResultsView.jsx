@@ -1,6 +1,6 @@
 import React from "react";
-import ResultsViewHeader from "./ResultsViewHeader.jsx";
-import ResultsViewBody from "./ResultsViewBody.jsx";
+import ResultsViewHeader from "./header/ResultsViewHeader.jsx";
+import ResultsViewBody from "./body/ResultsViewBody.jsx";
 class ResultsView extends React.Component {
   constructor(props) {
     super(props);
@@ -14,7 +14,11 @@ class ResultsView extends React.Component {
           viewDetails={this.props.viewDetails}
           selectView={this.props.selectView}
         />
-        <ResultsViewBody viewCards={this.props.viewCards} />
+        <ResultsViewBody
+          viewCards={this.props.viewCards}
+          setCurrentView={this.props.setCurrentView}
+          currentView={this.props.currentView}
+        />
       </div>
     );
   }
