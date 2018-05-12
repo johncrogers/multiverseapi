@@ -123,32 +123,32 @@ router.get("/users/:userId/collections/:collectionId/cards", (req, res) => {
 
 // POST 
 
-// router.post('/collections', (req, res) => {
-//   let body = req.body;
-//   let cards = req.body.cards;
-//   delete body.cards;
-//   new Promise((resolve, reject) => {
-//       resolve(Collections.saveCollectionDetails(body));
-//     })
-//     .then(() => {
-//       console.log(` -> Collection details added.`);
-//       new Promise((resolve, reject) => {
-//           resolve(Collections.saveCollectionCards(cards));
-//         })
-//         .then(() => {
-//           console.log(` -> Collection cards added.`);
-//           res.status(201).end()
-//         })
-//         .catch((err) => {
-//           console.log(`Error occurred: `, err);
-//           res.status(500).end()
-//         });
-//     })
-//     .catch((err) => {
-//       console.log(`Error occurred: `, err);
-//       res.status(500).end()
-//     });
-// });
+router.post('/collections', (req, res) => {
+  let body = req.body;
+  let cards = req.body.cards;
+  delete body.cards;
+  new Promise((resolve, reject) => {
+      resolve(Collections.saveCollectionDetails(body));
+    })
+    .then(() => {
+      console.log(` -> Collection details added.`);
+      new Promise((resolve, reject) => {
+          resolve(Collections.saveCollectionCards(cards));
+        })
+        .then(() => {
+          console.log(` -> Collection cards added.`);
+          res.status(201).end()
+        })
+        .catch((err) => {
+          console.log(`Error occurred: `, err);
+          res.status(500).end()
+        });
+    })
+    .catch((err) => {
+      console.log(`Error occurred: `, err);
+      res.status(500).end()
+    });
+});
 
 
 module.exports.router = router;

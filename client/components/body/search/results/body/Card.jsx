@@ -12,7 +12,7 @@ class Card extends React.Component {
             this.props.addCardToSelection(this.props.card);
           }}
         >
-          Card
+          Add to selection
         </button>
         <span>{this.props.card.name}</span>
         <span>{this.props.card.manaCost}</span>

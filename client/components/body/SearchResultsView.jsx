@@ -43,6 +43,8 @@ class Body extends React.Component {
     this.changePage = this.changePage.bind(this);
     this.handlePageChangeClick = this.handlePageChangeClick.bind(this);
     this.addCardToSelection = this.addCardToSelection.bind(this);
+    this.removeCardFromSelection = this.removeCardFromSelection.bind(this);
+    this.clearSelection = this.clearSelection.bind(this);
   }
   // RETRIEVE:
   retrieveEditionIds() {
@@ -262,6 +264,27 @@ class Body extends React.Component {
       // console.log("Selection:", this.state.selection);
     });
   }
+  removeCardFromSelection(multiverseId) {
+    let targetIndex = this.state.selection.indexOf(multiverseId);
+    let newSelection = this.state.selection;
+    newSelection.splice(targetIndex, 1);
+    this.setState({ selection: newSelection }, () => {
+      // console.log(this.state.selection);
+    });
+  }
+  clearSelection() {
+    this.setState({ selection: [] });
+  }
+  saveCollection() {
+    axios
+      .post("/api/collections/")
+      .then(() => {
+        console.log("Collection saved.");
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
   componentDidMount() {
     this.retrieveCollectionIds("1");
     this.retrieveEditionIds();
@@ -295,7 +318,12 @@ class Body extends React.Component {
           addCardToSelection={this.addCardToSelection}
         />
         {/* <FiltersView /> */}
-        {/* <SelectionView /> */}
+        <SelectionView
+          selection={this.state.selection}
+          removeCardFromSelection={this.removeCardFromSelection}
+          clearSelection={this.clearSelection}
+          saveCollection={this.saveCollection}
+        />
       </div>
     );
   }
