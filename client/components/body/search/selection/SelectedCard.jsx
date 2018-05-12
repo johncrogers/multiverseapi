@@ -14,6 +14,13 @@ class SelectedCard extends React.Component {
         >
           Remove
         </button>
+        <button
+          onClick={() => {
+            console.log(this.props.card);
+          }}
+        >
+          card
+        </button>
         <span>{this.props.card.name}</span>
       </div>
     );

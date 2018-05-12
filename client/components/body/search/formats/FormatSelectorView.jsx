@@ -8,17 +8,21 @@ class FormatSelectorView extends React.Component {
   }
   render() {
     return (
-      <div>
-        {/* <CollectionSelector
+      <span>
+        <h2>FORMAT:</h2>
+        <h3>View a collection:</h3>
+        <CollectionSelector
           selectCollection={this.props.selectCollection}
           collectionIds={this.props.collectionIds}
-        /> */}
+          selectView={this.props.selectView}
+        />
+        <h3>View an edition:</h3>
         <EditionSelector
           selectEdition={this.props.selectEdition}
           editionIds={this.props.editionIds}
           selectView={this.props.selectView}
         />
-      </div>
+      </span>
     );
   }
 }

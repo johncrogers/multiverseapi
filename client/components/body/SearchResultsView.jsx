@@ -23,7 +23,8 @@ class Body extends React.Component {
       viewCards: {},
       currentView: [],
       cardsPerPage: 25,
-      page: 1
+      page: 1,
+      userId: 1
     };
     this.retrieveEditionIds = this.retrieveEditionIds.bind(this);
     this.retrieveEditionDetails = this.retrieveEditionDetails.bind(this);
@@ -45,6 +46,7 @@ class Body extends React.Component {
     this.addCardToSelection = this.addCardToSelection.bind(this);
     this.removeCardFromSelection = this.removeCardFromSelection.bind(this);
     this.clearSelection = this.clearSelection.bind(this);
+    this.saveCollection = this.saveCollection.bind(this);
   }
   // RETRIEVE:
   retrieveEditionIds() {
@@ -275,9 +277,45 @@ class Body extends React.Component {
   clearSelection() {
     this.setState({ selection: [] });
   }
-  saveCollection() {
+  saveCollection(name, description) {
+    // {
+    //   "name": "Test Collection",
+    //     "type": "search",
+    //       "userId": 1,
+    //         "description": "Insertion test."
+    //   "cards": [{
+    //     "id": 25304,
+    //     "multiverseid": "107",
+    //     "name": "Invisibility",
+    //     "manaCost": "{U}{U}",
+    //     "type": "Enchantment — Aura",
+    //     "editionId": "LEA",
+    //     "rarity": "Common",
+    //     "colors": "[\"Blue\"]",
+    //     "text": "Enchant creature\nEnchanted creature can't be blocked except by Walls.",
+    //     "flavor": null,
+    //     "power": null,
+    //     "toughness": null,
+    //     "loyalty": null
+    //   }]
+    // }
+    let selection = [];
+    this.state.selection.map(card => {
+      selection.push({
+        multiverseId: card.multiverseid,
+        collection_id: ""
+      });
+    });
+    console.log(selection);
+    let newCollection = {
+      name: name,
+      type: "search",
+      userId: 1,
+      description: description || null,
+      cards: selection
+    };
     axios
-      .post("/api/collections/")
+      .post("/api/collections/", newCollection)
       .then(() => {
         console.log("Collection saved.");
       })
@@ -316,6 +354,7 @@ class Body extends React.Component {
           cardsPerPage={this.state.cardsPerPage}
           handlePageChangeClick={this.handlePageChangeClick}
           addCardToSelection={this.addCardToSelection}
+          view={this.state.view}
         />
         {/* <FiltersView /> */}
         <SelectionView

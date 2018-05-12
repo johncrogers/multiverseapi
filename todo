@@ -2,30 +2,39 @@ A user should be able to:
    ✔ Go to a deployed website (e.g. "johnsapp.herokuapp.com") @done(18-05-07 13:03)
   On the deployed website:
     If the user is already logged in, they should be able to:
-      ☐ See their collection of saved cards
       ✔ Filter all cards cards by edition @done(18-05-11 13:23)
       ✔ Page through cards per edition @done(18-05-11 13:23)
-      ☐ Add cards to their collection and save their new collection
+      ☐ Collection:
+        ☐ View Saved
+        ✔ Add @done(18-05-12 10:18)
+        ☐ Save
     If the user is not logged in, they should be prompted and able to:
       ☐ Create an account and sign in
       ☐ Sign in with an existing account
 
 NOTICED:
-  ✔ Back end logging @done(18-05-08 19:20)
-  ☐ JSON fields over JSONified
-    ☐ Update script?
-  ☐ Collections POST
-    Waiting to get front end sorted. Easier to understand the data needs then.
-  ☐ Re-render view when new data.:
-    ☐ edition
-    ☐ collection
-  ☐ Create user functionaity:
+  ☐ MAINTENANCE:
+    ☐ Refactor query chains / models
+    ☐ Back end logging
+  ☐ DATA:
+    ☐ JSON fields over JSONified
+  ☐ USER:
     ☐ sign up
     ☐ login
     ☐ logout
     ☐ onSignIn => load collection data > drop down
-  ☐ pagination runs off
-  ☐ split requests with amazon???
+  ☐ RESULTS:
+    ☐ Data does not always update?
+    ☐ Pagination:
+      ☐ Runs beyond
+      ☐ Skips?
+  ☐ SELECTION:
+    ☐ feedback on save
+    ☐ unique names - check state
+    ☐ drop down
+  ☐ COLLECTION:
+    ☐ Delete
+    ☐ Update
 LEFT UNDONE:
   ✔ Collections SQL queries @done(18-05-08 19:20)
   ✔ Routes @done(18-05-08 19:20)

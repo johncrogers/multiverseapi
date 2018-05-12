@@ -124,31 +124,24 @@ router.get("/users/:userId/collections/:collectionId/cards", (req, res) => {
 // POST 
 
 router.post('/collections', (req, res) => {
-  let body = req.body;
-  let cards = req.body.cards;
-  delete body.cards;
+  let details = req.body;
+  console.log(details);
+  let cards = details.cards;
+  delete details.cards;
+
   new Promise((resolve, reject) => {
-      resolve(Collections.saveCollectionDetails(body));
+      resolve(Collections.saveCollection(details, cards));
     })
-    .then(() => {
-      console.log(` -> Collection details added.`);
-      new Promise((resolve, reject) => {
-          resolve(Collections.saveCollectionCards(cards));
-        })
-        .then(() => {
-          console.log(` -> Collection cards added.`);
-          res.status(201).end()
-        })
-        .catch((err) => {
-          console.log(`Error occurred: `, err);
-          res.status(500).end()
-        });
+    .then((data) => {
+      console.log(` -> Collection save complete.`);
     })
     .catch((err) => {
       console.log(`Error occurred: `, err);
       res.status(500).end()
     });
 });
+
+// collections delete
 
 
 module.exports.router = router;

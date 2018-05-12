@@ -11,7 +11,11 @@ class ResultsViewHeader extends React.Component {
     return (
       <div>
         <div>
-          <h1>{this.props.viewDetails.name}</h1>
+          <h2>
+            {this.props.view.toUpperCase()}:&nbsp;{this.props.viewDetails.name
+              ? this.props.viewDetails.name
+              : "No collection selected."}
+          </h2>
           {/* <h3>{this.props.viewDetails.releaseDate}</h3> */}
         </div>
         <ResultsViewToggler selectView={this.props.selectView} />

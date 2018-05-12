@@ -1,26 +1,44 @@
 const db = require('./db.js').knex;
 // const sample = require('./populate/sample.js').data
 
-module.exports.saveCollectionDetails = (collection) => {
-  console.log(`Saving new collection ${JSON.stringify(collection)}...`);
-  return db('Collections').insert(collection)
+module.exports.saveCollection = (details, cards) => {
+  console.log(`Saving new collection ${JSON.stringify(details)}...`);
+  return db('Collections').insert(details)
     .then(() => {
-      console.log(` -> Saved new collection.`);
+      console.log(` -> Collection details saved.`);
+      return db('Collections').select('id').where('name', details.name).then((idToInset) => {
+        let collectionIdToInsert = idToInset[0].id;
+        let cardsToInsert = [];
+        cards.map((card) => {
+          cardsToInsert.push({
+            multiverseid: card.multiverseId,
+            collection_id: collectionIdToInsert
+          })
+        })
+        return db('cards_collections').insert(cardsToInsert).then(() => {
+          console.log(` -> Collection cards saved.`);
+        }).catch((err) => {
+          console.log(err);
+        })
+      })
     })
     .catch((err) => {
       console.log(`Error occurred: `, err);
     });
 }
-module.exports.saveCollectionCards = (cardData) => {
-  console.log(`Saving collection cards...`);
-  return db('cards_collections').insert(cardData)
-    .then(() => {
-      console.log(` -> Saved collection cards.`);
-    })
-    .catch((err) => {
-      console.log(`Error occurred: `, err);
-    });
-}
+// module.exports.saveCollectionCards = (cardData, userId) => {
+//   console.log(`Saving collection cards...`);
+//   // get collectionId
+//   // prepare card data
+//   // insert
+//   return db('cards_collections').insert(cardData)
+//     .then((data) => {
+//       console.log(` -> Saved collection cards.`);
+//     })
+//     .catch((err) => {
+//       console.log(`Error occurred: `, err);
+//     });
+// }
 
 module.exports.retrieveUserCollectionIds = (filters) => {
   console.log(`Retrieving user ${filters.userId} collection list.`);

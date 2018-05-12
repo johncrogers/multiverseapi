@@ -4,12 +4,26 @@ import SelectedCard from "./SelectedCard.jsx";
 class SelectionView extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      selectionName: ""
+    };
   }
   render() {
     return (
-      <div>
+      <span>
+        <h2>SELECTION:</h2>
         <div>
+          <div>{/* <h3>Selection Name:</h3> */}</div>
+          <div>
+            <label htmlFor="">Selection Name:</label>
+            <input
+              type="text"
+              id="selectionName"
+              onChange={event => {
+                this.setState({ selectionName: event.target.value });
+              }}
+            />
+          </div>
           <button
             onClick={() => {
               this.props.clearSelection();
@@ -20,7 +34,7 @@ class SelectionView extends React.Component {
           |{" "}
           <button
             onClick={() => {
-              this.props.saveCollection();
+              this.props.saveCollection(this.state.selectionName);
             }}
           >
             Save
@@ -37,7 +51,7 @@ class SelectionView extends React.Component {
               );
             })
           : "No cards selected."}
-      </div>
+      </span>
     );
   }
 }

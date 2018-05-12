@@ -9,10 +9,11 @@ class ResultsView extends React.Component {
 
   render() {
     return (
-      <div>
+      <span>
         <ResultsViewHeader
           viewDetails={this.props.viewDetails}
           selectView={this.props.selectView}
+          view={this.props.view}
         />
 
         <ResultsViewBody
@@ -23,7 +24,7 @@ class ResultsView extends React.Component {
           handlePageChangeClick={this.props.handlePageChangeClick}
           addCardToSelection={this.props.addCardToSelection}
         />
-      </div>
+      </span>
     );
   }
 }
