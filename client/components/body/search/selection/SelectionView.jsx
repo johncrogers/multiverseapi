@@ -11,9 +11,15 @@ class SelectionView extends React.Component {
   render() {
     return (
       <span>
-        <h2>SELECTION:</h2>
         <div>
-          <div>{/* <h3>Selection Name:</h3> */}</div>
+          <h2>
+            SELECTION:{" "}
+            {this.state.selectionName
+              ? this.state.selectionName
+              : "No name yet."}
+          </h2>
+        </div>
+        <div>
           <div>
             <label htmlFor="">Selection Name:</label>
             <input
@@ -40,6 +46,7 @@ class SelectionView extends React.Component {
             Save
           </button>
         </div>
+        <br />
         {this.props.selection.length
           ? this.props.selection.map((card, key) => {
               return (

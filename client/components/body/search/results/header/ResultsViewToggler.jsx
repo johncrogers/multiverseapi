@@ -7,6 +7,7 @@ class ResultsViewToggler extends React.Component {
   render() {
     return (
       <div>
+        <h3>Select a view:</h3>
         <a
           href="#"
           onClick={() => {

@@ -15,7 +15,7 @@ class ResultsView extends React.Component {
           selectView={this.props.selectView}
           view={this.props.view}
         />
-
+        <br />
         <ResultsViewBody
           viewCards={this.props.viewCards}
           setCurrentView={this.props.setCurrentView}
