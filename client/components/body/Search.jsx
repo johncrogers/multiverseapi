@@ -5,7 +5,7 @@ import FiltersView from "./search/filters/FiltersView.jsx";
 import SelectionView from "./search/selection/SelectionView.jsx";
 import axios from "axios";
 
-class Body extends React.Component {
+class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -368,4 +368,4 @@ class Body extends React.Component {
   }
 }
 
-export default Body;
+export default Search;

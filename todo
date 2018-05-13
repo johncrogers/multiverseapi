@@ -4,13 +4,14 @@ A user should be able to:
     If the user is already logged in, they should be able to:
       ✔ Filter all cards cards by edition @done(18-05-11 13:23)
       ✔ Page through cards per edition @done(18-05-11 13:23)
-      ☐ Collection:
-        ☐ View Saved
+      ✔ Collection: @done(18-05-13 08:51)
+        ✔ View Saved @done(18-05-13 08:51)
         ✔ Add @done(18-05-12 10:18)
-        ☐ Save
+        ✔ Save @done(18-05-13 08:51)
     If the user is not logged in, they should be prompted and able to:
       ☐ Create an account and sign in
       ☐ Sign in with an existing account
+☐ reload colleccrtions
 
 NOTICED:
   ☐ MAINTENANCE:

@@ -2,37 +2,53 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Nav from "./navigation/Nav.jsx";
-import SearchResultsView from "./body/SearchResultsView.jsx";
-import Login from "./body/Login.jsx";
+import View from "./View.jsx";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: ""
+      username: "",
+      view: "authenticate"
     };
-    this.authenticate = this.authenticate.bind(this);
+    // this.authenticate = this.authenticate.bind(this);
     this.logout = this.logout.bind(this);
+    this.setUsername = this.setUsername.bind(this);
+    this.handleViewChange = this.handleViewChange.bind(this);
   }
-  authenticate() {
-    this.setState({ username: "John" });
+  setUsername(username) {
+    this.setState({ username: username });
   }
   logout() {
-    this.setState({ username: "" });
+    this.setState({ username: "", view: "authenticate" });
+  }
+  handleViewChange(view, username) {
+    this.setState({ view: view }, () => {
+      this.setUsername(username);
+    });
   }
   componentDidMount() {}
   render() {
     return (
       <div id="app">
-        <Nav logout={this.logout} username={this.state.username} />
-        {this.state.username ? (
-          <SearchResultsView />
-        ) : (
-          <Login
-            authenticate={this.authenticate}
-            username={this.state.username}
-          />
-        )}
+        <Nav
+          logout={this.logout}
+          username={this.state.username}
+          handleViewChange={this.handleViewChange}
+        />
+        <View
+          setUsername={this.setUsername}
+          handleViewChange={this.handleViewChange}
+          view={this.state.view}
+        />
+        {/* {this.state.username ? (
+        //   <SearchResultsView />
+        // ) : (
+        //   <Authenticate
+        //     authenticate={this.authenticate}
+        //     username={this.state.username}
+        //   />
+        // )} */}
       </div>
     );
   }

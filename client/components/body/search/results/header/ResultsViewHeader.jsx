@@ -14,7 +14,7 @@ class ResultsViewHeader extends React.Component {
           <h2>
             {this.props.view.toUpperCase()}:&nbsp;{this.props.viewDetails.name
               ? this.props.viewDetails.name
-              : "No collection selected."}
+              : `No ${this.props.view} selected.`}
           </h2>
           {/* <h3>{this.props.viewDetails.releaseDate}</h3> */}
         </div>
