@@ -1,18 +1,20 @@
 import React from "react";
-class SignUp extends React.Component {
+class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: ""
+      username: "",
+      password: ""
     };
   }
-  handleFormSubmission(username) {
+  handleLogin(username, password) {
+    this.props.authenticate(username, password);
     this.props.handleViewChange("Search", username);
   }
   render() {
     return (
       <div>
-        Welcome to the Multiverse{this.state.username
+        Hey welcome back{this.state.username
           ? ", " + this.state.username + "!"
           : "!"}{" "}
         <br />
@@ -26,14 +28,20 @@ class SignUp extends React.Component {
         />
         <br />
         <label htmlFor="password">Password:</label>
-        <input type="password" name="password" />
+        <input
+          type="password"
+          name="password"
+          onChange={e => {
+            this.setState({ password: e.target.value });
+          }}
+        />
         <br />
         <button
           onClick={() => {
-            this.handleFormSubmission("John");
+            this.authenticate(this.state.username, this.state.password);
           }}
         >
-          Join
+          Let's Go!
         </button>
         <br />
         <a
@@ -48,4 +56,4 @@ class SignUp extends React.Component {
     );
   }
 }
-export default SignUp;
+export default Login;

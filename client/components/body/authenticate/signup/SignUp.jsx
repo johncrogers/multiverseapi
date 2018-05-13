@@ -1,18 +1,18 @@
 import React from "react";
-class Login extends React.Component {
+class SignUp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       username: ""
     };
   }
-  handleFormSubmission(username) {
+  handleSignUp(username) {
     this.props.handleViewChange("Search", username);
   }
   render() {
     return (
       <div>
-        Hey welcome back{this.state.username
+        Welcome to the Multiverse{this.state.username
           ? ", " + this.state.username + "!"
           : "!"}{" "}
         <br />
@@ -30,10 +30,10 @@ class Login extends React.Component {
         <br />
         <button
           onClick={() => {
-            this.handleFormSubmission("John");
+            this.handleSignUp("John");
           }}
         >
-          Let's Go!
+          Join
         </button>
         <br />
         <a
@@ -48,4 +48,4 @@ class Login extends React.Component {
     );
   }
 }
-export default Login;
+export default SignUp;

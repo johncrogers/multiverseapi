@@ -2,7 +2,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Nav from "./navigation/Nav.jsx";
-import View from "./View.jsx";
+import View from "./body/View.jsx";
 
 class App extends React.Component {
   constructor(props) {

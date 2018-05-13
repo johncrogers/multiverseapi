@@ -20,8 +20,22 @@ NOTICED:
   ☐ DATA:
     ☐ JSON fields over JSONified
   ☐ USER:
-    ☐ sign up
-    ☐ login
+    ☐ Login:
+      ☐ Client:
+        ☐ set up authenticate function at app level using mock data
+        ☐ link page routing:
+          ☐ isGoood
+          ☐ notGood
+      ☐ Database:
+        ☐ Model
+      ☐ Server:
+        ☐ Routes:
+          ☐ isUser?
+    ☐ Sign Up:
+      ☐ Client:
+      ☐ Server:
+      ☐ Database:
+        ☐ Model
     ☐ logout
     ☐ onSignIn => load collection data > drop down
   ☐ RESULTS:
@@ -33,8 +47,10 @@ NOTICED:
     ☐ feedback on save
     ☐ unique names - check state
     ☐ drop down
+    ☐ show card details
   ☐ COLLECTION:
     ☐ Delete
+      ☐ Sure?
     ☐ Update
 LEFT UNDONE:
   ✔ Collections SQL queries @done(18-05-08 19:20)

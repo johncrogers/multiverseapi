@@ -1,6 +1,6 @@
 import React from "react";
-import Authenticate from "./body/Authenticate.jsx";
-import Search from "./body/Search.jsx";
+import Authenticate from "./authenticate/Authenticate.jsx";
+import Search from "./search/Search.jsx";
 class View extends React.Component {
   constructor(props) {
     super(props);

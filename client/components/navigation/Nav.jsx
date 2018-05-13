@@ -1,5 +1,5 @@
 import React from "react";
-import Logout from "./Logout.jsx";
+import Logout from "./logout/Logout.jsx";
 class Nav extends React.Component {
   constructor(props) {
     super(props);
