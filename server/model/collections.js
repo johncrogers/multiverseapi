@@ -41,7 +41,8 @@ module.exports.saveCollection = (details, cards) => {
 // }
 
 module.exports.retrieveUserCollectionIds = (filters) => {
-  console.log(`Retrieving user ${filters.userId} collection list.`);
+  console.log("input at model: ", filters);
+  // console.log(`Retrieving user ${filters.userId} collection list.`);
   return db('Collections').select('name', 'id').where(filters)
     .then((DATA) => {
       return DATA;

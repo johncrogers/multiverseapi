@@ -65,10 +65,10 @@ router.get("/editions/:editionId/cards", (req, res) => {
 // });
 
 // GET 
-router.get("/users/:username/collections", (req, res) => {
+router.get("/users/:userId/collections", (req, res) => {
   console.log(`GET /users/collections`);
   let filters = {
-    username: req.params.username
+    userId: req.params.userId
   }
   // new Promise((resolve, reject) => {
   //     resolve(Collections.retrieveUserCollectionIds(filters));
@@ -81,24 +81,14 @@ router.get("/users/:username/collections", (req, res) => {
   //     console.log(`Error occurred: `, err);
   //     res.status(500).end()
   //   });
+  console.log(filters);
+
   new Promise((resolve, reject) => {
-      resolve(Users.authenticateUser(filters));
+      resolve(Collections.retrieveUserCollectionIds(filters))
     })
     .then((DATA) => {
-      console.log(DATA[0].id);
-      console.log(` -> found user.`);
-      // res.status(200).json(DATA).end();
-      return Collections.retrieveUserCollectionIds({
-          userId: DATA[0].id
-        })
-        .then((DATA) => {
-          console.log(` -> success`);
-          res.status(200).json(DATA).end();
-        })
-        .catch((err) => {
-          console.log(`Error occurred: `, err);
-          res.status(500).end()
-        });
+      console.log(` -> success`);
+      res.status(200).json(DATA).end();
     })
     .catch((err) => {
       console.log(`Error occurred: `, err);
@@ -129,7 +119,7 @@ router.get("/users/:userId/collections/:collectionId", (req, res) => {
 router.get("/users/:userId/collections/:collectionId/cards", (req, res) => {
   console.log(`GET /users/collections/${req.params.collectionId}/cards`);
   let filters = {
-    userId: req.params.userId,
+    // userId: req.params.userId,
     collection_id: req.params.collectionId
   }
   new Promise((resolve, reject) => {
@@ -137,6 +127,7 @@ router.get("/users/:userId/collections/:collectionId/cards", (req, res) => {
     })
     .then((DATA) => {
       console.log(` -> success`);
+      console.log('DATA @ get collection cards', DATA);
       res.status(200).json(DATA.rows).end();
     })
     .catch((err) => {
@@ -158,6 +149,7 @@ router.post('/collections', (req, res) => {
     })
     .then((data) => {
       console.log(` -> Collection save complete.`);
+      res.status(201).end()
     })
     .catch((err) => {
       console.log(`Error occurred: `, err);

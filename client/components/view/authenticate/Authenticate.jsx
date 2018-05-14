@@ -30,6 +30,7 @@ class Authenticate extends React.Component {
             back={this.back}
             handleViewChange={this.props.handleViewChange}
             createUser={this.props.createUser}
+            error={this.props.error}
           />
         );
         break;

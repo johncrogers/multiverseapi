@@ -14,6 +14,7 @@ class View extends React.Component {
           <Search
             handleViewChange={this.props.handleViewChange}
             username={this.props.username}
+            userId={this.props.userId}
           />
         );
         break;
@@ -24,6 +25,8 @@ class View extends React.Component {
             handleViewChange={this.props.handleViewChange}
             authenticate={this.props.authenticate}
             createUser={this.props.createUser}
+            error={this.props.error}
+            username={this.props.username}
           />
         );
         break;

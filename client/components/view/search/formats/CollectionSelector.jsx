@@ -34,23 +34,25 @@ class CollectionSelector extends React.Component {
         <select
           value={this.state.value}
           onChange={event => {
-            this.props.selectCollection(0, event.target.value);
+            console.log(event);
+            this.props.selectCollection(this.props.userId, event.target.value);
             this.setState({ value: event.target.value }, () => {
               this.props.selectView("collection");
             });
           }}
         >
-          {this.props.collectionIds.length ? (
-            this.props.collectionIds.map((collection, key) => {
-              return (
-                <option value={collection.id} key={key}>
-                  {collection.name}
-                </option>
-              );
-            })
-          ) : (
-            <option value="select">Select a collection...</option>
-          )}
+          {this.props.collectionIds.length
+            ? this.props.collectionIds.map((collection, key) => {
+                return (
+                  <option value={collection.id} key={key}>
+                    {collection.name}
+                  </option>
+                );
+              })
+            : ""
+          // <option value="select">Select a collection...</option>
+          }
+          <option value="select">Select a collection...</option>
         </select>
       </div>
     );

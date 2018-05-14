@@ -7,9 +7,6 @@ class SignUp extends React.Component {
       password: ""
     };
   }
-  handleSignUp(username) {
-    this.props.handleViewChange("Search", username);
-  }
   render() {
     return (
       <div>
@@ -21,6 +18,7 @@ class SignUp extends React.Component {
         </h2>
         {/* <br /> */}
         <h3>Please create an account:</h3>
+        {this.props.error ? <h5>{this.props.error}</h5> : ""}
         <label htmlFor="username">Username:</label>
         <input
           type="text"

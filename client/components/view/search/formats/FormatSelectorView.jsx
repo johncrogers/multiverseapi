@@ -15,6 +15,7 @@ class FormatSelectorView extends React.Component {
           selectCollection={this.props.selectCollection}
           collectionIds={this.props.collectionIds}
           selectView={this.props.selectView}
+          userId={this.props.userId}
         />
         <h3>View an edition:</h3>
         <EditionSelector

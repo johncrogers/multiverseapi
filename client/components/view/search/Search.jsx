@@ -104,11 +104,12 @@ class Search extends React.Component {
   retrieveCollectionIds(userId) {
     // axios.get mrrogers.design/api/users/:userId/collections
     // console.log(`retrieveCollectionIds`);
+    // console.log(userId);
     axios
       .get(`/api/users/${userId}/collections`)
       .then(response => {
         this.setState({ collectionIds: response.data }, () => {
-          // console.log("collectionIds", this.state.collectionIds);
+          console.log("collectionIds", this.state.collectionIds);
         });
       })
       .catch(err => {
@@ -134,7 +135,7 @@ class Search extends React.Component {
     axios
       .get(`/api/users/${userId}/collections/${collectionId}/cards`)
       .then(response => {
-        // console.log(`retrieveCollectionCards`);
+        console.log("response @ retrievecollectioncards", response);
         this.setState({ collectionCards: response.data }, () => {
           // console.log("collectionCards", this.state.collectionCards);
         });
@@ -144,15 +145,15 @@ class Search extends React.Component {
       });
   }
   selectCollection(userId, collectionId) {
-    new Promise((resolve, reject) => {
-      resolve(this.retrieveCollectionDetails(userId, collectionId));
-    })
-      .then(() => {
-        this.retrieveCollectionCards(userId, collectionId);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    // new Promise((resolve, reject) => {
+    //   resolve();
+    // })
+    //   .then(() => {})
+    //   .catch(err => {
+    //     console.log(err);
+    //   });
+    this.retrieveCollectionDetails(userId, collectionId);
+    this.retrieveCollectionCards(userId, collectionId);
   }
   // FILTER:
   addFilter() {
@@ -307,24 +308,28 @@ class Search extends React.Component {
       });
     });
     console.log(selection);
+    console.log("userId: ", this.props.userId);
     let newCollection = {
       name: name,
       type: "search",
-      userId: 1,
+      userId: this.props.userId,
       description: description || null,
       cards: selection
     };
+    console.log(`userId @ save collection`, this.props.userId);
     axios
       .post("/api/collections/", newCollection)
-      .then(() => {
-        console.log("Collection saved.");
+      .then(response => {
+        // console.log(response);
+        // console.log("Collection saved.");
+        this.retrieveCollectionIds(this.props.userId);
       })
       .catch(err => {
         console.log(err);
       });
   }
   componentDidMount() {
-    this.retrieveCollectionIds(this.props.username);
+    this.retrieveCollectionIds(this.props.userId);
     this.retrieveEditionIds();
     this.selectEdition("LEA");
     setTimeout(() => {
@@ -334,12 +339,28 @@ class Search extends React.Component {
   render() {
     return (
       <div>
+        <button
+          onClick={() => {
+            console.log(this.props.userId);
+            this.retrieveCollectionIds(this.props.userId);
+          }}
+        >
+          Get Collections
+        </button>
+        <button
+          onClick={() => {
+            console.log(this.state);
+          }}
+        >
+          State
+        </button>
         <FormatSelectorView
           selectEdition={this.selectEdition}
           selectCollection={this.selectCollection}
           editionIds={this.state.editionIds}
           collectionIds={this.state.collectionIds}
           selectView={this.selectView}
+          userId={this.props.userId}
         />
         <ResultsView
           editionDetails={this.state.editionDetails}
@@ -362,6 +383,7 @@ class Search extends React.Component {
           removeCardFromSelection={this.removeCardFromSelection}
           clearSelection={this.clearSelection}
           saveCollection={this.saveCollection}
+          username={this.props.username}
         />
       </div>
     );

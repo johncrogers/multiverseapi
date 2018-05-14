@@ -5,7 +5,9 @@ const api = require(path.join(`${__dirname}/router/api.js`)).router;
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const users = require("./model/users.js");
-
+let errors = {
+  userExists: "This user already exists."
+}
 // SETUP
 const server = express();
 const port = 8080;
@@ -25,12 +27,36 @@ server.get("/docs", (request, response) => {
 server.use("/api", api);
 server.post("/users", (request, response) => {
   console.log(request.body);
+  // new Promise((resolve, reject) => {
+  //     resolve(users.createUser(request.body));
+  //   })
+  // .then((DATA) => {
+  //   console.log(` -> User created`);
+  //   response.end()
+  // })
+  // .catch((err) => {
+  //   console.log(`Error occurred: `, err);
+  //   response.status(500).end()
+  // });
   new Promise((resolve, reject) => {
-      resolve(users.createUser(request.body));
+      resolve(users.authenticateUser(request.body));
     })
     .then((DATA) => {
+      console.log(DATA.length);
       console.log(` -> User created`);
-      response.end()
+      if (DATA.length) {
+        // logv
+        response.send(errors.userExists).end()
+      }
+      users.createUser(request.body)
+        .then((DATA) => {
+          console.log(` -> User created`);
+          response.end()
+        })
+        .catch((err) => {
+          console.log(`Error occurred: `, err);
+          response.status(500).end()
+        });
     })
     .catch((err) => {
       console.log(`Error occurred: `, err);

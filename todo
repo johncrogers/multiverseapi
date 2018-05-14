@@ -9,9 +9,8 @@ A user should be able to:
         ✔ Add @done(18-05-12 10:18)
         ✔ Save @done(18-05-13 08:51)
     If the user is not logged in, they should be prompted and able to:
-      ☐ Create an account and sign in
-      ☐ Sign in with an existing account
-☐ reload colleccrtions
+      ✔ Create an account and sign in @done(18-05-14 15:19)
+      ✔ Sign in with an existing account @done(18-05-14 15:19)
 
 NOTICED:
   ☐ MAINTENANCE:
