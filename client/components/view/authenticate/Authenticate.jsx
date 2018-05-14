@@ -20,6 +20,7 @@ class Authenticate extends React.Component {
           <Login
             back={this.back}
             handleViewChange={this.props.handleViewChange}
+            authenticate={this.props.authenticate}
           />
         );
         break;
@@ -28,12 +29,19 @@ class Authenticate extends React.Component {
           <SignUp
             back={this.back}
             handleViewChange={this.props.handleViewChange}
+            createUser={this.props.createUser}
           />
         );
         break;
       default:
         return (
           <div>
+            <h2>
+              {" "}
+              Welcome to the Multiverse{this.state.username
+                ? ", " + this.state.username + "!"
+                : "!"}{" "}
+            </h2>
             <a
               href="#"
               onClick={() => {

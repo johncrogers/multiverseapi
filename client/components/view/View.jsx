@@ -14,7 +14,13 @@ class View extends React.Component {
         break;
 
       default:
-        return <Authenticate handleViewChange={this.props.handleViewChange} />;
+        return (
+          <Authenticate
+            handleViewChange={this.props.handleViewChange}
+            authenticate={this.props.authenticate}
+            createUser={this.props.createUser}
+          />
+        );
         break;
     }
   }

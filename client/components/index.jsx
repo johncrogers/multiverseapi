@@ -2,8 +2,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Nav from "./navigation/Nav.jsx";
-import View from "./body/View.jsx";
-
+import View from "./view/View.jsx";
+import axios from "axios";
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -11,10 +11,38 @@ class App extends React.Component {
       username: "",
       view: "authenticate"
     };
-    // this.authenticate = this.authenticate.bind(this);
+    this.authenticate = this.authenticate.bind(this);
+    this.createUser = this.createUser.bind(this);
     this.logout = this.logout.bind(this);
     this.setUsername = this.setUsername.bind(this);
     this.handleViewChange = this.handleViewChange.bind(this);
+  }
+  authenticate(username, password) {
+    axios
+      .post("/api/users", { username: username, password: password })
+      .then(res => {
+        console.log(res);
+        if (res.data.length) {
+          this.setState({ username: username }, () => {
+            this.handleViewChange("Search");
+          });
+        }
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  }
+  createUser(username, password) {
+    axios
+      .post("/users", { username: username, password: password })
+      .then(res => {
+        this.setState({ username: username }, () => {
+          this.handleViewChange("Search");
+        });
+      })
+      .catch(err => {
+        console.error(err);
+      });
   }
   setUsername(username) {
     this.setState({ username: username });
@@ -22,10 +50,8 @@ class App extends React.Component {
   logout() {
     this.setState({ username: "", view: "authenticate" });
   }
-  handleViewChange(view, username) {
-    this.setState({ view: view }, () => {
-      this.setUsername(username);
-    });
+  handleViewChange(view) {
+    this.setState({ view: view });
   }
   componentDidMount() {}
   render() {
@@ -34,11 +60,13 @@ class App extends React.Component {
         <Nav
           logout={this.logout}
           username={this.state.username}
-          handleViewChange={this.handleViewChange}
+          // handleViewChange={this.handleViewChange}
         />
         <View
           setUsername={this.setUsername}
-          handleViewChange={this.handleViewChange}
+          authenticate={this.authenticate}
+          createUser={this.createUser}
+          // handleViewChange={this.handleViewChange}
           view={this.state.view}
         />
         {/* {this.state.username ? (

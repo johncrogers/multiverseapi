@@ -9,15 +9,19 @@ class Login extends React.Component {
   }
   handleLogin(username, password) {
     this.props.authenticate(username, password);
-    this.props.handleViewChange("Search", username);
+    // this.props.handleViewChange("Search", username);
   }
   render() {
     return (
       <div>
-        Hey welcome back{this.state.username
-          ? ", " + this.state.username + "!"
-          : "!"}{" "}
-        <br />
+        <h2>
+          {" "}
+          Hey welcome back{this.state.username
+            ? ", " + this.state.username + "!"
+            : "!"}{" "}
+        </h2>
+        {/* <br /> */}
+        <h3>Please sign in:</h3>
         <label htmlFor="username">Username:</label>
         <input
           type="text"
@@ -38,7 +42,7 @@ class Login extends React.Component {
         <br />
         <button
           onClick={() => {
-            this.authenticate(this.state.username, this.state.password);
+            this.props.authenticate(this.state.username, this.state.password);
           }}
         >
           Let's Go!

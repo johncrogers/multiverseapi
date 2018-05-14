@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const Cards = require('./../model/cards.js');
 const Collections = require('./../model/collections.js');
+const Users = require("./../model/users");
 const bodyParser = require("body-parser");
 router.use(bodyParser.json());
 
@@ -143,5 +144,22 @@ router.post('/collections', (req, res) => {
 
 // collections delete
 
+router.post('/users', (req, res) => {
+  new Promise((resolve, reject) => {
+      console.log(req.body);
+      resolve(Users.authenticateUser(req.body));
+    })
+    .then((DATA) => {
+      console.log(` -> user log in`);
+      // if (DATA.length) {
+      res.json(DATA);
+      // }
+      // res.send("FAIL").end();
+    })
+    .catch((err) => {
+      console.log(`Error occurred: `, err);
+      res.status(500).end()
+    });
+})
 
 module.exports.router = router;

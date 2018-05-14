@@ -3,7 +3,8 @@ class SignUp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: ""
+      username: "",
+      password: ""
     };
   }
   handleSignUp(username) {
@@ -12,10 +13,14 @@ class SignUp extends React.Component {
   render() {
     return (
       <div>
-        Welcome to the Multiverse{this.state.username
-          ? ", " + this.state.username + "!"
-          : "!"}{" "}
-        <br />
+        <h2>
+          {" "}
+          Welcome to the Multiverse{this.state.username
+            ? ", " + this.state.username + "!"
+            : "!"}{" "}
+        </h2>
+        {/* <br /> */}
+        <h3>Please create an account:</h3>
         <label htmlFor="username">Username:</label>
         <input
           type="text"
@@ -26,11 +31,17 @@ class SignUp extends React.Component {
         />
         <br />
         <label htmlFor="password">Password:</label>
-        <input type="password" name="password" />
+        <input
+          type="password"
+          name="password"
+          onChange={e => {
+            this.setState({ password: e.target.value });
+          }}
+        />
         <br />
         <button
           onClick={() => {
-            this.handleSignUp("John");
+            this.props.createUser(this.state.username, this.state.password);
           }}
         >
           Join
