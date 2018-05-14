@@ -324,7 +324,7 @@ class Search extends React.Component {
       });
   }
   componentDidMount() {
-    this.retrieveCollectionIds("1");
+    this.retrieveCollectionIds(this.props.username);
     this.retrieveEditionIds();
     this.selectEdition("LEA");
     setTimeout(() => {

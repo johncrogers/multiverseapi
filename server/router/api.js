@@ -65,17 +65,40 @@ router.get("/editions/:editionId/cards", (req, res) => {
 // });
 
 // GET 
-router.get("/users/:userId/collections", (req, res) => {
+router.get("/users/:username/collections", (req, res) => {
   console.log(`GET /users/collections`);
   let filters = {
-    userId: req.params.userId
+    username: req.params.username
   }
+  // new Promise((resolve, reject) => {
+  //     resolve(Collections.retrieveUserCollectionIds(filters));
+  //   })
+  //   .then((DATA) => {
+  //     console.log(` -> success`);
+  //     res.status(200).json(DATA).end();
+  //   })
+  //   .catch((err) => {
+  //     console.log(`Error occurred: `, err);
+  //     res.status(500).end()
+  //   });
   new Promise((resolve, reject) => {
-      resolve(Collections.retrieveUserCollectionIds(filters));
+      resolve(Users.authenticateUser(filters));
     })
     .then((DATA) => {
-      console.log(` -> success`);
-      res.status(200).json(DATA).end();
+      console.log(DATA[0].id);
+      console.log(` -> found user.`);
+      // res.status(200).json(DATA).end();
+      return Collections.retrieveUserCollectionIds({
+          userId: DATA[0].id
+        })
+        .then((DATA) => {
+          console.log(` -> success`);
+          res.status(200).json(DATA).end();
+        })
+        .catch((err) => {
+          console.log(`Error occurred: `, err);
+          res.status(500).end()
+        });
     })
     .catch((err) => {
       console.log(`Error occurred: `, err);

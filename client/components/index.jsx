@@ -68,6 +68,7 @@ class App extends React.Component {
           createUser={this.createUser}
           // handleViewChange={this.handleViewChange}
           view={this.state.view}
+          username={this.state.username}
         />
         {/* {this.state.username ? (
         //   <SearchResultsView />

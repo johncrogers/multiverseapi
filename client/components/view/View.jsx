@@ -10,7 +10,12 @@ class View extends React.Component {
   render() {
     switch (this.props.view) {
       case "Search":
-        return <Search handleViewChange={this.props.handleViewChange} />;
+        return (
+          <Search
+            handleViewChange={this.props.handleViewChange}
+            username={this.props.username}
+          />
+        );
         break;
 
       default:

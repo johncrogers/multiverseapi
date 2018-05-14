@@ -4,7 +4,7 @@ module.exports.authenticateUser = (filters) => {
   console.log(`Retrieving user ${filters.username} details.`);
   return db.select().from('Users').where(filters)
     .then((DATA) => {
-      console.log(DATA);
+      // console.log(DATA);
       return DATA;
     })
     .catch((err) => {
