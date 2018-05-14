@@ -66,13 +66,13 @@ class App extends React.Component {
   render() {
     return (
       <div id="app">
-        <button
+        {/* <button
           onClick={() => {
             console.log(this.state);
           }}
         >
           State
-        </button>
+        </button> */}
         <Nav
           logout={this.logout}
           username={this.state.username}

@@ -339,7 +339,7 @@ class Search extends React.Component {
   render() {
     return (
       <div>
-        <button
+        {/* <button
           onClick={() => {
             console.log(this.props.userId);
             this.retrieveCollectionIds(this.props.userId);
@@ -353,7 +353,7 @@ class Search extends React.Component {
           }}
         >
           State
-        </button>
+        </button> */}
         <FormatSelectorView
           selectEdition={this.selectEdition}
           selectCollection={this.selectCollection}
