@@ -22,6 +22,9 @@ class ResultsViewBody extends React.Component {
         <ResultsViewBodyDisplay
           currentView={this.props.currentView}
           addCardToSelection={this.props.addCardToSelection}
+          filters={this.props.filters}
+          addFilter={this.props.addFilter}
+          removeFilter={this.props.removeFilter}
         />
         <h3>Navigate:</h3>
         <ResultsViewBodyPageSelector

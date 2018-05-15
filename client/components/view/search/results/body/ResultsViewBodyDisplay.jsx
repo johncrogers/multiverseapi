@@ -15,6 +15,9 @@ class ResultsViewBodyDisplay extends React.Component {
                   key={key}
                   card={card}
                   addCardToSelection={this.props.addCardToSelection}
+                  filters={this.props.filters}
+                  addFilter={this.props.addFilter}
+                  removeFilter={this.props.removeFilter}
                 />
               );
             })

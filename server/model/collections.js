@@ -26,19 +26,7 @@ module.exports.saveCollection = (details, cards) => {
       console.log(`Error occurred: `, err);
     });
 }
-// module.exports.saveCollectionCards = (cardData, userId) => {
-//   console.log(`Saving collection cards...`);
-//   // get collectionId
-//   // prepare card data
-//   // insert
-//   return db('cards_collections').insert(cardData)
-//     .then((data) => {
-//       console.log(` -> Saved collection cards.`);
-//     })
-//     .catch((err) => {
-//       console.log(`Error occurred: `, err);
-//     });
-// }
+
 
 module.exports.retrieveUserCollectionIds = (filters) => {
   console.log("input at model: ", filters);
@@ -86,3 +74,17 @@ module.exports.retrieveCollectionCards = (filters) => {
 // module.exports.saveCollectionCards(sample);
 // module.exports.retrieveUserCollectionIds(1);
 // module.exports.retrieveCollection(1);
+
+// module.exports.saveCollectionCards = (cardData, userId) => {
+//   console.log(`Saving collection cards...`);
+//   // get collectionId
+//   // prepare card data
+//   // insert
+//   return db('cards_collections').insert(cardData)
+//     .then((data) => {
+//       console.log(` -> Saved collection cards.`);
+//     })
+//     .catch((err) => {
+//       console.log(`Error occurred: `, err);
+//     });
+// }

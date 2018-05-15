@@ -23,6 +23,9 @@ class ResultsView extends React.Component {
           cardsPerPage={this.props.cardsPerPage}
           handlePageChangeClick={this.props.handlePageChangeClick}
           addCardToSelection={this.props.addCardToSelection}
+          filters={this.props.filters}
+          addFilter={this.props.addFilter}
+          removeFilter={this.props.removeFilter}
         />
       </span>
     );

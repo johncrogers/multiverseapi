@@ -11,9 +11,8 @@ class Nav extends React.Component {
     return (
       <div>
         <span>
-          <img src="/images/logo.png" alt="" width="50" height="50" />
-          {this.props.username}
-          {button}
+          <img src="/images/logo.png" alt="" width="50" height="50" />{" "}
+          {this.props.username} {button}
         </span>
       </div>
     );

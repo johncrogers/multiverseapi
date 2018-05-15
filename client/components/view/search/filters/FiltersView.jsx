@@ -7,8 +7,28 @@ class FiltersView extends React.Component {
   render() {
     return (
       <div>
-        <div>Filter Header</div>
-        <div>No Filters</div>
+        <h2>Filters:</h2>
+        <button
+          onClick={() => {
+            this.props.clearFilters();
+          }}
+        >
+          Clear Filters
+        </button>
+        {Object.keys(this.props.filters).map(filter => {
+          return (
+            <div>
+              <button
+                onClick={() => {
+                  this.props.removeFilter(filter);
+                }}
+              >
+                Remove
+              </button>{" "}
+              {filter}: {this.props.filters[filter]}
+            </div>
+          );
+        })}
       </div>
     );
   }

@@ -16,11 +16,10 @@ class Search extends React.Component {
       collectionDetails: {},
       collectionCards: [],
       filters: {},
-      filterResults: [],
       selection: [],
       view: "edition",
       viewDetails: {},
-      viewCards: {},
+      viewCards: [],
       currentView: [],
       cardsPerPage: 25,
       page: 1,
@@ -36,7 +35,9 @@ class Search extends React.Component {
     this.selectCollection = this.selectCollection.bind(this);
     this.addFilter = this.addFilter.bind(this);
     this.removeFilter = this.removeFilter.bind(this);
+    this.modifyFilters = this.modifyFilters.bind(this);
     this.applyFilters = this.applyFilters.bind(this);
+    this.clearFilters = this.clearFilters.bind(this);
     this.selectCard = this.selectCard.bind(this);
     this.deselectCard = this.deselectCard.bind(this);
     this.selectView = this.selectView.bind(this);
@@ -156,14 +157,46 @@ class Search extends React.Component {
     this.retrieveCollectionCards(userId, collectionId);
   }
   // FILTER:
-  addFilter() {
-    //
+  addFilter(property, value) {
+    let newFilters = this.state.filters;
+    newFilters[property] = value;
+    this.setState({ filters: newFilters }, () => {
+      this.applyFilters();
+    });
   }
-  removeFilter() {
+  removeFilter(property) {
+    let newFilters = this.state.filters;
+    delete newFilters[property];
+    this.setState({ filters: newFilters }, () => {
+      this.applyFilters();
+    });
+  }
+  modifyFilters() {
     //
   }
   applyFilters() {
-    //
+    let canShowCard = card => {
+      let show = true;
+      Object.keys(this.state.filters).forEach(filter => {
+        if (this.state.filters[filter] !== card[filter]) {
+          show = false;
+        }
+      });
+      return show;
+    };
+
+    let newViewCards = this.state.viewCards.filter(card => {
+      return canShowCard(card);
+    });
+    console.log(`newViewCards: `, newViewCards);
+    this.setState({ currentView: newViewCards }, () => {
+      console.log(`Called.`);
+    });
+  }
+  clearFilters() {
+    this.setState({ filters: {} }, () => {
+      this.applyFilters();
+    });
   }
   // SELECT:
   selectCard() {
@@ -346,14 +379,14 @@ class Search extends React.Component {
           }}
         >
           Get Collections
-        </button>
+        </button> */}
         <button
           onClick={() => {
             console.log(this.state);
           }}
         >
           State
-        </button> */}
+        </button>
         <FormatSelectorView
           selectEdition={this.selectEdition}
           selectCollection={this.selectCollection}
@@ -376,8 +409,15 @@ class Search extends React.Component {
           handlePageChangeClick={this.handlePageChangeClick}
           addCardToSelection={this.addCardToSelection}
           view={this.state.view}
+          filters={this.state.filters}
+          addFilter={this.addFilter}
+          removeFilter={this.removeFilter}
         />
-        {/* <FiltersView /> */}
+        <FiltersView
+          clearFilters={this.clearFilters}
+          filters={this.state.filters}
+          removeFilter={this.removeFilter}
+        />
         <SelectionView
           selection={this.state.selection}
           removeCardFromSelection={this.removeCardFromSelection}
