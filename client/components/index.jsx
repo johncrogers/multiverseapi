@@ -1,33 +1,51 @@
-// This is the api management index.
 import React from "react";
 import ReactDOM from "react-dom";
-import Nav from "./navigation/Nav.jsx";
-import View from "./view/View.jsx";
 import axios from "axios";
-class App extends React.Component {
+import Authenticate from "./Authenticate/Authenticate.jsx";
+import App from "./App/App.jsx";
+
+class Index extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      show: "Authenticate",
       username: "",
-      userId: "",
-      view: "authenticate",
-      error: ""
+      userId: ""
     };
+    /*
+     - show:
+      - Authenticate
+      - App
+    */
+    this.handleViewChange = this.handleViewChange.bind(this);
     this.authenticate = this.authenticate.bind(this);
     this.createUser = this.createUser.bind(this);
     this.logout = this.logout.bind(this);
-    this.setUsername = this.setUsername.bind(this);
-    this.handleViewChange = this.handleViewChange.bind(this);
+  }
+  handleViewChange(view) {
+    console.log(`handleViewChange`);
+    this.setState({ show: view }, () => {
+      // console.log(`state @ handleViewChange`, this.state);
+    });
   }
   authenticate(username, password) {
+    console.log(`authenticate`);
     axios
-      .post("/api/users", { username: username, password: password })
+      .post("/api/users", {
+        username: username,
+        password: password
+      })
       .then(res => {
-        console.log(res);
         if (res.data.length) {
-          this.setState({ username: username, userId: res.data[0].id }, () => {
-            this.handleViewChange("Search");
-          });
+          this.setState(
+            {
+              username: username,
+              userId: res.data[0].id
+            },
+            () => {
+              this.handleViewChange("App");
+            }
+          );
         }
       })
       .catch(err => {
@@ -35,70 +53,65 @@ class App extends React.Component {
       });
   }
   createUser(username, password) {
+    console.log(`createUser`);
     axios
-      .post("/users", { username: username, password: password })
+      .post("/users", {
+        username: username,
+        password: password
+      })
       .then(res => {
         console.log(res);
         if (typeof res.data === "string" && res.data.length) {
-          this.setState({ error: res.data });
+          this.setState({
+            error: res.data
+          });
         } else {
-          //
           this.authenticate(username, password);
-          // this.setState({ username: username }, () => {
-          //   this.handleViewChange("Search");
-          // });
         }
       })
       .catch(err => {
         console.error(err);
       });
   }
-  setUsername(username) {
-    this.setState({ username: username });
-  }
   logout() {
-    this.setState({ username: "", userId: "", view: "authenticate" });
+    console.log(`logout`);
+    this.setState({
+      username: "",
+      userId: "",
+      show: "Authenticate"
+    });
   }
-  handleViewChange(view) {
-    this.setState({ view: view });
-  }
-  componentDidMount() {}
   render() {
-    return (
-      <div id="app">
-        {/* <button
-          onClick={() => {
-            console.log(this.state);
-          }}
-        >
-          State
-        </button> */}
-        <Nav
-          logout={this.logout}
-          username={this.state.username}
-          // handleViewChange={this.handleViewChange}
-        />
-        <View
-          setUsername={this.setUsername}
-          authenticate={this.authenticate}
-          createUser={this.createUser}
-          // handleViewChange={this.handleViewChange}
-          view={this.state.view}
-          username={this.state.username}
-          userId={this.state.userId}
-          error={this.state.error}
-        />
-        {/* {this.state.username ? (
-        //   <SearchResultsView />
-        // ) : (
-        //   <Authenticate
-        //     authenticate={this.authenticate}
-        //     username={this.state.username}
-        //   />
-        // )} */}
-      </div>
-    );
+    console.log(`Render Index`);
+    switch (this.state.show) {
+      case "Authenticate":
+        return (
+          <Authenticate
+            authenticate={this.authenticate}
+            handleViewChange={this.handleViewChange}
+            createUser={this.createUser}
+          />
+        );
+        break;
+      case "App":
+        return (
+          <App
+            username={this.state.username}
+            logout={this.logout}
+            userId={this.state.userId}
+          />
+        );
+        break;
+      default:
+        return (
+          <Authenticate
+            authenticate={this.authenticate}
+            handleViewChange={this.handleViewChange}
+            createUser={this.createUser}
+          />
+        );
+        break;
+    }
   }
 }
-
-ReactDOM.render(<App />, document.getElementById("app"));
+ReactDOM.render(<Index />, document.getElementById("app"));

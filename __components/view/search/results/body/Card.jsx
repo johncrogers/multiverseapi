@@ -29,6 +29,14 @@ class Card extends React.Component {
             <strong>Mana Cost:</strong>
             {this.props.card.manaCost}
           </span>
+          <span
+            onClick={() => {
+              this.handleFilterClick("colors", this.props.card.colors);
+            }}
+          >
+            <strong>Colors:</strong>
+            {this.props.card.colors}
+          </span>
         </div>
         <div>
           <span

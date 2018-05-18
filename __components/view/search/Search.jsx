@@ -51,26 +51,26 @@ class Search extends React.Component {
   }
   // RETRIEVE:
   retrieveEditionIds() {
-    // axios.get mrrogers.design/api/editions
-    // console.log("retrieveEditionIds");
+    // console.log(`Executing retreiveEditionIds:`);
     axios
       .get("/api/editions")
       .then(response => {
-        // console.log(response);
-        this.setState({ editionIds: response.data }, () => {
-          // console.log("editionIds", this.state.editionIds);
-        });
+        this.setState({ editionIds: response.data }, () => {});
+        // console.log(` -> State @ retreiveEditionIds`, this.state);
       })
       .catch(err => {
         console.log(err);
       });
   }
   retrieveEditionDetails(editionId) {
+    // console.log(`Executing retreiveEditionDetails:`);
     axios
       .get(`/api/editions/${editionId}`)
       .then(response => {
         this.setState({ editionDetails: response.data }, () => {
-          // console.log("editionDetails", this.state.editionDetails);
+          // console.log(` -> State @ retrieveEditionDetails`, this.state);
+          // console.log(` -> Called setCurrentView in retrieveEditionDetails`);
+          this.setCurrentView(1);
         });
       })
       .catch(err => {
@@ -78,13 +78,15 @@ class Search extends React.Component {
       });
   }
   retrieveEditionCards(editionId) {
-    // axios.get mrrogers.design/api/editions/:editionId
-    // console.log("retrieveEditionCards");
+    // console.log(`Executing retreiveEditionCards:`);
     axios
       .get(`/api/editions/${editionId}/cards`)
       .then(response => {
         this.setState({ editionCards: response.data }, () => {
-          // console.log("editionCards", this.state.editionCards);
+          // console.log(` -> State @ retrieveEditionCards`, this.state);
+          // console.log(` -> Called setCurrentView in retrieveEdtionCards`);
+          this.selectView("edition");
+          // this.setCurrentView(1);
         });
       })
       .catch(err => {
@@ -92,25 +94,19 @@ class Search extends React.Component {
       });
   }
   selectEdition(editionId) {
-    new Promise((resolve, reject) => {
-      resolve(this.retrieveEditionDetails(editionId));
-    })
-      .then(() => {
-        this.retrieveEditionCards(editionId);
-      })
-      .catch(() => {
-        console.log(`ERROR retrieving edition.`);
-      });
+    // console.log(`Executing selectEdition:`);
+    // console.log(` -> Called retrieveEditionDetails`);
+    this.retrieveEditionDetails(editionId);
+    // console.log(` -> Called retrieveEditionCards`);
+    this.retrieveEditionCards(editionId);
   }
   retrieveCollectionIds(userId) {
-    // axios.get mrrogers.design/api/users/:userId/collections
-    // console.log(`retrieveCollectionIds`);
-    // console.log(userId);
+    // console.log(`Executing retreiveCollectionIds:`);
     axios
       .get(`/api/users/${userId}/collections`)
       .then(response => {
         this.setState({ collectionIds: response.data }, () => {
-          console.log("collectionIds", this.state.collectionIds);
+          // console.log(` -> State @ retrieveCollectionIds`, this.state);
         });
       })
       .catch(err => {
@@ -118,13 +114,14 @@ class Search extends React.Component {
       });
   }
   retrieveCollectionDetails(userId, collectionId) {
-    // axios.get mrrogers.design/api/users/:userId/collections/:collectionId
-    // console.log("retrieveCollectionDetails");
+    // console.log(`Executing retreiveCollectionDetails:`);
     axios
       .get(`/api/users/${userId}/collections/${collectionId}`)
       .then(response => {
         this.setState({ collectionDetails: response.data }, () => {
-          // console.log("collectionDetails", this.state.collectionDetails);
+          // console.log(` -> State @ retrieveCollectionDetails`, this.state);
+          // console.log(` -> Called setCurrentView`);
+          this.setCurrentView(1);
         });
       })
       .catch(err => {
@@ -132,13 +129,15 @@ class Search extends React.Component {
       });
   }
   retrieveCollectionCards(userId, collectionId) {
-    // axios.get mrrogers.design/api/users/:userId/collections/:collectionId/cards
+    // console.log(`Executing retreiveCollectionCards:`);
     axios
       .get(`/api/users/${userId}/collections/${collectionId}/cards`)
       .then(response => {
-        console.log("response @ retrievecollectioncards", response);
         this.setState({ collectionCards: response.data }, () => {
-          // console.log("collectionCards", this.state.collectionCards);
+          // console.log(` -> State @ retrieveCollectionCards`, this.state);
+          // console.log(` -> Called setCurrentView`);
+          // this.setCurrentView(1);
+          this.selectView("collection");
         });
       })
       .catch(err => {
@@ -146,14 +145,10 @@ class Search extends React.Component {
       });
   }
   selectCollection(userId, collectionId) {
-    // new Promise((resolve, reject) => {
-    //   resolve();
-    // })
-    //   .then(() => {})
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
+    // console.log(`Executing selectCollection:`);
+    // console.log(` -> Called retrieveCollectionDetails in selectCollection`);
     this.retrieveCollectionDetails(userId, collectionId);
+    // console.log(` -> Called retrieveCollectionCards in selectCollection`);
     this.retrieveCollectionCards(userId, collectionId);
   }
   // FILTER:
@@ -175,6 +170,7 @@ class Search extends React.Component {
     //
   }
   applyFilters() {
+    // FIX
     let canShowCard = card => {
       let show = true;
       Object.keys(this.state.filters).forEach(filter => {
@@ -188,10 +184,11 @@ class Search extends React.Component {
     let newViewCards = this.state.viewCards.filter(card => {
       return canShowCard(card);
     });
-    console.log(`newViewCards: `, newViewCards);
-    this.setState({ currentView: newViewCards }, () => {
-      console.log(`Called.`);
-    });
+    // console.log(`newViewCards: `, newViewCards);
+    this.setState({ currentView: newViewCards });
+    // setTimeout(() => {
+    //   this.changeView();
+    // }, 125);
   }
   clearFilters() {
     this.setState({ filters: {} }, () => {
@@ -206,15 +203,16 @@ class Search extends React.Component {
     //
   }
   selectView(type) {
+    // console.log(`Executing selectView:`);
     if (type === "collection") {
       this.setState(
         {
           view: type
         },
         () => {
-          setTimeout(() => {
-            this.changeView();
-          }, 500);
+          // console.log(` -> State @ selectView`, this.state);
+          // console.log(` -> Called changeView`);
+          this.changeView();
         }
       );
     }
@@ -224,17 +222,15 @@ class Search extends React.Component {
           view: type
         },
         () => {
-          setTimeout(() => {
-            this.changeView();
-          }, 500);
+          this.changeView();
+          // console.log(` -> State @ selectView`, this.state);
+          // console.log(` -> Called changeView`);
         }
       );
     }
   }
   changeView() {
-    // console.log(
-    //   `Select > Onchange > setState > selectView > if edition > setState > changeView`
-    // );
+    // console.log(`Executing changeView:`);
     if (this.state.view === "collection") {
       this.setState(
         {
@@ -242,10 +238,9 @@ class Search extends React.Component {
           viewCards: this.state.collectionCards
         },
         () => {
-          // console.log(this.state);
-          setTimeout(() => {
-            this.setCurrentView(1);
-          }, 500);
+          // console.log(` -> State @ changeView`, this.state);
+          // console.log(` -> Called setCurrentView`);
+          this.setCurrentView(1);
         }
       );
     }
@@ -256,40 +251,68 @@ class Search extends React.Component {
           viewCards: this.state.editionCards
         },
         () => {
-          // console.log(this.state.viewCards);
-          setTimeout(() => {
-            this.setCurrentView(1);
-          }, 500);
+          // console.log(` -> State @ changeView`, this.state);
+          // console.log(` -> Called setCurrentView`);
+          this.setCurrentView(1);
         }
       );
     }
   }
   setCurrentView(page) {
-    let end = page * this.state.cardsPerPage;
-    let begin = end - this.state.cardsPerPage;
-    // console.log("viewCards", this.state.viewCards);
-    // console.log(`begin`, begin);
-    // console.log(`end`, end);
-    // console.log(`slice`, this.state.viewCards.slice(begin, end));
-    this.setState(
-      { currentView: this.state.viewCards.slice(begin, end) },
-      () => {
-        // console.log("currentView", this.state.currentView);
-      }
-    );
+    // console.log(`Executing setCurrentView:`);
+    // console.log(`page: `, page);
+    let end;
+    let begin;
+    if (page === 1) {
+      // console.log(`if`);
+      end = 25;
+      begin = 0;
+    } else {
+      // console.log(`else`);
+      end = page * this.state.cardsPerPage;
+      begin = end - this.state.cardsPerPage;
+    }
+    // console.log("Begin: ", begin);
+    // console.log("End: ", end);
+    let newCurrentViewCards = this.state.viewCards.slice(begin, end);
+    // console.log(`newCurrentViewCards`, newCurrentViewCards);
+    this.setState({ currentView: newCurrentViewCards }, () => {
+      // console.log(` -> State @ setCurrentView`, this.state);
+    });
   }
   changePage(num) {
     this.setCurrentView(num);
   }
   handlePageChangeClick(direction) {
+    // console.log(`State page: `, this.state.page);
+    let newPage;
     if (direction === "prev") {
-      this.setState({ page: this.state.page - 1 }, () => {
-        this.changePage(this.state.page - 1);
+      newPage = this.state.page - 1;
+      if (newPage < 1) {
+        newPage = 1;
+      }
+      // console.log(` -> page after previos: ${newPage}`);
+      this.setState({ page: newPage }, () => {
+        this.changePage(this.state.page);
       });
     }
     if (direction === "next") {
-      this.setState({ page: this.state.page + 1 }, () => {
-        this.changePage(this.state.page + 1);
+      newPage = this.state.page + 1;
+      // console.log(
+      //   "Last page: ",
+      //   Math.ceil(this.state.viewCards.length / this.state.cardsPerPage)
+      // );
+      if (
+        newPage >
+        Math.ceil(this.state.viewCards.length / this.state.cardsPerPage)
+      ) {
+        newPage = Math.ceil(
+          this.state.viewCards.length / this.state.cardsPerPage
+        );
+      }
+      // console.log(` -> page after next: ${newPage}`);
+      this.setState({ page: newPage }, () => {
+        this.changePage(this.state.page);
       });
     }
   }
@@ -312,27 +335,6 @@ class Search extends React.Component {
     this.setState({ selection: [] });
   }
   saveCollection(name, description) {
-    // {
-    //   "name": "Test Collection",
-    //     "type": "search",
-    //       "userId": 1,
-    //         "description": "Insertion test."
-    //   "cards": [{
-    //     "id": 25304,
-    //     "multiverseid": "107",
-    //     "name": "Invisibility",
-    //     "manaCost": "{U}{U}",
-    //     "type": "Enchantment — Aura",
-    //     "editionId": "LEA",
-    //     "rarity": "Common",
-    //     "colors": "[\"Blue\"]",
-    //     "text": "Enchant creature\nEnchanted creature can't be blocked except by Walls.",
-    //     "flavor": null,
-    //     "power": null,
-    //     "toughness": null,
-    //     "loyalty": null
-    //   }]
-    // }
     let selection = [];
     this.state.selection.map(card => {
       selection.push({
@@ -340,8 +342,8 @@ class Search extends React.Component {
         collection_id: ""
       });
     });
-    console.log(selection);
-    console.log("userId: ", this.props.userId);
+    // console.log(selection);
+    // console.log("userId: ", this.props.userId);
     let newCollection = {
       name: name,
       type: "search",
@@ -349,7 +351,7 @@ class Search extends React.Component {
       description: description || null,
       cards: selection
     };
-    console.log(`userId @ save collection`, this.props.userId);
+    // console.log(`userId @ save collection`, this.props.userId);
     axios
       .post("/api/collections/", newCollection)
       .then(response => {
@@ -365,9 +367,9 @@ class Search extends React.Component {
     this.retrieveCollectionIds(this.props.userId);
     this.retrieveEditionIds();
     this.selectEdition("LEA");
-    setTimeout(() => {
-      this.selectView("edition");
-    }, 500);
+    this.selectView("edition");
+    // setTimeout(() => {
+    // }, 500);
   }
   render() {
     return (

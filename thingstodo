@@ -1,0 +1,199 @@
+A user should be able to:
+   ✔ Go to a deployed website (e.g. "johnsapp.herokuapp.com") @done(18-05-07 13:03)
+  On the deployed website:
+    If the user is already logged in, they should be able to:
+      ✔ Filter all cards cards by edition @done(18-05-11 13:23)
+      ✔ Page through cards per edition @done(18-05-11 13:23)
+      ✔ Collection: @done(18-05-13 08:51)
+        ✔ View Saved @done(18-05-13 08:51)
+        ✔ Add @done(18-05-12 10:18)
+        ✔ Save @done(18-05-13 08:51)
+    If the user is not logged in, they should be prompted and able to:
+      ✔ Create an account and sign in @done(18-05-14 15:19)
+      ✔ Sign in with an existing account @done(18-05-14 15:19)
+
+NOTICED:
+  ☐ MAINTENANCE:
+    ☐ Refactor query chains / models
+    ☐ Back end logging
+  ☐ DATA:
+    ☐ JSON fields over JSONified
+  ☐ USER:
+    ☐ Login:
+      ☐ Client:
+        ☐ set up authenticate function at app level using mock data
+        ☐ link page routing:
+          ☐ isGoood
+          ☐ notGood
+      ☐ Database:
+        ☐ Model
+      ☐ Server:
+        ☐ Routes:
+          ☐ isUser?
+    ☐ Sign Up:
+      ☐ Client:
+      ☐ Server:
+      ☐ Database:
+        ☐ Model
+    ☐ logout
+    ☐ onSignIn => load collection data > drop down
+  ☐ RESULTS:
+    ☐ Data does not always update?
+      ☐ edition and edition details update, current view did not
+    ☐ Pagination:
+      ☐ Runs beyond
+      ☐ Skips?
+  ☐ SELECTION:
+    ☐ feedback on save
+    ☐ unique names - check state
+    ☐ drop down
+    ☐ show card details
+  ☐ COLLECTION:
+    ☐ Delete
+      ☐ Sure?
+    ☐ Update
+LEFT UNDONE:
+  ✔ Collections SQL queries @done(18-05-08 19:20)
+  ✔ Routes @done(18-05-08 19:20)
+
+DATABASE:
+  ✔ Connection @done(18-05-05 17:54)
+  ✔ Build schemas: @done(18-05-07 19:27)
+    ✔ Users @done(18-05-07 19:27)
+    ✔ users_collections @done(18-05-07 19:27)
+    ✔ Collections @done(18-05-07 19:27)
+    ✔ cards_collections @done(18-05-07 19:27)
+    ✔ Cards @done(18-05-07 19:10)
+  ✔ Data: @done(18-05-07 20:56)
+    ✔ Convert Data @done(18-05-07 20:56)
+    ✔ Populate DB. @done(18-05-07 20:56)
+  ✔ MODELS: @done(18-05-08 16:43)
+    ✔ Cards: @done(18-05-07 21:57)
+      ✔ retrieveEditions @done(18-05-08 09:59)
+        {editionName: editionCode}
+      ✔ retrieveEdition @done(18-05-08 09:59)
+        {edition details}
+      ✔ retrieveEditionCards @done(18-05-08 10:11)
+        [{card}]
+    ✔ Collections: @done(18-05-08 16:43)
+      ✔ saveCollection @done(18-05-08 11:31)
+        insert({collectionDetails})
+        insert([{cards_collections}])
+      ✔ retrieveUserCollectionIds @done(18-05-08 11:31)
+        [["collectionName", "collectionId"]]
+      ✔ retrieveCollection @done(18-05-08 16:42)
+        {collection details}
+      ✔ retrieveCollectionCards @done(18-05-08 16:42)
+        [{card}]
+
+SERVER:
+  http://pm2.keymetrics.io/
+  Endpoints:
+    Editions:
+      ✔ GET /editions @done(18-05-08 13:58)
+      ✔ GET /editions/- @done(18-05-08 13:58)
+      ✔ GET /editions/-/cards @done(18-05-08 14:10)
+    Collections:
+      ✔ POST /collections @done(18-05-08 18:37)
+      ✔ GET /collections @done(18-05-08 18:37)
+      ✔ GET /collections/- @done(18-05-08 18:37)
+      ✔ GET /collections/-/cards @done(18-05-08 18:37)
+
+CLIENT:
+  Components:
+    ✔ App @done(18-05-08 20:27)
+    ✔ Nav @done(18-05-09 12:21)
+    ☐ SearchResultsView
+      ☐ NOTICED:
+        ☐ Implement:
+          ☐ Collection:
+            ☐ State:
+              ☐ Details
+              ☐ Cards
+            ☐ Functions:
+              ☐ Details
+              ☐ Cards
+          ☐ Edition:
+            ☐ State:
+              ☐ Details
+              ☐ Cards
+            ☐ Functions:
+              ☐ Details
+              ☐ Cards
+      ☐ FormatSelectorView
+        ☐ Collections
+        ☐ Editions
+          ☐ Block
+            ☐ Edition
+        ☐ Standard
+        ☐ Modern
+      ☐ ResultsView
+        ☐ ResultsViewHeader
+          ☐ Header
+          ☐ HeaderHider
+        ☐ ResultsViewBody
+          ☐ ResultsListView
+            ☐ ResultsListItem
+          ☐ PageSelector
+      ☐ FiltersView
+        ☐ FilterHeader
+        ☐ FiltersList
+          ☐ FiltersListItem
+      ☐ SelectionView
+        ☐ SelectionHeader
+        ☐ SelectionListView
+          ☐ SelectedListItem
+  State:
+    ✔ Data: @done(18-05-09 16:07)
+      ✔ editionIds: [], @done(18-05-09 16:07)
+      ✔ editionDetails: {}, @done(18-05-09 16:07)
+      ✔ editionCards: [], @done(18-05-09 16:06)
+      ✔ collectionIds: [], @done(18-05-09 16:06)
+      ✔ collectionDetails: {}, @done(18-05-09 16:06)
+      ✔ collectionCards: [], @done(18-05-09 16:06)
+      ✔ filters: {}, @done(18-05-09 16:06)
+      ✔ filterResults: [], @done(18-05-09 16:06)
+      ✔ selection: [] @done(18-05-09 16:06)
+    ✔ Function bindings: @done(18-05-09 16:06)
+      ✔ this.retrieveEditionsIds.bind(this); @done(18-05-09 16:06)
+      ✔ this.retrieveEditionDetails.bind(this); @done(18-05-09 16:06)
+      ✔ this.retrieveEditionCards.bind(this); @done(18-05-09 16:06)
+      ✔ this.selectEdition.bind(this); @done(18-05-09 17:19)
+      ✔ this.retrieveCollectionIds.bind(this); @done(18-05-09 16:06)
+      ✔ this.retrieveCollectionDetails.bind(this); @done(18-05-09 16:06)
+      ✔ this.retrieveCollectionCards.bind(this); @done(18-05-09 16:06)
+      ✔ this.selectCollection.bind(this); @done(18-05-09 17:19)
+      ✔ this.addFilter.bind(this); @done(18-05-09 16:06)
+      ✔ this.removeFilter.bind(this); @done(18-05-09 16:06)
+      ✔ this.applyFilters.bind(this); @done(18-05-09 16:06)
+      ✔ this.selectCard.bind(this); @done(18-05-09 16:06)
+      ✔ this.deselectCard.bind(this); @done(18-05-09 16:06)
+  Functions:
+    ✔ retrieveEditionsIds @done(18-05-09 16:08)
+    ✔ retrieveEditionDetails @done(18-05-09 16:08)
+    ✔ retrieveEditionCards @done(18-05-09 16:10)
+    ✔ selectEdition @done(18-05-09 17:18)
+    ✔ retrieveCollectionIds @done(18-05-09 16:15)
+    ✔ retrieveCollectionDetails @done(18-05-09 16:56)
+    ✔ retrieveCollectionCards @done(18-05-09 17:06)
+    ✔ selectCollection @done(18-05-09 17:18)
+    addFilter
+    removeFilter
+    applyFilters
+    selectCard
+    deselectCard
+  Props:
+    ☐ Data
+    ☐ Functions:
+      ☐ Pass
+      ☐ Function
+  AJAX:
+    Editions:
+      ☐ GET /editions
+      ☐ GET /editions/-
+      ☐ GET /editions/-/cards
+    Collections:
+      ☐ POST /collections
+      ☐ GET /collections
+      ☐ GET /collections/-
+      ☐ GET /collections/-/cards

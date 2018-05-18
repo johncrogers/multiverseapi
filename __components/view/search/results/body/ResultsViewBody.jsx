@@ -13,11 +13,13 @@ class ResultsViewBody extends React.Component {
   render() {
     return (
       <div>
-        <h3>Navigate:</h3>
-        <ResultsViewBodyPageSelector
-          setCurrentView={this.props.setCurrentView}
-          handlePageChangeClick={this.props.handlePageChangeClick}
-        />
+        <div>
+          <h3>Navigate:</h3>
+          <ResultsViewBodyPageSelector
+            setCurrentView={this.props.setCurrentView}
+            handlePageChangeClick={this.props.handlePageChangeClick}
+          />
+        </div>
         <h3>Cards:</h3>
         <ResultsViewBodyDisplay
           currentView={this.props.currentView}
@@ -26,11 +28,13 @@ class ResultsViewBody extends React.Component {
           addFilter={this.props.addFilter}
           removeFilter={this.props.removeFilter}
         />
-        <h3>Navigate:</h3>
-        <ResultsViewBodyPageSelector
-          setCurrentView={this.props.setCurrentView}
-          handlePageChangeClick={this.props.handlePageChangeClick}
-        />
+        <div>
+          <h3>Navigate:</h3>
+          <ResultsViewBodyPageSelector
+            setCurrentView={this.props.setCurrentView}
+            handlePageChangeClick={this.props.handlePageChangeClick}
+          />
+        </div>
       </div>
     );
   }

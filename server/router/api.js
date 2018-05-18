@@ -5,138 +5,92 @@ const Users = require("./../model/users");
 const bodyParser = require("body-parser");
 router.use(bodyParser.json());
 
-// GET /api/editions - To retrieve a list of MTG editions. [[editionName, editionId],...]
+//==========================================================[ IDS ]==========================================================================
+
 router.get("/editions", (req, res) => {
   console.log(`GET /editions`);
   new Promise((resolve, reject) => {
       resolve(Cards.retrieveEditions());
     })
     .then((DATA) => {
-      console.log(` -> success`);
       res.status(200).json(DATA).end();
     })
     .catch((err) => {
-      console.log(`Error occurred: `, err);
+      console.log(err);
       res.status(500).end();
     });
 });
-
-// GET /api/editions/:editionId - Returns detailed data about a specific edition.
-router.get("/editions/:editionId", (req, res) => {
-  console.log(`GET /editions/${req.params.editionId}`);
-  let filters = {
-    code: req.params.editionId
-  };
-  new Promise((resolve, reject) => {
-      resolve(Cards.retrieveEdition(filters));
-    })
-    .then((DATA) => {
-      console.log(` -> success`);
-      res.status(200).json(DATA[0]).end();
-    })
-    .catch((err) => {
-      console.log(`Error occurred: `, err);
-      res.status(500).end()
-    });
-});
-
-// GET /api/editions/:editionId/cards - Returns a list of cards for a specific edition. [{card: info},...]
-router.get("/editions/:editionId/cards", (req, res) => {
-  console.log(`GET /editions/${req.params.editionId}/cards`);
-  let filters = {
-    editionId: req.params.editionId
-  };
-  new Promise((resolve, reject) => {
-      resolve(Cards.retrieveEditionCards(filters));
-    })
-    .then((DATA) => {
-      console.log(` -> success`);
-      res.status(200).json(DATA).end();
-    })
-    .catch((err) => {
-      console.log(`Error occurred: `, err);
-      res.status(500).end()
-    });
-});
-
-// // GET 
-// router.get("/users", (req, res) => {
-//   // 
-// });
-
-// GET 
 router.get("/users/:userId/collections", (req, res) => {
   console.log(`GET /users/collections`);
   let filters = {
     userId: req.params.userId
   }
-  // new Promise((resolve, reject) => {
-  //     resolve(Collections.retrieveUserCollectionIds(filters));
-  //   })
-  //   .then((DATA) => {
-  //     console.log(` -> success`);
-  //     res.status(200).json(DATA).end();
-  //   })
-  //   .catch((err) => {
-  //     console.log(`Error occurred: `, err);
-  //     res.status(500).end()
-  //   });
-  console.log(filters);
-
-  new Promise((resolve, reject) => {
-      resolve(Collections.retrieveUserCollectionIds(filters))
-    })
-    .then((DATA) => {
-      console.log(` -> success`);
-      res.status(200).json(DATA).end();
+  Collections.retrieveUserCollectionIds(filters)
+    .then((collectionIds) => {
+      res.status(200).json(collectionIds).end();
     })
     .catch((err) => {
-      console.log(`Error occurred: `, err);
+      console.log(err);
       res.status(500).end()
     });
 });
 
-// GET 
+//==========================================================[ DETAILS ]==========================================================================
+
+router.get("/editions/:editionId", (req, res) => {
+  console.log(`GET /editions/${req.params.editionId}`);
+  let filters = {
+    code: req.params.editionId
+  };
+  let edition = {
+    details: {},
+    cards: []
+  }
+  Cards.retrieveEdition(filters)
+    .then((details) => {
+      edition.details = details[0];
+      return Cards.retrieveEditionCards({
+        editionId: filters.code
+      });
+    })
+    .then((cards) => {
+      edition.cards = cards;
+      res.status(200).json(edition).end();
+    }).catch((err) => {
+      console.log(err);
+      res.status(500).end();
+    })
+});
+
 router.get("/users/:userId/collections/:collectionId", (req, res) => {
   console.log(`GET /users/${req.params.userId}/collections/${req.params.collectionId}`);
   let filters = {
-    // userId: req.params.userId,
-    id: req.params.collectionId
+    collectionId: req.params.collectionId
   }
-  new Promise((resolve, reject) => {
-      resolve(Collections.retrieveCollection(filters));
+  let collection = {
+    details: {},
+    cards: []
+  };
+  Collections.retrieveCollection({
+      id: filters.collectionId
     })
-    .then((DATA) => {
-      console.log(` -> success`);
-      res.status(200).json(DATA[0]).end();
+    .then((details) => {
+      collection.details = details[0];
+      return Collections.retrieveCollectionCards({
+        collection_id: filters.collectionId
+      })
+    })
+    .then((cards) => {
+      collection.cards = cards.rows;
+      res.status(200).json(collection).end();
     })
     .catch((err) => {
-      console.log(`Error occurred: `, err);
+      console.log(err);
       res.status(500).end()
     });
 });
 
-router.get("/users/:userId/collections/:collectionId/cards", (req, res) => {
-  console.log(`GET /users/collections/${req.params.collectionId}/cards`);
-  let filters = {
-    // userId: req.params.userId,
-    collection_id: req.params.collectionId
-  }
-  new Promise((resolve, reject) => {
-      resolve(Collections.retrieveCollectionCards(filters));
-    })
-    .then((DATA) => {
-      console.log(` -> success`);
-      console.log('DATA @ get collection cards', DATA);
-      res.status(200).json(DATA.rows).end();
-    })
-    .catch((err) => {
-      console.log(`Error occurred: `, err);
-      res.status(500).end()
-    });
-});
-
-// POST 
+//==========================================================[ COLLECTION HANDLING ]==========================================================================
 
 router.post('/collections', (req, res) => {
   let details = req.body;
