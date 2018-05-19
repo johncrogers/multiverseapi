@@ -66,6 +66,38 @@ module.exports.retrieveCollectionCards = (filters) => {
       return err;
     });
 }
+module.exports.deleteCollection = (id) => {
+  db('Collections').where('id', '=', id).del()
+    .then(() => {
+      console.log(`collection ${id} deleted.`);
+    }).then(() => {
+      db('cards_collections').where('collection_id', '=', id).del()
+        .then(() => {
+          console.log(`cards for collection ${id} deleted.`);
+        }).catch((err) => {
+          console.log(err);
+        })
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+}
+module.exports.deleteCollectionCards = (id) => {
+  db('cards_collections').where('collection_id', '=', id).del()
+    .then(() => {
+      console.log(`cards removed`);
+    }).catch((err) => {
+      return err;
+    })
+}
+module.exports.deleteCollectionCard = (id) => {
+  db('cards_collections').where('id', '=', id).del()
+    .then(() => {
+      console.log(`card removed`);
+    }).catch((err) => {
+      return err;
+    })
+}
 // module.exports.saveCollectionDetails({
 //   name: 'Test Collection',
 //   description: 'A collection to test.',

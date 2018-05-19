@@ -111,8 +111,37 @@ router.post('/collections', (req, res) => {
     });
 });
 
-// collections delete
+router.delete('/collections/:id', (req, res) => {
+  new Promise((resolve, reject) => {
+      resolve(Collections.deleteCollection(req.params.id));
+    })
+    .then(() => {
+      return Collections.deleteCollectionCards(req.params.id)
+    })
+    .then(() => {
+      console.log(` -> Delete collection ${req.params.id}`);
+      res.status(200).end()
+    })
+    .catch((err) => {
+      console.log(`Error occurred: `, err);
+      res.status(500).end()
+    });
+})
 
+router.delete('/collections/:collectionId/cards/:cardId', (req, res) => {
+  new Promise((resolve, reject) => {
+      resolve(Collections.deleteCollectionCard(req.params.cardId));
+    })
+    .then(() => {
+      console.log(` -> deleted collection csar by id ${req.params.cardId}`);
+      res.status(200).end()
+    })
+    .catch((err) => {
+      console.log(`Error occurred: `, err);
+      res.status(500).end()
+    });
+})
+//==========================================================[ USER ]==========================================================================
 router.post('/users', (req, res) => {
   new Promise((resolve, reject) => {
       console.log(req.body);

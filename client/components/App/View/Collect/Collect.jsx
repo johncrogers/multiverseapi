@@ -11,6 +11,7 @@ class Collect extends React.Component {
       view: {}
     };
   }
+  //==========================================================[ DATA ]==========================================================================
   retrieveCollectionIds(userId) {
     console.log(`retrieveCollectionDetails`);
     axios
@@ -30,12 +31,38 @@ class Collect extends React.Component {
         this.setState({ collection: response.data }, () => {
           // console.log(` -> Called changeView in retrieveCollectionDetails`);
           // this.changeView("collection");
+          this.loadViewData();
         });
       })
       .catch(err => {
         console.log(err);
       });
   }
+  //==========================================================[ VIEW ]==========================================================================
+  loadViewData() {
+    this.setState({ view: this.state.collection });
+  }
+  //==========================================================[ EDIT ]==========================================================================
+  removeCard(id) {
+    let newView = this.state.view;
+    newView.cards = this.state.view.cards.filter(card => {
+      return card.id !== id;
+    });
+    this.setState({ view: newView });
+  }
+  removeCollection() {
+    axios
+      .delete(`/api/collections/${this.state.view.details.id}`)
+      .then(response => {
+        this.setState({ view: {} }, () => {
+          this.retrieveCollectionIds(this.props.userId);
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+  //==========================================================[ RENDER ]==========================================================================
   componentDidMount() {
     this.retrieveCollectionIds(this.props.userId);
   }
@@ -52,10 +79,24 @@ class Collect extends React.Component {
         </button>
         <button
           onClick={() => {
-            this.retrieveCollectionDetails(98);
+            this.retrieveCollectionDetails(103);
           }}
         >
-          retrieveCollectionIds
+          retrieveCollectionDetails
+        </button>
+        <button
+          onClick={() => {
+            this.removeCard(196);
+          }}
+        >
+          removeCard
+        </button>
+        <button
+          onClick={() => {
+            this.removeCollection(103);
+          }}
+        >
+          Delete Collection
         </button>
         <Sidebar collectionIds={this.state.collectionIds} />
         <Details />
