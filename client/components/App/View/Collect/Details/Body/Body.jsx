@@ -10,8 +10,8 @@ class Body extends React.Component {
     console.log(`Render Body`);
     return (
       <div>
-        <Description />
-        <Cards />
+        {/* <Description /> */}
+        <Cards cards={this.props.cards} removeCard={this.props.removeCard} />
       </div>
     );
   }

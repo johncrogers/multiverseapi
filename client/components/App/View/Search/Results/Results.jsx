@@ -17,6 +17,9 @@ class Results extends React.Component {
         />
         <br />
         <ResultsBody
+          collectionId={this.props.collectionId}
+          collectionName={this.props.collectionName}
+          show={this.props.show}
           cards={this.props.view.results}
           page={this.props.page}
           viewPreviousResults={this.props.viewPreviousResults}
@@ -25,6 +28,7 @@ class Results extends React.Component {
           removeFilter={this.props.removeFilter}
           filters={this.props.filters}
           addCardToSelection={this.props.addCardToSelection}
+          addCardToCollection={this.props.addCardToCollection}
         />
       </span>
     );

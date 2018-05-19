@@ -111,6 +111,25 @@ router.post('/collections', (req, res) => {
     });
 });
 
+router.post('/collections/cards', (req, res) => {
+  let card = req.body;
+  // console.log(details);
+  // let cards = details.cards;
+  // delete details.cards;
+
+  new Promise((resolve, reject) => {
+      resolve(Collections.addCardToCollection(card));
+    })
+    .then((data) => {
+      console.log(` -> Cards save complete.`);
+      res.status(201).end()
+    })
+    .catch((err) => {
+      console.log(`Error occurred: `, err);
+      res.status(500).end()
+    });
+});
+
 router.delete('/collections/:id', (req, res) => {
   new Promise((resolve, reject) => {
       resolve(Collections.deleteCollection(req.params.id));
@@ -135,6 +154,20 @@ router.delete('/collections/:collectionId/cards/:cardId', (req, res) => {
     .then(() => {
       console.log(` -> deleted collection csar by id ${req.params.cardId}`);
       res.status(200).end()
+    })
+    .catch((err) => {
+      console.log(`Error occurred: `, err);
+      res.status(500).end()
+    });
+})
+router.patch('/collections', (req, res) => {
+  console.log('req.body', req.body);
+  new Promise((resolve, reject) => {
+      resolve(Collections.updateCollection(req.body));
+    })
+    .then((DATA) => {
+      console.log(` -> success: DATA`);
+      res.end()
     })
     .catch((err) => {
       console.log(`Error occurred: `, err);

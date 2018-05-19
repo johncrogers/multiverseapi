@@ -12,7 +12,7 @@ class CollectionSelector extends React.Component {
         <select
           value={this.state.value}
           onChange={event => {
-            console.log(event);
+            // console.log(event);
             this.props.retrieveCollectionDetails(event.target.value);
             this.setState({ value: event.target.value });
           }}

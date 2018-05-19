@@ -6,7 +6,11 @@ class Legality extends React.Component {
   }
   render() {
     console.log(`Render Legality`);
-    return <div>Legality</div>;
+    return (
+      <div>
+        {this.props.details.legality ? this.props.details.legality : ""}
+      </div>
+    );
   }
 }
 export default Legality;

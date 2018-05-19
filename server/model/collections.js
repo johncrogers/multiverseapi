@@ -67,11 +67,11 @@ module.exports.retrieveCollectionCards = (filters) => {
     });
 }
 module.exports.deleteCollection = (id) => {
-  db('Collections').where('id', '=', id).del()
+  return db('Collections').where('id', '=', id).del()
     .then(() => {
       console.log(`collection ${id} deleted.`);
     }).then(() => {
-      db('cards_collections').where('collection_id', '=', id).del()
+      return db('cards_collections').where('collection_id', '=', id).del()
         .then(() => {
           console.log(`cards for collection ${id} deleted.`);
         }).catch((err) => {
@@ -83,7 +83,7 @@ module.exports.deleteCollection = (id) => {
     })
 }
 module.exports.deleteCollectionCards = (id) => {
-  db('cards_collections').where('collection_id', '=', id).del()
+  return db('cards_collections').where('collection_id', '=', id).del()
     .then(() => {
       console.log(`cards removed`);
     }).catch((err) => {
@@ -91,11 +91,35 @@ module.exports.deleteCollectionCards = (id) => {
     })
 }
 module.exports.deleteCollectionCard = (id) => {
-  db('cards_collections').where('id', '=', id).del()
+  return db('cards_collections').where('id', '=', id).del()
     .then(() => {
       console.log(`card removed`);
     }).catch((err) => {
       return err;
+    })
+}
+module.exports.updateCollection = (update) => {
+  console.log('update in model: ', update);
+  let change = {};
+  change[update.field] = update.update;
+  console.log("change:", change);
+  //
+  return db('Collections').where(update.field, '=', update.value).update(change)
+    .then((data) => {
+      console.log(data);
+      console.log(`collection updated`);
+    }).catch((err) => {
+      console.log(err);
+      return err;
+    });
+}
+
+module.exports.addCardToCollection = (card) => {
+  return db('cards_collections').insert(card)
+    .then(() => {
+      console.log(` -> Card saved.`);
+    }).catch((err) => {
+      console.log(err);
     })
 }
 // module.exports.saveCollectionDetails({

@@ -47,6 +47,7 @@ class Search extends React.Component {
     this.removeCardFromSelection = this.removeCardFromSelection.bind(this);
     this.clearSelection = this.clearSelection.bind(this);
     this.saveCollection = this.saveCollection.bind(this);
+    this.addCardToCollection = this.addCardToCollection.bind(this);
   }
   //==========================================================[ RETRIEVE DATA ]==========================================================================
   retrieveEditionIds() {
@@ -287,6 +288,24 @@ class Search extends React.Component {
         console.log(err);
       });
   }
+  addCardToCollection(multiverseId, collectionId) {
+    console.log(`addCardToCollection`);
+    console.log(`Input addCardToCollection`, multiverseId, collectionId);
+    // axios to add
+    // retrieve collection
+    axios
+      .post("/api/collections/cards", {
+        multiverseid: multiverseId,
+        collection_id: collectionId
+      })
+      .then(() => {
+        this.retrieveCollectionDetails(collectionId);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+  //==========================================================[ RENDER ]==========================================================================
   componentDidMount() {
     console.log(` -> Called retrieveEditionIds in componentDidMount`);
     this.retrieveEditionIds();
@@ -314,6 +333,16 @@ class Search extends React.Component {
           retrieveCollectionDetails={this.retrieveCollectionDetails}
         />
         <Results
+          collectionId={
+            this.state.collection.details
+              ? this.state.collection.details.id
+              : null
+          }
+          collectionName={
+            this.state.collection.details
+              ? this.state.collection.details.name
+              : null
+          }
           view={this.state.view}
           show={this.state.show}
           changeView={this.changeView}
@@ -324,6 +353,7 @@ class Search extends React.Component {
           removeFilter={this.removeFilter}
           filters={this.state.filters}
           addCardToSelection={this.addCardToSelection}
+          addCardToCollection={this.addCardToCollection}
         />
         <Filters
           clearFilters={this.clearFilters}

@@ -1,5 +1,5 @@
 import React from "react";
-import Selector from "./Selector.jsx";
+import CollectionSelector from "./../../Search/Formats/Selectors/CollectionSelector.jsx";
 class Sidebar extends React.Component {
   constructor(props) {
     super(props);
@@ -9,7 +9,11 @@ class Sidebar extends React.Component {
     console.log(`Render Sidebar`);
     return (
       <div>
-        <Selector />
+        <h2>Select a Collection:</h2>
+        <CollectionSelector
+          collectionIds={this.props.collectionIds}
+          retrieveCollectionDetails={this.props.retrieveCollectionDetails}
+        />
       </div>
     );
   }

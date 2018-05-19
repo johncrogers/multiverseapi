@@ -10,8 +10,15 @@ class Details extends React.Component {
     console.log(`Render Details`);
     return (
       <div>
-        <Header />
-        <Body />
+        <Header
+          details={this.props.view.details}
+          removeCollection={this.props.removeCollection}
+          updateCollection={this.props.updateCollection}
+        />
+        <Body
+          cards={this.props.view.cards}
+          removeCard={this.props.removeCard}
+        />
       </div>
     );
   }
