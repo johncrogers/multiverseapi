@@ -2,9 +2,9 @@ let db = require("./db.js").knex;
 
 module.exports.authenticateUser = (filters) => {
   console.log(`Retrieving user ${filters.username} details.`);
-  db.select().from('Users').where(filters)
+  return db.select().from('Users').where(filters)
     .then((DATA) => {
-      console.log(DATA);
+      console.log("DATA in model: ", DATA);
       return DATA;
     })
     .catch((err) => {
@@ -15,7 +15,7 @@ module.exports.authenticateUser = (filters) => {
 module.exports.createUser = (userDetails) => {
   console.log(userDetails);
   console.log(`Adding user.`);
-  db("Users").insert(userDetails).then(() => {
+  return db("Users").insert(userDetails).then(() => {
     console.log(` => User added.`);
   }).catch((err) => {
     console.log(err);
