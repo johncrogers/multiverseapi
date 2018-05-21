@@ -183,6 +183,7 @@ router.post('/users', (req, res) => {
     .then((DATA) => {
       console.log(` -> user log in`);
       // if (DATA.length) {
+      console.log(DATA);
       res.status(200).json(DATA).end();
       // }
       // res.send("FAIL").end();
