@@ -6,8 +6,11 @@ class ResultsToggler extends React.Component {
   }
   render() {
     return (
-      <div>
-        <h3>Select a view:</h3>
+      <div className="col-10">
+        <h6>
+          <strong>Select a view:</strong>
+        </h6>
+        {"  "}
         <a
           href="#"
           onClick={() => {
@@ -16,7 +19,7 @@ class ResultsToggler extends React.Component {
         >
           Edition
         </a>
-        &nbsp;||&nbsp;
+        &nbsp;|&nbsp;
         <a
           href="#"
           onClick={() => {

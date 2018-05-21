@@ -11,130 +11,139 @@ class Card extends React.Component {
   }
   render() {
     let name = (
-      <span
+      <div
+        className="col"
         onClick={() => {
           this.handleFilterClick("name", this.props.card.name);
         }}
       >
-        <strong>Name:</strong>
+        {/* <strong>Name:</strong> */}
         {this.props.card.name}
-      </span>
+      </div>
     );
     let manaCost = (
-      <span
+      <div
+        className="col text-right"
         onClick={() => {
           this.handleFilterClick("manaCost", this.props.card.manaCost);
         }}
       >
-        <strong>Mana Cost:</strong>
+        {/* <strong>Mana Cost:</strong> */}
         {this.props.card.manaCost}
-      </span>
+      </div>
     );
     let colors = (
-      <span
+      <div
+        className="col"
         onClick={() => {
           this.handleFilterClick("colors", this.props.card.colors);
         }}
       >
-        <strong>Colors:</strong>
+        {/* <strong>Colors:</strong> */}
         {this.props.card.colors}
-      </span>
+      </div>
     );
     let type = (
-      <span
+      <div
+        className="col-6"
         onClick={() => {
           this.handleFilterClick("type", this.props.card.type);
         }}
       >
-        <strong>Type:</strong>
+        {/* <strong>Type:</strong> */}
         {this.props.card.type}
-      </span>
+      </div>
     );
     let edition = (
-      <span
+      <div
+        className="col-3 text-right"
         onClick={() => {
           this.handleFilterClick("editionId", this.props.card.editionId);
         }}
       >
-        <strong>Edition:</strong>
+        {/* <strong>Edition:</strong> */}
         {this.props.card.editionId}
-      </span>
+      </div>
     );
     let rarity = (
-      <span
+      <div
+        className="col-3 text-right"
         onClick={() => {
           this.handleFilterClick("rarity", this.props.card.rarity);
         }}
       >
-        <strong>Rarity:</strong>
+        {/* <strong>Rarity:</strong> */}
         {this.props.card.rarity}
-      </span>
+      </div>
     );
     let text = (
-      <span
+      <div
+        className="col"
         onClick={() => {
           this.handleFilterClick("text", this.props.card.text);
         }}
       >
-        <strong>Text:</strong>
-        {this.props.card.text}
-      </span>
+        <strong>Text:</strong> {this.props.card.text}
+      </div>
     );
     let flavor = (
-      <span
+      <div
+        className="col"
         onClick={() => {
           this.handleFilterClick("flavor", this.props.card.flavor);
         }}
       >
-        <strong>Flavor:</strong>
-        {this.props.card.flavor}
-      </span>
+        <strong>Flavor:</strong> {this.props.card.flavor}
+      </div>
     );
     let loyalty = (
-      <span
+      <div
+        className="col"
         onClick={() => {
           this.handleFilterClick("loyalty", this.props.card.loyalty);
         }}
       >
         <strong>Loyalty:</strong>
         {this.props.card.loyalty}
-      </span>
+      </div>
     );
     let power = (
-      <span
+      <div
+        className="col"
         onClick={() => {
           this.handleFilterClick("power", this.props.card.power);
         }}
       >
         <strong>Power:</strong>
         {this.props.card.power}
-      </span>
+      </div>
     );
     let toughness = (
-      <span
+      <div
+        className="col"
         onClick={() => {
           this.handleFilterClick("toughness", this.props.card.toughness);
         }}
       >
         <strong>Toughness:</strong>
         {this.props.card.toughness}
-      </span>
+      </div>
     );
     return (
-      <div>
-        <div>
+      <div className="col">
+        <div className="row bg-primary text-light">
           {name}
+          {/* {colors} */}
           {this.props.card.manaCost !== undefined ? manaCost : null}
-          {colors}
         </div>
-        <div>
+        <div className="row bg-secondary text-light">
           {type}
           {edition}
           {rarity}
         </div>
-        <div>{this.props.card.text ? text : null}</div>
-        <div>{this.props.card.flavor ? flavor : ""}</div>
-        <div>
+        <div className="row">{this.props.card.text ? text : null}</div>
+        <div className="row">{this.props.card.flavor ? flavor : ""}</div>
+        <div className="row">
           {this.props.card.loyalty ? loyalty : ""}
           {this.props.card.power ? power : ""}
           {this.props.card.toughness ? toughness : ""}

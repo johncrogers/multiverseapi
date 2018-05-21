@@ -9,11 +9,14 @@ class Results extends React.Component {
 
   render() {
     return (
-      <span>
+      <span className="col-6">
         <ResultsHeader
           changeView={this.props.changeView}
           details={this.props.view.details}
           show={this.props.show}
+          page={this.props.page}
+          viewPreviousResults={this.props.viewPreviousResults}
+          viewNextResults={this.props.viewNextResults}
         />
         <br />
         <ResultsBody

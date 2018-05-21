@@ -7,7 +7,11 @@ class ResultsBodyPageSelector extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="col-2 text-right">
+        <h6>
+          <strong>Navigate:</strong>
+        </h6>
+        {/* <br /> */}
         <a
           href="#"
           onClick={() => {
@@ -16,7 +20,7 @@ class ResultsBodyPageSelector extends React.Component {
         >
           Prev
         </a>
-        {" || "}
+        {/* {" || "} */}&nbsp;|&nbsp;
         <a
           href="#"
           onClick={() => {

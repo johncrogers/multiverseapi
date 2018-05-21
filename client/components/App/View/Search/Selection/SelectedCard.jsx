@@ -6,22 +6,20 @@ class SelectedCard extends React.Component {
   }
   render() {
     return (
-      <div>
-        <button
-          onClick={() => {
-            this.props.removeCardFromSelection(this.props.card.multiverseId);
-          }}
-        >
-          Remove
-        </button>
-        <button
-          onClick={() => {
-            console.log(this.props.card);
-          }}
-        >
-          card
-        </button>
-        <span>{this.props.card.name}</span>
+      <div className="row">
+        <div className="col">
+          <span>{this.props.card.name}</span>
+        </div>
+        <div className="col">
+          <button
+            // className=""
+            onClick={() => {
+              this.props.removeCardFromSelection(this.props.card.id);
+            }}
+          >
+            &times;
+          </button>
+        </div>
       </div>
     );
   }

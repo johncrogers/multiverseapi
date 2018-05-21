@@ -10,6 +10,7 @@ class EditionSelector extends React.Component {
     return (
       <div>
         <select
+          style={{ width: "175px" }}
           value={this.state.value}
           onChange={event => {
             this.props.retrieveEditionDetails(event.target.value);

@@ -8,11 +8,12 @@ class SelectButton extends React.Component {
     // console.log(`Render SelectButton`);
     return (
       <button
+        className="bg-success"
         onClick={() => {
           this.props.addCardToSelection(this.props.card);
         }}
       >
-        Add to selection
+        +
       </button>
     );
   }

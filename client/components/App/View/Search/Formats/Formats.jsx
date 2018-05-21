@@ -8,19 +8,31 @@ class Formats extends React.Component {
   }
   render() {
     return (
-      <span>
-        <h2>FORMAT:</h2>
-        <h3>View a collection:</h3>
-        <CollectionSelector
-          collectionIds={this.props.collectionIds}
-          retrieveCollectionDetails={this.props.retrieveCollectionDetails}
-        />
-        <h3>View an edition:</h3>
-        <EditionSelector
-          editionIds={this.props.editionIds}
-          retrieveEditionDetails={this.props.retrieveEditionDetails}
-        />
-      </span>
+      <div className="col-2">
+        <div className="row">
+          <div className="col">
+            <h4>FORMAT:</h4>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col">
+            <h7>View a collection:</h7>
+            <CollectionSelector
+              collectionIds={this.props.collectionIds}
+              retrieveCollectionDetails={this.props.retrieveCollectionDetails}
+            />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col">
+            <h7>View an edition:</h7>
+            <EditionSelector
+              editionIds={this.props.editionIds}
+              retrieveEditionDetails={this.props.retrieveEditionDetails}
+            />
+          </div>
+        </div>
+      </div>
     );
   }
 }

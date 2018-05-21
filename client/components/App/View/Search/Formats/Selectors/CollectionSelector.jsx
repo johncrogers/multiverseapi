@@ -10,6 +10,7 @@ class CollectionSelector extends React.Component {
     return (
       <div>
         <select
+          style={{ width: "175px" }}
           value={this.state.value}
           onChange={event => {
             // console.log(event);

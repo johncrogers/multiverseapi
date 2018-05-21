@@ -36,6 +36,7 @@ class Index extends React.Component {
         password: password
       })
       .then(res => {
+        console.log("Response in authenticate:", res);
         if (res.data.length) {
           this.setState(
             {
@@ -78,7 +79,7 @@ class Index extends React.Component {
     this.setState({
       username: "",
       userId: "",
-      show: "Authenticate"
+      show: "App"
     });
   }
   render() {

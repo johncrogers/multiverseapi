@@ -16,7 +16,7 @@ class AddButton extends React.Component {
           );
         }}
       >
-        Add to {this.props.collectionName}
+        Add to {'"' + this.props.collectionName + '"'}
       </button>
     );
   }

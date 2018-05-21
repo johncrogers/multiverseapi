@@ -249,11 +249,24 @@ class Search extends React.Component {
     newSelection.push(card);
     this.setState({ selection: newSelection }, () => {});
   }
-  removeCardFromSelection(multiverseId) {
+  removeCardFromSelection(id) {
     console.log(`removeCardFromSelection`);
-    let targetIndex = this.state.selection.indexOf(multiverseId);
+    // let targetIndex = this.state.selection.indexOf(multiverseId);
+    // console.log(`multiverseid: ${multiverseId}`);
+    // console.log(`newSelection: `, newSelection);
+    // console.log(`targetIndex: ${targetIndex}`);
+    // console.log(`newSelection after change: `, newSelection);
+    let selectionIds = [];
+    for (let card of this.state.selection) {
+      selectionIds.push(card.id);
+    }
+    console.log(`selectionIds: `, selectionIds);
+    let targetIndex = selectionIds.indexOf(id);
+    console.log(`targetIndex: `, targetIndex);
     let newSelection = this.state.selection;
+    console.log(`newSelection: `, newSelection);
     newSelection.splice(targetIndex, 1);
+    console.log(`newSelection after splice: `, newSelection);
     this.setState({ selection: newSelection }, () => {});
   }
   clearSelection() {
@@ -318,14 +331,14 @@ class Search extends React.Component {
   }
   render() {
     return (
-      <div>
-        <button
+      <div className="row">
+        {/* <button
           onClick={() => {
             console.log(this.state);
           }}
         >
           Search State
-        </button>
+        </button> */}
         <Formats
           editionIds={this.state.editionIds}
           retrieveEditionDetails={this.retrieveEditionDetails}

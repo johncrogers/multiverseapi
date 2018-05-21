@@ -10,18 +10,24 @@ class Selection extends React.Component {
   }
   render() {
     return (
-      <span>
-        <div>
-          <h2>
-            SELECTION:{" "}
-            {this.state.selectionName
-              ? this.state.selectionName
-              : "No name yet."}
-          </h2>
+      <div className="col-2">
+        <div className="row">
+          <div className="col">
+            <h4>SELECTION:</h4>
+          </div>
         </div>
-        <div>
-          <div>
-            <label htmlFor="">Selection Name:</label>
+        <div className="row">
+          <div className="col">
+            <strong>
+              {this.state.selectionName
+                ? this.state.selectionName
+                : "No name yet."}
+            </strong>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col">
+            {/* <label htmlFor="">Selection Name:</label> */}
             <input
               type="text"
               id="selectionName"
@@ -29,36 +35,49 @@ class Selection extends React.Component {
                 this.setState({ selectionName: event.target.value });
               }}
             />
+            <br />
+            <br />
           </div>
-          <button
-            onClick={() => {
-              this.props.clearSelection();
-            }}
-          >
-            Clear
-          </button>{" "}
-          |{" "}
-          <button
-            onClick={() => {
-              this.props.saveCollection(this.state.selectionName);
-            }}
-          >
-            Save
-          </button>
         </div>
-        <br />
-        {this.props.selection.length
-          ? this.props.selection.map((card, key) => {
-              return (
-                <SelectedCard
-                  key={key}
-                  card={card}
-                  removeCardFromSelection={this.props.removeCardFromSelection}
-                />
-              );
-            })
-          : "No cards selected."}
-      </span>
+        <div className="row">
+          <div className="col">
+            <button
+              onClick={() => {
+                this.props.clearSelection();
+              }}
+            >
+              Clear
+            </button>{" "}
+            |{" "}
+            <button
+              onClick={() => {
+                this.props.saveCollection(this.state.selectionName);
+              }}
+            >
+              Save
+            </button>
+            <br />
+            <br />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col">
+            {this.props.selection.length
+              ? this.props.selection.map((card, key) => {
+                  return (
+                    <SelectedCard
+                      key={key}
+                      card={card}
+                      removeCardFromSelection={
+                        this.props.removeCardFromSelection
+                      }
+                    />
+                  );
+                })
+              : "No cards selected."}
+          </div>
+        </div>
+      </div>
     );
   }
 }

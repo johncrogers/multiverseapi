@@ -14,29 +14,33 @@ class ResultsBodyDisplay extends React.Component {
           ? this.props.cards[this.props.page].map((card, key) => {
               return (
                 <div>
-                  <Card
-                    key={key}
-                    card={card}
-                    addFilter={this.props.addFilter}
-                    removeFilter={this.props.removeFilter}
-                    filters={this.props.filters}
-                  />
-                  <SelectButton
-                    card={card}
-                    addCardToSelection={this.props.addCardToSelection}
-                  />
-                  {this.props.collectionId ? (
-                    <AddButton
-                      collectionId={this.props.collectionId}
-                      collectionName={this.props.collectionName}
+                  <div className="row">
+                    <Card
+                      key={key}
+                      // className="col"
                       card={card}
-                      addCardToCollection={this.props.addCardToCollection}
+                      addFilter={this.props.addFilter}
+                      removeFilter={this.props.removeFilter}
+                      filters={this.props.filters}
                     />
-                  ) : (
-                    ""
-                  )}
-                  <br />
-                  <br />
+                  </div>
+                  <div className="row">
+                    <SelectButton
+                      className="col"
+                      card={card}
+                      // key={key}
+                      addCardToSelection={this.props.addCardToSelection}
+                    />
+                    {this.props.collectionId ? (
+                      <AddButton
+                        // className="col"
+                        collectionId={this.props.collectionId}
+                        collectionName={this.props.collectionName}
+                        card={card}
+                        addCardToCollection={this.props.addCardToCollection}
+                      />
+                    ) : null}
+                  </div>
                 </div>
               );
             })
