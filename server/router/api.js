@@ -176,8 +176,8 @@ router.patch('/collections', (req, res) => {
 })
 //==========================================================[ USER ]==========================================================================
 router.post('/users', (req, res) => {
+  console.log(req.body);
   new Promise((resolve, reject) => {
-      console.log(req.body);
       resolve(Users.authenticateUser(req.body));
     })
     .then((DATA) => {
