@@ -53,13 +53,14 @@ STRETCH: <Not Required>
 BUGS:
   ✔ Selection Removal @done(18-05-21 00:15)
 Design:
+  ☐ borders
   ☐ Splash:
     ☐ Center
-    ☐ 
-  ☐ Nav:
-      ☐ Alignment:
+    ☐ bs / style
+  ✔ Nav: @done(18-05-22 10:12)
+      ✔ Alignment: @done(18-05-22 10:12)
         ✔ Horizontal @done(18-05-21 10:57)
-        ☐ Vertical
+        ✔ Vertical @done(18-05-22 10:12)
   ☐ Collect:
     ☐ Layout
     ☐ Text size
@@ -67,25 +68,29 @@ Design:
       ☐ Dropdown width
   ☐ Search:
     ✔ All remove buttons red. @done(18-05-21 11:00)
-    ☐ Hover list items:
-      ☐ Selection
-      ☐ Filters
-      ☐ Results
+    ✘ Hover list items: @cancelled(18-05-22 10:12)
+      ✘ Selection @cancelled(18-05-22 10:12)
+      ✘ Filters @cancelled(18-05-22 10:12)
+      ✘ Results @cancelled(18-05-22 10:12)
     ☐ Results:
-      ☐ BG colors
-      ☐ Navigate right
+      ✔ BG colors @done(18-05-22 10:59)
+      ✔ Navigate: @done(18-05-22 11:55)
+        ✔ right @done(18-05-22 09:17)
+        ✔ bottom bar @done(18-05-22 11:55)
       ☐ Card:
-        ☐ Fill box
-        ☐ Alignment of each point
-        ☐ Buttons right
-        ☐ Make table header.
-        ☐ Remove some tags.
+        ✔ Fill box @done(18-05-22 09:17)
+        ✔ Alignment of each point @done(18-05-22 09:17)
+        ✔ Buttons right @done(18-05-22 10:11)
+        ✔ Make table header. @done(18-05-22 11:55)
+        ✔ Remove some tags. @done(18-05-22 11:55)
         ☐ Rarity coloring?
+        ☐ Mana symbols
+        ☐ Color Gradient
     ☐ Formats:
-      ☐ BG colors
-      ☐ Selctors width
-    ☐ Filters:
-      ☐ Filter Card
+      ✔ BG colors @done(18-05-22 11:56)
+      ✔ Selctors width @done(18-05-22 11:56)
+    ✔ Filters: @done(18-05-22 11:57)
+      ✔ Filter Card @done(18-05-22 11:57)
     ☐ Selection:
       ☐ Alternate colors?
       ☐ Width?

@@ -39,7 +39,10 @@ class Navigation extends React.Component {
     );
     const logout = username ? <Logout logout={this.props.logout} /> : null;
     return (
-      <div className="row bg-dark" style={{ height: "170px" }}>
+      <div
+        className="row bg-dark  border border-dark"
+        style={{ height: "170px" }}
+      >
         <div className="col-8 align-middle">
           <span className="media  align-middle">
             <span className="media-body align-self-center">{logo}</span>

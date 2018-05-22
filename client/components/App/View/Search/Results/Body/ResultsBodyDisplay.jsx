@@ -25,14 +25,15 @@ class ResultsBodyDisplay extends React.Component {
                       filters={this.props.filters}
                     />
                   </div>
-                  <div className="row">
+                  <div className="row text-right">
                     <SelectButton
                       className="col"
                       card={card}
                       // key={key}
                       addCardToSelection={this.props.addCardToSelection}
                     />
-                    {this.props.collectionId ? (
+                    {this.props.show === "edition" &&
+                    this.props.collectionId ? (
                       <AddButton
                         // className="col"
                         collectionId={this.props.collectionId}
@@ -42,6 +43,7 @@ class ResultsBodyDisplay extends React.Component {
                       />
                     ) : null}
                   </div>
+                  <hr />
                 </div>
               );
             })

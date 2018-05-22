@@ -10,7 +10,7 @@ class Formats extends React.Component {
     return (
       <div className="col-2">
         <div className="row bg-secondary text-light">
-          <div className="col">
+          <div className="col border border-dark">
             <h4>
               <span className="align-middle">FORMAT:</span>
             </h4>
@@ -18,7 +18,7 @@ class Formats extends React.Component {
         </div>
         <div className="row">
           <div className="col">
-            <h7>View a collection:</h7>
+            <strong>View a collection:</strong>
             <CollectionSelector
               collectionIds={this.props.collectionIds}
               retrieveCollectionDetails={this.props.retrieveCollectionDetails}
@@ -27,7 +27,7 @@ class Formats extends React.Component {
         </div>
         <div className="row">
           <div className="col">
-            <h7>View an edition:</h7>
+            <strong>View an edition:</strong>
             <EditionSelector
               editionIds={this.props.editionIds}
               retrieveEditionDetails={this.props.retrieveEditionDetails}

@@ -130,7 +130,7 @@ class Card extends React.Component {
       </span>
     );
     return (
-      <div className="col">
+      <div className="col border border-dark">
         <div className="row bg-primary text-light">
           {name}
           {/* {colors} */}

@@ -1,39 +1,41 @@
 import React from "react";
-import ResultsToggler from "./ResultsToggler.jsx";
-import ResultsBodyPageSelector from "./../Body/ResultsBodyPageSelector.jsx";
+import ResultsToggler from "./../Options/ResultsToggler.jsx";
+import ResultsBodyPageSelector from "./../Options/ResultsBodyPageSelector.jsx";
+import ResultsPerPage from "./../Options/ResultsPerPage.jsx";
 class ResultsHeader extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
   render() {
+    // let headerStyle = {
+    //   "background-image": url("mtgicon.png");
+    // "background-repeat": repeat-y;
+    // }
     return (
       <div className="row">
         <div className="col">
-          <div className="row">
-            <div className="col">
-              <h1 className="display-4">
-                {this.props.show.toUpperCase()}:{"  "}
+          <div className="row alert-primary text-dark">
+            <div className="col border border-dark">
+              <br />
+              <br />
+              <br />
+              <h1 style={{ margin: "0px" }}>
+                {/* {this.props.show.toUpperCase()}:{"  "} */}
                 {this.props.details
                   ? this.props.details.name
                   : `No ${this.props.show} selected.`}
               </h1>
+              <br />
+              <br />
+              <br />
             </div>
           </div>
-          {/* <div className="jumbotron jumbotron-fluid bg-info"> */}
-          {/* <div className="container-fuid"> */}
-          {/* <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p> */}
-          {/* </div> */}
-          {/* </div> */}
-          <div className="row">
-            <div className="col text-middle">
-              <h2 />
-            </div>
-          </div>
-          <div className="row">
+          <div className="row border border-dark alert-secondary">
             <ResultsToggler changeView={this.props.changeView} />
-            {"    "}
-            {/* <div className="col"> */}
+            <ResultsPerPage
+              changeResultsPerPage={this.props.changeResultsPerPage}
+            />
             <ResultsBodyPageSelector
               viewPreviousResults={this.props.viewPreviousResults}
               viewNextResults={this.props.viewNextResults}

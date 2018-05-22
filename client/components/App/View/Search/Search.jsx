@@ -24,6 +24,7 @@ class Search extends React.Component {
     this.retrieveEditionDetails = this.retrieveEditionDetails.bind(this);
     this.retrieveCollectionIds = this.retrieveCollectionIds.bind(this);
     this.retrieveCollectionDetails = this.retrieveCollectionDetails.bind(this);
+    this.reloadCollection = this.reloadCollection.bind(this);
 
     // VIEW:
     this.changeView = this.changeView.bind(this);
@@ -41,6 +42,7 @@ class Search extends React.Component {
     // PAGE:
     this.viewPreviousResults = this.viewPreviousResults.bind(this);
     this.viewNextResults = this.viewNextResults.bind(this);
+    this.changeResultsPerPage = this.changeResultsPerPage.bind(this);
 
     // SELECTION:
     this.addCardToSelection = this.addCardToSelection.bind(this);
@@ -99,6 +101,20 @@ class Search extends React.Component {
         this.setState({ collection: response.data }, () => {
           console.log(` -> Called changeView in retrieveCollectionDetails`);
           this.changeView("collection");
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+  reloadCollection(collectionId) {
+    console.log(`retrieveCollectionDetails`);
+    axios
+      .get(`/api/users/id/collections/${collectionId}`)
+      .then(response => {
+        this.setState({ collection: response.data }, () => {
+          console.log(` -> Called changeView in retrieveCollectionDetails`);
+          // this.changeView("collection");
         });
       })
       .catch(err => {
@@ -182,18 +198,20 @@ class Search extends React.Component {
     });
   }
   // applyFilters() {
-  //   /*
-  //     - canShow = () => {
-  //       Object.keys(this.state.filters).forEach(filter=>{
-  //         - if
-  //       })
-  //     }
-  //     - if !filters
-  //       - pass results
-  //     - if filters
-  //       - show = false
-  //       -
-  //   */
+  /*
+      - canShow = (card) => {
+        - show = false
+        - Object.keys(this.state.filters).forEach(filter=>{
+          - if card[filter].includes(filters[filter])
+            - show = true
+        })
+        - return show
+      }
+      - if !filters
+        - pass results
+      - if filters
+        - view.cards.filter(return canShow(card))
+    */
   // }
   applyFilters() {
     console.log(`applyFilters`);
@@ -253,6 +271,11 @@ class Search extends React.Component {
       currentPage++;
       this.setState({ page: currentPage });
     }
+  }
+  changeResultsPerPage(number) {
+    this.setState({ cardsPerPage: number }, () => {
+      this.loadViewData();
+    });
   }
 
   //==========================================================[ SELECTION ]==========================================================================
@@ -326,7 +349,8 @@ class Search extends React.Component {
         collection_id: collectionId
       })
       .then(() => {
-        this.retrieveCollectionDetails(collectionId);
+        // this.retrieveCollectionDetails(collectionId);
+        this.reloadCollection(collectionId);
       })
       .catch(err => {
         console.log(err);
@@ -363,6 +387,7 @@ class Search extends React.Component {
               ? this.state.collection.details.name
               : null
           }
+          // colle
           view={this.state.view}
           show={this.state.show}
           changeView={this.changeView}
@@ -374,6 +399,7 @@ class Search extends React.Component {
           filters={this.state.filters}
           addCardToSelection={this.addCardToSelection}
           addCardToCollection={this.addCardToCollection}
+          changeResultsPerPage={this.changeResultsPerPage}
         />
         <Filters
           clearFilters={this.clearFilters}

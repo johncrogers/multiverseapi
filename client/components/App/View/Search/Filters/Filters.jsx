@@ -8,7 +8,7 @@ class Filters extends React.Component {
   render() {
     const clearFilters = (
       <button
-        className="btn btn-danger btn-sm"
+        className="btn btn-danger btn-sm border border-dark"
         onClick={() => {
           this.props.clearFilters();
         }}
@@ -16,30 +16,39 @@ class Filters extends React.Component {
         Clear Filters
       </button>
     );
+    const noFilters = (
+      <div className="row">
+        <div className="col text-center">
+          <span className="">No filters applied yet.</span>
+        </div>
+      </div>
+    );
     return (
       <div className="col-2">
         {/* <div className="container-fluid"> */}
         <div className="row bg-secondary text-light">
-          <div className="col">
+          <div className="col border border-dark">
             <h4>
               <span className="align-middle">FILTERS:</span>
             </h4>
           </div>
         </div>
-        {Object.keys(this.props.filters).map(filter => {
-          return (
-            <Filter
-              filter={filter}
-              key={filter}
-              value={this.props.filters[filter]}
-              removeFilter={this.props.removeFilter}
-              addFilter={this.props.addFilter}
-            />
-          );
-        })}
-        <div className="row">
+        {Object.keys(this.props.filters).length
+          ? Object.keys(this.props.filters).map(filter => {
+              return (
+                <Filter
+                  filter={filter}
+                  key={filter}
+                  value={this.props.filters[filter]}
+                  removeFilter={this.props.removeFilter}
+                  addFilter={this.props.addFilter}
+                />
+              );
+            })
+          : noFilters}
+        <div className="row text-center">
           <div className="col">
-            <br />
+            {/* <br /> */}
             {Object.keys(this.props.filters).length ? clearFilters : null}
           </div>
         </div>

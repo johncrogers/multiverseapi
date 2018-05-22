@@ -10,19 +10,19 @@ class Filter extends React.Component {
     // console.log(`Render Filter`);
     // let stateItem = {};
     // stateItem[this.props.filter] = "";
-    console.log("Filter: ", this.props.filter);
+    // console.log("Filter: ", this.props.filter);
     return (
       <span>
-        <div className="row">
+        <div className="row text-center">
           <div className="col">
-            <span className="text-left">
+            <span className="">
               <strong>{this.props.filter.toUpperCase()}:</strong>&nbsp;{
                 this.state.value
               }
             </span>
           </div>
         </div>
-        <div className="row">
+        <div className="row text-center">
           <div className="col">
             <input
               type="text"
@@ -35,18 +35,18 @@ class Filter extends React.Component {
           </div>
         </div>
         <div className="row">
-          <div className="col text-right">
+          <div className="col text-center">
             <a
-              className=" badge badge-danger"
+              className=" badge badge-danger border border-dark"
               href="#"
               onClick={() => {
                 this.props.removeFilter(this.props.filter);
               }}
             >
               <span className="text-right">remove</span>
-            </a>&nbsp;
+            </a>&nbsp;|&nbsp;
             <a
-              className=" badge badge-success"
+              className=" badge badge-success border border-dark"
               href="#"
               onClick={() => {
                 this.props.addFilter(this.props.filter, this.state.value);
@@ -56,6 +56,7 @@ class Filter extends React.Component {
             </a>
           </div>
         </div>
+        <hr />
       </span>
     );
   }

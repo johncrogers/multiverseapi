@@ -7,14 +7,14 @@ class SelectedCard extends React.Component {
   render() {
     return (
       <div className="row">
-        <div className="col-9">
+        <div className="col-9 text-left">
           <span>{this.props.card.name}</span>
         </div>
         <div className="col-3">
           <span className="text-right">
             <a
               href="#"
-              className="badge badge-danger"
+              className="badge badge-danger border border-dark"
               // className=""
               onClick={() => {
                 this.props.removeCardFromSelection(this.props.card.id);

@@ -8,6 +8,7 @@ class AddButton extends React.Component {
     // console.log(`Render AddButton`);
     return (
       <button
+        className="btn btn-sm btn-light border border-dark"
         onClick={() => {
           // console.log(this.props);
           this.props.addCardToCollection(

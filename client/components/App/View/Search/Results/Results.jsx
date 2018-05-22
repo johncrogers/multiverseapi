@@ -1,6 +1,7 @@
 import React from "react";
 import ResultsHeader from "./Header/ResultsHeader.jsx";
 import ResultsBody from "./Body/ResultsBody.jsx";
+import ResultsFooter from "./Footer/ResultsFooter.jsx";
 class Results extends React.Component {
   constructor(props) {
     super(props);
@@ -17,6 +18,7 @@ class Results extends React.Component {
           page={this.props.page}
           viewPreviousResults={this.props.viewPreviousResults}
           viewNextResults={this.props.viewNextResults}
+          changeResultsPerPage={this.props.changeResultsPerPage}
         />
         {/* <br /> */}
         <ResultsBody
@@ -32,6 +34,15 @@ class Results extends React.Component {
           filters={this.props.filters}
           addCardToSelection={this.props.addCardToSelection}
           addCardToCollection={this.props.addCardToCollection}
+        />
+        <ResultsFooter
+          changeView={this.props.changeView}
+          details={this.props.view.details}
+          show={this.props.show}
+          page={this.props.page}
+          viewPreviousResults={this.props.viewPreviousResults}
+          viewNextResults={this.props.viewNextResults}
+          changeResultsPerPage={this.props.changeResultsPerPage}
         />
       </span>
     );

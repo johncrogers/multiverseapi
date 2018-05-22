@@ -12,63 +12,67 @@ class Selection extends React.Component {
     return (
       <div className="col-2">
         <div className="row bg-info text-light">
-          <div className="col">
+          <div className="col border border-dark">
             <h4>
               <span className="align-middle">SELECTION:</span>
             </h4>
           </div>
         </div>
         <div className="row">
-          <div className="col">
-            <strong>
-              {/* {this.state.selectionName
+          <div className="col alert-secondary border border-dark">
+            <div className="row">
+              <div className="col">
+                <strong>
+                  {/* {this.state.selectionName
                 ? this.state.selectionName
                 : "No name yet."} */}
-              <label htmlFor="">
-                <strong>Name:</strong>
-              </label>
-            </strong>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col">
-            {/* <label htmlFor="">Selection Name:</label> */}
+                  <label htmlFor="">
+                    <strong>Name:</strong>
+                  </label>
+                </strong>
+              </div>
+            </div>
+            <div className="row text-center">
+              <div className="col">
+                {/* <label htmlFor="">Selection Name:</label> */}
 
-            <input
-              type="text"
-              id="selectionName"
-              onChange={event => {
-                this.setState({ selectionName: event.target.value });
-              }}
-            />
-            <br />
-            <br />
+                <input
+                  type="text"
+                  id="selectionName"
+                  onChange={event => {
+                    this.setState({ selectionName: event.target.value });
+                  }}
+                />
+                <br />
+                <hr />
+              </div>
+            </div>
+            <div className="row text-center">
+              <div className="col">
+                <button
+                  className="btn btn-danger btn-sm border border-dark"
+                  onClick={() => {
+                    this.props.clearSelection();
+                  }}
+                >
+                  Clear
+                </button>{" "}
+                |{" "}
+                <button
+                  className="btn btn-success btn-sm border border-dark"
+                  onClick={() => {
+                    this.props.saveCollection(this.state.selectionName);
+                  }}
+                >
+                  Save
+                </button>
+                <br />
+                <br />
+              </div>
+            </div>
           </div>
         </div>
-        <div className="row">
-          <div className="col">
-            <button
-              className="btn btn-danger"
-              onClick={() => {
-                this.props.clearSelection();
-              }}
-            >
-              Clear
-            </button>{" "}
-            |{" "}
-            <button
-              className="btn btn-success"
-              onClick={() => {
-                this.props.saveCollection(this.state.selectionName);
-              }}
-            >
-              Save
-            </button>
-            <br />
-            <br />
-          </div>
-        </div>
-        <div className="row">
+        <div className="row text-center">
           <div className="col">
             {this.props.selection.length
               ? this.props.selection.map((card, key) => {
