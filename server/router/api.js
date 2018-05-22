@@ -189,7 +189,7 @@ router.post('/users', (req, res) => {
       // res.send("FAIL").end();
     })
     .catch((err) => {
-      console.log(`Error occurred: `, err);
+      console.log(`Route Error occurred: `, err);
       res.status(500).end()
     });
 })

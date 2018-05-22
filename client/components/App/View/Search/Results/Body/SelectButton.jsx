@@ -13,7 +13,7 @@ class SelectButton extends React.Component {
           this.props.addCardToSelection(this.props.card);
         }}
       >
-        +
+        Add to Selection
       </button>
     );
   }

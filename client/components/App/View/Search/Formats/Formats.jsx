@@ -9,9 +9,11 @@ class Formats extends React.Component {
   render() {
     return (
       <div className="col-2">
-        <div className="row">
+        <div className="row bg-secondary text-light">
           <div className="col">
-            <h4>FORMAT:</h4>
+            <h4>
+              <span className="align-middle">FORMAT:</span>
+            </h4>
           </div>
         </div>
         <div className="row">

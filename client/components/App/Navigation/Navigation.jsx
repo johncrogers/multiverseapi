@@ -6,7 +6,16 @@ class Navigation extends React.Component {
     this.state = {};
   }
   render() {
-    const logo = <img src="/images/logo.png" alt="" width="50" height="50" />;
+    const logo = (
+      <img
+        className="align-self-center align-middle"
+        style={{ marginTop: "10px" }}
+        src="/images/logo.png"
+        alt=""
+        width="150"
+        height="150"
+      />
+    );
     const username = this.props.username;
     const search = (
       <a
@@ -30,15 +39,19 @@ class Navigation extends React.Component {
     );
     const logout = username ? <Logout logout={this.props.logout} /> : null;
     return (
-      <div className="row">
-        <div className="col-10">
-          <span>{logo}</span>
+      <div className="row bg-dark" style={{ height: "170px" }}>
+        <div className="col-8 align-middle">
+          <span className="media  align-middle">
+            <span className="media-body align-self-center">{logo}</span>
+          </span>
         </div>
-        <div className="col-2" style={{ align: "middle" }}>
-          <span>{this.props.username}</span>&nbsp;
-          <span>{search}</span>&nbsp;
-          <span>{collect}</span>&nbsp;
-          <span>{logout}</span>
+        <div className="col-4 text-right">
+          <span className=" text-light">
+            Welcome back, {this.props.username}!
+          </span>&nbsp;
+          <span className="">{search}</span>&nbsp;
+          <span className="">{collect}</span>&nbsp;
+          <span className="">{logout}</span>
         </div>
       </div>
     );

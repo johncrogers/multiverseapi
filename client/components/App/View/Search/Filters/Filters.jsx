@@ -1,59 +1,49 @@
 import React from "react";
+import Filter from "./Filter.jsx";
 class Filters extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
   render() {
+    const clearFilters = (
+      <button
+        className="btn btn-danger btn-sm"
+        onClick={() => {
+          this.props.clearFilters();
+        }}
+      >
+        Clear Filters
+      </button>
+    );
     return (
       <div className="col-2">
-        <div className="row">
+        {/* <div className="container-fluid"> */}
+        <div className="row bg-secondary text-light">
           <div className="col">
-            <h4>FILTERS:</h4>
+            <h4>
+              <span className="align-middle">FILTERS:</span>
+            </h4>
           </div>
         </div>
+        {Object.keys(this.props.filters).map(filter => {
+          return (
+            <Filter
+              filter={filter}
+              key={filter}
+              value={this.props.filters[filter]}
+              removeFilter={this.props.removeFilter}
+              addFilter={this.props.addFilter}
+            />
+          );
+        })}
         <div className="row">
           <div className="col">
-            {Object.keys(this.props.filters).map(filter => {
-              return (
-                <div className="row">
-                  <div className="col">
-                    <div className="row">
-                      <div className="col">
-                        <strong>{filter.toUpperCase()}:</strong>
-                      </div>
-                      <div className="col">
-                        <input type="text" value={this.props.filters[filter]} />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col text-right">
-                    <button
-                      className="btn-danger"
-                      onClick={() => {
-                        this.props.removeFilter(filter);
-                      }}
-                    >
-                      &times;
-                    </button>
-                  </div>
-                </div>
-              );
-            })}
+            <br />
+            {Object.keys(this.props.filters).length ? clearFilters : null}
           </div>
         </div>
-        <div className="row">
-          <div className="col">
-            <button
-              className="btn btn-danger"
-              onClick={() => {
-                this.props.clearFilters();
-              }}
-            >
-              Clear Filters
-            </button>
-          </div>
-        </div>
+        {/* </div> */}
       </div>
     );
   }

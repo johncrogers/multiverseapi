@@ -7,19 +7,24 @@ class SelectedCard extends React.Component {
   render() {
     return (
       <div className="row">
-        <div className="col">
+        <div className="col-9">
           <span>{this.props.card.name}</span>
         </div>
-        <div className="col">
-          <button
-            // className=""
-            onClick={() => {
-              this.props.removeCardFromSelection(this.props.card.id);
-            }}
-          >
-            &times;
-          </button>
+        <div className="col-3">
+          <span className="text-right">
+            <a
+              href="#"
+              className="badge badge-danger"
+              // className=""
+              onClick={() => {
+                this.props.removeCardFromSelection(this.props.card.id);
+              }}
+            >
+              &times;
+            </a>
+          </span>
         </div>
+        <hr />
       </div>
     );
   }

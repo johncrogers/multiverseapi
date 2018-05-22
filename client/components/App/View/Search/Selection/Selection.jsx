@@ -11,23 +11,29 @@ class Selection extends React.Component {
   render() {
     return (
       <div className="col-2">
-        <div className="row">
+        <div className="row bg-info text-light">
           <div className="col">
-            <h4>SELECTION:</h4>
+            <h4>
+              <span className="align-middle">SELECTION:</span>
+            </h4>
           </div>
         </div>
         <div className="row">
           <div className="col">
             <strong>
-              {this.state.selectionName
+              {/* {this.state.selectionName
                 ? this.state.selectionName
-                : "No name yet."}
+                : "No name yet."} */}
+              <label htmlFor="">
+                <strong>Name:</strong>
+              </label>
             </strong>
           </div>
         </div>
         <div className="row">
           <div className="col">
             {/* <label htmlFor="">Selection Name:</label> */}
+
             <input
               type="text"
               id="selectionName"
@@ -42,6 +48,7 @@ class Selection extends React.Component {
         <div className="row">
           <div className="col">
             <button
+              className="btn btn-danger"
               onClick={() => {
                 this.props.clearSelection();
               }}
@@ -50,6 +57,7 @@ class Selection extends React.Component {
             </button>{" "}
             |{" "}
             <button
+              className="btn btn-success"
               onClick={() => {
                 this.props.saveCollection(this.state.selectionName);
               }}

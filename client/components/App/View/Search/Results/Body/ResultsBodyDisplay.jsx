@@ -8,6 +8,7 @@ class ResultsBodyDisplay extends React.Component {
     this.state = {};
   }
   render() {
+    this.props.cards ? console.log("Cards should exist: ", this.props) : null;
     return (
       <div>
         {this.props.cards

@@ -12,17 +12,22 @@ class ResultsHeader extends React.Component {
         <div className="col">
           <div className="row">
             <div className="col">
-              <h4>RESULTS:</h4>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col text-middle">
-              <h5>
+              <h1 className="display-4">
                 {this.props.show.toUpperCase()}:{"  "}
                 {this.props.details
                   ? this.props.details.name
                   : `No ${this.props.show} selected.`}
-              </h5>
+              </h1>
+            </div>
+          </div>
+          {/* <div className="jumbotron jumbotron-fluid bg-info"> */}
+          {/* <div className="container-fuid"> */}
+          {/* <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p> */}
+          {/* </div> */}
+          {/* </div> */}
+          <div className="row">
+            <div className="col text-middle">
+              <h2 />
             </div>
           </div>
           <div className="row">

@@ -8,7 +8,7 @@ module.exports.authenticateUser = (filters) => {
       return DATA;
     })
     .catch((err) => {
-      console.log(`Error occurred: `, err);
+      console.log(`Model Error occurred: `, err);
       return err;
     });
 }

@@ -79,7 +79,7 @@ class Index extends React.Component {
     this.setState({
       username: "",
       userId: "",
-      show: "App"
+      show: "Authenticate"
     });
   }
   render() {

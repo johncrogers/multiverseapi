@@ -18,7 +18,7 @@ class Results extends React.Component {
           viewPreviousResults={this.props.viewPreviousResults}
           viewNextResults={this.props.viewNextResults}
         />
-        <br />
+        {/* <br /> */}
         <ResultsBody
           collectionId={this.props.collectionId}
           collectionName={this.props.collectionName}

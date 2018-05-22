@@ -111,13 +111,13 @@ class Collect extends React.Component {
     console.log(`Render Collect`);
     return (
       <div>
-        <button
+        {/* <button
           onClick={() => {
             console.log(this.state);
           }}
         >
           Collect State
-        </button>
+        </button> */}
         {/* <button
           onClick={() => {
             this.retrieveCollectionDetails(104);

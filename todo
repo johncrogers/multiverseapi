@@ -57,14 +57,16 @@ Design:
     ☐ Center
     ☐ 
   ☐ Nav:
-      ☐ Alignment
+      ☐ Alignment:
+        ✔ Horizontal @done(18-05-21 10:57)
+        ☐ Vertical
   ☐ Collect:
     ☐ Layout
     ☐ Text size
     ☐ Sidebar:
       ☐ Dropdown width
   ☐ Search:
-    ☐ All remove buttons red.
+    ✔ All remove buttons red. @done(18-05-21 11:00)
     ☐ Hover list items:
       ☐ Selection
       ☐ Filters

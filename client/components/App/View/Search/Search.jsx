@@ -181,6 +181,20 @@ class Search extends React.Component {
       this.applyFilters();
     });
   }
+  // applyFilters() {
+  //   /*
+  //     - canShow = () => {
+  //       Object.keys(this.state.filters).forEach(filter=>{
+  //         - if
+  //       })
+  //     }
+  //     - if !filters
+  //       - pass results
+  //     - if filters
+  //       - show = false
+  //       -
+  //   */
+  // }
   applyFilters() {
     console.log(`applyFilters`);
     let canShowCard = card => {
@@ -332,13 +346,6 @@ class Search extends React.Component {
   render() {
     return (
       <div className="row">
-        {/* <button
-          onClick={() => {
-            console.log(this.state);
-          }}
-        >
-          Search State
-        </button> */}
         <Formats
           editionIds={this.state.editionIds}
           retrieveEditionDetails={this.retrieveEditionDetails}
@@ -372,6 +379,7 @@ class Search extends React.Component {
           clearFilters={this.clearFilters}
           filters={this.state.filters}
           removeFilter={this.removeFilter}
+          addFilter={this.addFilter}
         />
         <Selection
           selection={this.state.selection}
@@ -380,6 +388,13 @@ class Search extends React.Component {
           saveCollection={this.saveCollection}
           username={this.props.username}
         />
+        {/* <button
+          onClick={() => {
+            console.log(this.state);
+          }}
+        >
+          Search State
+        </button> */}
       </div>
     );
   }
