@@ -37,6 +37,7 @@ class Selection extends React.Component {
                 {/* <label htmlFor="">Selection Name:</label> */}
 
                 <input
+                  className="border border-dark"
                   type="text"
                   id="selectionName"
                   onChange={event => {

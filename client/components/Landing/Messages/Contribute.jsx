@@ -41,8 +41,8 @@ class Contribute extends React.Component {
                   <div className="col" style={{ paddingTop: "30px" }}>
                     <img
                       className="align-middle"
-                      src="images/postgresql.png"
-                      alt="PostgreSQL"
+                      src="images/nodejs.png"
+                      alt="NodeJS"
                       height="100px"
                       width="100px"
                     />
@@ -50,8 +50,8 @@ class Contribute extends React.Component {
                   <div className="col" style={{ paddingTop: "30px" }}>
                     <img
                       className="align-middle"
-                      src="images/nodejs.png"
-                      alt="NodeJS"
+                      src="images/postgresql.png"
+                      alt="PostgreSQL"
                       height="100px"
                       width="100px"
                     />

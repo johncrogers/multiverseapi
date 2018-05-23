@@ -13,15 +13,17 @@ class Contact extends React.Component {
           <hr />
           <strong>Github:</strong>
           &nbsp;
-          <a href="git">johncrogers</a>
+          <a href="https://github.com/johncrogers">johncrogers</a>
           <br />
           <strong>LinkedIn:</strong>
           &nbsp;
-          <a href="linked">mrjohncrogers</a>
+          <a href="https://www.linkedin.com/in/mrjohncrogers/">mrjohncrogers</a>
           <br />
           <strong>Email:</strong>
           &nbsp;
-          <a href="email">john.clinton.rogers</a>
+          <a href="mailto:john.clinton.rogers@gmail.com">
+            john.clinton.rogers@gmail.com
+          </a>
           {/* <button
           onClick={() => {
             console.log(this.state);

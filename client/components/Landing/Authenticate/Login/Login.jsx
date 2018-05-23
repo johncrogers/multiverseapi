@@ -46,7 +46,7 @@ class Login extends React.Component {
           Log in
         </button>
         <hr />
-        <a
+        {/* <a
           className="display-10"
           href="#"
           onClick={() => {
@@ -54,7 +54,7 @@ class Login extends React.Component {
           }}
         >
           Ooops! Take me back!
-        </a>
+        </a> */}
       </div>
     );
   }

@@ -43,14 +43,14 @@ class SignUp extends React.Component {
           Sign up
         </button>
         <hr />
-        <a
+        {/* <a
           href="#"
           onClick={() => {
             this.props.back();
           }}
         >
           Ooops! Take me back!
-        </a>
+        </a> */}
       </div>
     );
   }
