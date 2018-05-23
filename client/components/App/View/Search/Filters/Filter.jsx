@@ -6,6 +6,9 @@ class Filter extends React.Component {
       value: this.props.value
     };
   }
+  handleFilterChange() {
+    //
+  }
   render() {
     // console.log(`Render Filter`);
     // let stateItem = {};
@@ -28,7 +31,7 @@ class Filter extends React.Component {
               type="text"
               onChange={e => {
                 this.setState({ value: e.target.value }, () => {
-                  console.log(`state in filter: `, this.state.value);
+                  this.props.addFilter(this.props.filter, this.state.value);
                 });
               }}
             />
@@ -44,7 +47,8 @@ class Filter extends React.Component {
               }}
             >
               <span className="text-right">remove</span>
-            </a>&nbsp;|&nbsp;
+            </a>
+            {/* &nbsp;|&nbsp;
             <a
               className=" badge badge-success border border-dark"
               href="#"
@@ -53,7 +57,7 @@ class Filter extends React.Component {
               }}
             >
               <span className="text-right">change</span>
-            </a>
+            </a> */}
           </div>
         </div>
         <hr />

@@ -8,7 +8,7 @@ class View extends React.Component {
   }
 
   render() {
-    console.log(`Render View`);
+    // console.log(`Render View`);
     switch (this.props.show) {
       case "Search":
         return (

@@ -54,7 +54,7 @@ module.exports.retrieveCollection = (filters) => {
 }
 
 module.exports.retrieveCollectionCards = (filters) => {
-  console.log(`Retrieving user ${filters.userId} collection ${filters.collection_id} cards.`);
+  console.log(`Retrieving collection ${filters.collection_id} cards.`);
   // return db.table('Cards').innerJoin('cards_collections', 'Cards.multiverseId', '=', 'cards_collections.multiverseId')
   // return db.raw(`SELECT * FROM Cards`)
   return db.raw(`SELECT * FROM Cards INNER JOIN cards_collections ON Cards.multiverseid = cards_collections.multiverseid WHERE cards_collections.collection_id = '${filters.collection_id}'`)

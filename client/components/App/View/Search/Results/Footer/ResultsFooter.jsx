@@ -8,7 +8,7 @@ class ResultsFooter extends React.Component {
     this.state = {};
   }
   render() {
-    console.log(`Render ResultsFooter`);
+    // console.log(`Render ResultsFooter`);
     return (
       <div className="row border border-dark alert-secondary">
         <ResultsToggler changeView={this.props.changeView} />

@@ -8,10 +8,18 @@ class ResultsBodyDisplay extends React.Component {
     this.state = {};
   }
   render() {
-    this.props.cards ? console.log("Cards should exist: ", this.props) : null;
+    // this.props.cards ? console.log("Cards should exist: ", this.props) : null;
+    const emptyCards = (
+      <div className="row">
+        <div className="col text-center">
+          No cards loaded.<hr />
+        </div>
+      </div>
+    );
     return (
       <div>
-        {this.props.cards
+        <hr />
+        {this.props.cards && this.props.cards.length
           ? this.props.cards[this.props.page].map((card, key) => {
               return (
                 <div>
@@ -30,6 +38,7 @@ class ResultsBodyDisplay extends React.Component {
                       className="col"
                       card={card}
                       // key={key}
+                      // key={key}
                       addCardToSelection={this.props.addCardToSelection}
                     />
                     {this.props.show === "edition" &&
@@ -39,6 +48,7 @@ class ResultsBodyDisplay extends React.Component {
                         collectionId={this.props.collectionId}
                         collectionName={this.props.collectionName}
                         card={card}
+                        // key={key}
                         addCardToCollection={this.props.addCardToCollection}
                       />
                     ) : null}
@@ -47,7 +57,7 @@ class ResultsBodyDisplay extends React.Component {
                 </div>
               );
             })
-          : "No cards loaded."}
+          : emptyCards}
       </div>
     );
   }

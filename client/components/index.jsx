@@ -23,20 +23,20 @@ class Index extends React.Component {
     this.logout = this.logout.bind(this);
   }
   handleViewChange(view) {
-    console.log(`handleViewChange`);
+    // console.log(`handleViewChange`);
     this.setState({ show: view }, () => {
       // console.log(`state @ handleViewChange`, this.state);
     });
   }
   authenticate(username, password) {
-    console.log(`authenticate`);
+    // console.log(`authenticate`);
     axios
       .post("/api/users", {
         username: username,
         password: password
       })
       .then(res => {
-        console.log("Response in authenticate:", res);
+        // console.log("Response in authenticate:", res);
         if (res.data.length) {
           this.setState(
             {
@@ -54,14 +54,14 @@ class Index extends React.Component {
       });
   }
   createUser(username, password) {
-    console.log(`createUser`);
+    // console.log(`createUser`);
     axios
       .post("/users", {
         username: username,
         password: password
       })
       .then(res => {
-        console.log(res);
+        // console.log(res);
         if (typeof res.data === "string" && res.data.length) {
           this.setState({
             error: res.data
@@ -75,7 +75,7 @@ class Index extends React.Component {
       });
   }
   logout() {
-    console.log(`logout`);
+    // console.log(`logout`);
     this.setState({
       username: "",
       userId: "",
@@ -83,7 +83,7 @@ class Index extends React.Component {
     });
   }
   render() {
-    console.log(`Render Index`);
+    // console.log(`Render Index`);
     switch (this.state.show) {
       case "Authenticate":
         return (

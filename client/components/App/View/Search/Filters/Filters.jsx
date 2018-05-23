@@ -25,7 +25,6 @@ class Filters extends React.Component {
     );
     return (
       <div className="col-2">
-        {/* <div className="container-fluid"> */}
         <div className="row bg-secondary text-light">
           <div className="col border border-dark">
             <h4>
@@ -48,11 +47,9 @@ class Filters extends React.Component {
           : noFilters}
         <div className="row text-center">
           <div className="col">
-            {/* <br /> */}
             {Object.keys(this.props.filters).length ? clearFilters : null}
           </div>
         </div>
-        {/* </div> */}
       </div>
     );
   }

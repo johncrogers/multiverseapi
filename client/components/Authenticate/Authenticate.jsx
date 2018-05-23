@@ -36,26 +36,46 @@ class Authenticate extends React.Component {
         );
         break;
       default:
+        const logo = (
+          <img
+            className="align-self-center align-middle"
+            style={{ marginTop: "10px" }}
+            src="/images/logo.png"
+            alt=""
+            // width="150"
+            // height="150"
+          />
+        );
         return (
-          <div>
-            <Logo />
-            <div>
-              <a
-                href="#"
-                onClick={() => {
-                  this.setState({ show: "login" });
-                }}
-              >
-                Login
-              </a>&nbsp;| |&nbsp;{" "}
-              <a
-                href="#"
-                onClick={() => {
-                  this.setState({ show: "signup" });
-                }}
-              >
-                Sign Up
-              </a>
+          <div
+            className="container-fluid bg-dark text-light text-center h-100"
+            // style=" height: 100%"
+          >
+            <div className="row">
+              <div className="col">{logo}</div>
+            </div>
+            <div className="row">
+              <div className="col">
+                <br />
+                <button
+                  className="btn btn-sm btn-primary border border-light"
+                  onClick={() => {
+                    this.setState({ show: "login" });
+                  }}
+                >
+                  Login
+                </button>&nbsp;|&nbsp;
+                <button
+                  className="btn btn-sm btn-secondary border border-light"
+                  onClick={() => {
+                    this.setState({ show: "signup" });
+                  }}
+                >
+                  Sign Up
+                </button>
+                <br />
+                <br />
+              </div>
             </div>
           </div>
         );

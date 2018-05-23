@@ -10,7 +10,6 @@ class ResultsBody extends React.Component {
     return (
       <div className="row">
         <div className="col">
-          <hr />
           <ResultsBodyDisplay
             className="row"
             collectionId={this.props.collectionId}

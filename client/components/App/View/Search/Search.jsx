@@ -181,6 +181,7 @@ class Search extends React.Component {
 
   addFilter(property, value) {
     console.log(`addFilter`);
+    console.log(` -> addFilter > state`, this.state);
     let newFilters = this.state.filters;
     newFilters[property] = value;
     this.setState({ filters: newFilters, page: 0 }, () => {
@@ -197,39 +198,122 @@ class Search extends React.Component {
       this.applyFilters();
     });
   }
-  // applyFilters() {
-  /*
-      - canShow = (card) => {
-        - show = false
-        - Object.keys(this.state.filters).forEach(filter=>{
-          - if card[filter].includes(filters[filter])
-            - show = true
-        })
-        - return show
-      }
-      - if !filters
-        - pass results
-      - if filters
-        - view.cards.filter(return canShow(card))
-    */
-  // }
   applyFilters() {
-    console.log(`applyFilters`);
-    let canShowCard = card => {
-      let show = true;
+    /*
+      - Filter each Card
+        - 
+    */
+
+    let canShow = (card, show = true) => {
       Object.keys(this.state.filters).forEach(filter => {
-        if (this.state.filters[filter] !== card[filter]) {
+        if (!card[filter]) {
+          show = false;
+        }
+        if (
+          this.state.filters[filter] &&
+          card[filter] &&
+          !card[filter].includes(this.state.filters[filter])
+        ) {
           show = false;
         }
       });
       return show;
     };
-    let results = this.state.view.cards.filter(card => {
-      return canShowCard(card);
-    });
-    console.log(` -> Called sortCards in applyFilters`);
-    this.sortCards(results);
+    if (this.state.filters && Object.keys(this.state.filters).length) {
+      console.log(` -> applyFilters > entered has filters`);
+      let cards = this.state.view.cards.filter(card => {
+        // console.log(` -> applyFilters > card:`, card);
+        return canShow(card);
+      });
+      this.sortCards(cards);
+    } else {
+      console.log(` -> applyFilters > no filters present. passing on...`);
+      let cards = this.state.view.cards.slice();
+      this.sortCards(cards);
+    }
   }
+  // applyFilters() {
+  //   /*
+  //       - canShow = (card) => {
+  //         - show = false
+  //         - Object.keys(this.state.filters).forEach(filter=>{
+  //           - if card[filter].includes(filters[filter])
+  //             - show = true
+  //         })
+  //         - return show
+  //       }
+  //       - if !filters
+  //         - pass results
+  //       - if filters
+  //         - view.cards.filter(return canShow(card))
+  //     */
+  //   console.log(`applyFilters`);
+  //   let results = [];
+  //   let canShow = card => {
+  //     // console.log(` -> applyFilters > canShow > card:`, card);
+  //     // let show = false;
+  //     Object.keys(this.state.filters).forEach(filter => {
+  //       // console.log(` -> applyFilters > canShow > card[filter]:`, card[filter]);
+  //       // console.log(
+  //       //   ` -> applyFilters > canShow > filters[filter]:`,
+  //       //   this.state.filters[filter]
+  //       // );
+  //       // console.log(
+  //       //   "RESULT: ",
+  //       //   this.state.filters[filter] &&
+  //       //   card[filter] &&
+  //       //   card[filter].includes(this.state.filters[filter])
+  //       //     ? "PASS"
+  //       //     : "FAIL"
+  //       // );
+  //       if (
+  // this.state.filters[filter] &&
+  // card[filter] &&
+  //         card[filter].includes(this.state.filters[filter])
+  //       ) {
+  //         results.push(true);
+  //       }
+  //       results.push(false);
+  //     });
+  //     // console.log(` -> applyFilters > canShow > show:`, show);
+  //     console.log(` -> applyFilters > results`, results);
+  //     for (let result of results) {
+  //       if (!result) {
+  //         return false;
+  //       }
+  //     }
+  //     return true;
+  //   };
+  //   if (this.state.filters && Object.keys(this.state.filters).length) {
+  //     console.log(` -> applyFilters > entered has filters`);
+  //     let cards = this.state.view.cards.filter(card => {
+  //       console.log(` -> applyFilters > card:`, card);
+  //       return canShow(card);
+  //     });
+  //     this.sortCards(cards);
+  //   } else {
+  //     console.log(` -> applyFilters > no filters present. passing on...`);
+  //     let cards = this.state.view.cards.slice();
+  //     this.sortCards(cards);
+  //   }
+  // }
+  // applyFilters() {
+  //   console.log(`applyFilters`);
+  //   let canShowCard = card => {
+  //     let show = true;
+  //     Object.keys(this.state.filters).forEach(filter => {
+  //       if (this.state.filters[filter] !== card[filter]) {
+  //         show = false;
+  //       }
+  //     });
+  //     return show;
+  //   };
+  //   let results = this.state.view.cards.filter(card => {
+  //     return canShowCard(card);
+  //   });
+  //   console.log(` -> Called sortCards in applyFilters`);
+  //   this.sortCards(results);
+  // }
   clearFilters() {
     console.log(`clearFilters`);
     this.setState({ filters: {} }, () => {
@@ -358,13 +442,13 @@ class Search extends React.Component {
   }
   //==========================================================[ RENDER ]==========================================================================
   componentDidMount() {
-    console.log(` -> Called retrieveEditionIds in componentDidMount`);
+    // console.log(` -> Called retrieveEditionIds in componentDidMount`);
     this.retrieveEditionIds();
-    console.log(` -> Called retrieveCollectionIds in componentDidMount`);
+    // console.log(` -> Called retrieveCollectionIds in componentDidMount`);
     this.retrieveCollectionIds(this.props.userId);
-    console.log(
-      ` -> Called retrieveEditionDetails("LEA") in componentDidMount`
-    );
+    // console.log(
+    //   ` -> Called retrieveEditionDetails("LEA") in componentDidMount`
+    // );
     this.retrieveEditionDetails("LEA");
   }
   render() {
@@ -414,13 +498,13 @@ class Search extends React.Component {
           saveCollection={this.saveCollection}
           username={this.props.username}
         />
-        {/* <button
+        <button
           onClick={() => {
             console.log(this.state);
           }}
         >
           Search State
-        </button> */}
+        </button>
       </div>
     );
   }
