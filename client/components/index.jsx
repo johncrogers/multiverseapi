@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
-import Authenticate from "./Authenticate/Authenticate.jsx";
+import Landing from "./Landing/Landing.jsx";
 import App from "./App/App.jsx";
 
 class Index extends React.Component {
@@ -79,15 +79,15 @@ class Index extends React.Component {
     this.setState({
       username: "",
       userId: "",
-      show: "Authenticate"
+      show: "Landing"
     });
   }
   render() {
     // console.log(`Render Index`);
     switch (this.state.show) {
-      case "Authenticate":
+      case "Landing":
         return (
-          <Authenticate
+          <Landing
             authenticate={this.authenticate}
             handleViewChange={this.handleViewChange}
             createUser={this.createUser}
@@ -105,7 +105,7 @@ class Index extends React.Component {
         break;
       default:
         return (
-          <Authenticate
+          <Landing
             authenticate={this.authenticate}
             handleViewChange={this.handleViewChange}
             createUser={this.createUser}

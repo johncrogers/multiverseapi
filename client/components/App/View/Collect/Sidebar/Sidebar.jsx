@@ -8,8 +8,14 @@ class Sidebar extends React.Component {
   render() {
     console.log(`Render Sidebar`);
     return (
-      <div>
-        <h2>Select a Collection:</h2>
+      <div className="col-2">
+        <div className="row bg-secondary text-light">
+          <div className="col border border-dark">
+            <h4>
+              <span className="align-middle">Collections:</span>
+            </h4>
+          </div>
+        </div>
         <CollectionSelector
           collectionIds={this.props.collectionIds}
           retrieveCollectionDetails={this.props.retrieveCollectionDetails}

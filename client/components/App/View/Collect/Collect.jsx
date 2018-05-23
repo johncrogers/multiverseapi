@@ -110,7 +110,7 @@ class Collect extends React.Component {
   render() {
     console.log(`Render Collect`);
     return (
-      <div>
+      <div className="row">
         {/* <button
           onClick={() => {
             console.log(this.state);

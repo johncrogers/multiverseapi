@@ -9,12 +9,13 @@ class Details extends React.Component {
   render() {
     console.log(`Render Details`);
     return (
-      <div>
+      <div className="col">
         <Header
           details={this.props.view.details}
           removeCollection={this.props.removeCollection}
           updateCollection={this.props.updateCollection}
         />
+        <hr />
         <Body
           cards={this.props.view.cards}
           removeCard={this.props.removeCard}

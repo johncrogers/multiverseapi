@@ -21,6 +21,7 @@ class Cards extends React.Component {
                     filters={this.props.filters}
                   />
                   <button
+                    className="btn btn-sm btn-danger border border-dark"
                     onClick={() => {
                       this.props.removeCard(card.id, card.collection_id);
                     }}

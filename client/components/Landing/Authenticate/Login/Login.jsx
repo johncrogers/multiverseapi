@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "./../../Logo.jsx";
+// import Logo from "./../../Logo.jsx";
 class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -14,36 +14,40 @@ class Login extends React.Component {
   }
   render() {
     return (
-      <div>
-        <Logo />
-        <h4>Please sign in:</h4>
-        <label htmlFor="username">Username:</label>
+      <div className="container">
+        <h1 className="display-4">Log in:</h1>
+        <hr />
+        <label htmlFor="username">Username:&nbsp;</label>
         <input
           type="text"
           name="username"
+          className="border border-dark"
           onChange={e => {
             this.setState({ username: e.target.value });
           }}
         />
         <br />
-        <label htmlFor="password">Password:</label>
+        <label htmlFor="password">Password:&nbsp;</label>
         <input
           type="password"
           name="password"
+          className="border border-dark"
           onChange={e => {
             this.setState({ password: e.target.value });
           }}
         />
         <br />
         <button
+          className="btn btn-sm btn-primary border border-dark"
           onClick={() => {
             this.props.authenticate(this.state.username, this.state.password);
           }}
         >
-          Let's Go!
+          Log in
         </button>
-        <br />
+        <hr />
         <a
+          className="display-10"
           href="#"
           onClick={() => {
             this.props.back();

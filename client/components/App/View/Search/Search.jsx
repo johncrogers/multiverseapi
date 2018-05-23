@@ -498,13 +498,13 @@ class Search extends React.Component {
           saveCollection={this.saveCollection}
           username={this.props.username}
         />
-        <button
+        {/* <button
           onClick={() => {
             console.log(this.state);
           }}
         >
           Search State
-        </button>
+        </button> */}
       </div>
     );
   }

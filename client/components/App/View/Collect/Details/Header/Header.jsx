@@ -19,61 +19,28 @@ class Header extends React.Component {
     console.log(`Render Header`);
     // let details = this.props.details;
     return (
-      <div>
-        <h2>
-          {this.props.details
-            ? this.props.details.name
-            : "No collection selected."}
-        </h2>
-        {/* <input
-          type="text"
-          onChange={e => {
-            this.setState({ name: e.target.value });
-          }}
-        />
-        <button
-          onClick={() => {
-            this.props.updateCollection(
-              details.id,
-              "name",
-              details.name,
-              this.state.name
-            );
-          }}
-        >
-          Change Name
-        </button> */}
-        {/* <Title details={this.state.details} changeName={this.changeName} /> */}
-        {/* <Legality details={this.props.details} /> */}
-        {/* <button
-          onClick={() => {
-            this.props.updateCollection(
-              details.id,
-              "name",
-              details.name,
-              this.state.details.name
-            );
-          }}
-        >
-          Save
-        </button> */}
-        {this.props.details ? (
-          <button
-            onClick={() => {
-              this.props.removeCollection();
-            }}
-          >
-            Delete {this.props.details.name}
-          </button>
-        ) : (
-          ""
-        )}
-
-        {/* <Options
-          details={this.state.details}
-          removeCollection={this.props.removeCollection}
-          updateCollection={this.props.updateCollection}
-        /> */}
+      <div className="row">
+        <div className="col">
+          <h1 className="display-4">
+            {this.props.details
+              ? this.props.details.name
+              : "No collection selected."}
+          </h1>
+        </div>
+        <div className="col text-right" style={{ paddingTop: "10px" }}>
+          {this.props.details ? (
+            <button
+              className="btn btn-sm btn-danger border border-dark"
+              onClick={() => {
+                this.props.removeCollection();
+              }}
+            >
+              Delete {this.props.details.name}
+            </button>
+          ) : (
+            ""
+          )}
+        </div>
       </div>
     );
   }
