@@ -3,47 +3,106 @@ class Card extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      colors: [],
       colorCodes: {
-        R: "r",
-        G: "g",
-        U: "u",
-        B: "b",
-        W: "w",
-        "G/U": "gu",
-        "B/G": "bg",
-        "B/R": "br",
-        "U/B": "ub",
-        "R/W": "rw",
-        "U/R": "ur",
-        "R/G": "rg",
-        "W/B": "wb",
-        "W/U": "wu",
-        "G/W": "gw",
-        "0": "0",
-        "1": "1",
-        "2": "2",
-        "3": "3",
-        "4": "4",
-        "5": "5",
-        "6": "6",
-        "7": "7",
-        "8": "8",
-        "9": "9",
-        X: "x"
+        R: ["r", ["rgba(255, 102, 0, .2)"]],
+        G: ["g", ["rgba(28, 201, 64, .2)"]],
+        U: ["u", ["rgba(28, 145, 201, .2)"]],
+        B: ["b", ["rgba(168, 163, 153, .2)"]],
+        W: ["w", ["rgba(255, 204, 102, .2)"]],
+        "G/U": ["gu", ["rgba(28, 201, 64, .2)", "rgba(28, 145, 201, .2)"]],
+        "B/G": ["bg", ["rgba(168, 163, 153, .2)", "rgba(28, 201, 64, .2)"]],
+        "B/R": ["br", ["rgba(168, 163, 153, .2)", "rgba(255, 102, 0, .2)"]],
+        "U/B": ["ub", ["rgba(28, 145, 201, .2)", "rgba(168, 163, 153, .2)"]],
+        "R/W": ["rw", ["rgba(255, 102, 0, .2)", "rgba(255, 204, 102, .2)"]],
+        "U/R": ["ur", ["rgba(28, 145, 201, .2)", "rgba(255, 102, 0, .2)"]],
+        "R/G": ["rg", ["rgba(255, 102, 0, .2)", "rgba(28, 201, 64, .2)"]],
+        "W/B": ["wb", ["rgba(255, 204, 102, .2)", "rgba(168, 163, 153, .2)"]],
+        "W/U": ["wu", ["rgba(255, 204, 102, .2)", "rgba(28, 145, 201, .2)"]],
+        "G/W": ["gw", ["rgba(28, 201, 64, .2)", "rgba(255, 204, 102, .2)"]],
+        "0": ["0", ["rgba(0, 0, 0, .1)"]],
+        "1": ["1", ["rgba(0, 0, 0, .1)"]],
+        "2": ["2", ["rgba(0, 0, 0, .1)"]],
+        "3": ["3", ["rgba(0, 0, 0, .1)"]],
+        "4": ["4", ["rgba(0, 0, 0, .1)"]],
+        "5": ["5", ["rgba(0, 0, 0, .1)"]],
+        "6": ["6", ["rgba(0, 0, 0, .1)"]],
+        "7": ["7", ["rgba(0, 0, 0, .1)"]],
+        "8": ["8", ["rgba(0, 0, 0, .1)"]],
+        "9": ["9", ["rgba(0, 0, 0, .1)"]],
+        X: ["x", ["rgba(0, 0, 0, .1)"]]
       }
     };
+    this.buildGradientCode = this.buildGradientCode.bind(this);
+    // let rgba(255, 102, 0, 0.25) = rgba(255, 102, 0, 0.25);
+    // let green = rgba(28, 201, 64, 0.25);
+    // let blue = rgba(28, 145, 201, 0.25);
+    // let black = rgba(168, 163, 153, 0.25);
+    // let white = rgba(255, 204, 102, 0.25);
   }
   handleFilterClick(property, value) {
     this.props.filters[property] === value
       ? this.props.removeFilter(property, value)
       : this.props.addFilter(property, value);
   }
+  buildGradientCode(costCode) {
+    // console.log(`costCode: `, costCode);
+    let style = {
+      background: "AliceBlue"
+    };
+    // console.log(`props: `, this.props);
+    if (!costCode) {
+      // console.log(`No cost:`, this.props.card.type.includes("Land"));
+      if (this.props.card.type.includes("Land")) {
+        return style;
+      }
+      return style;
+    }
+    costCode = costCode.split("");
+    costCode.shift();
+    costCode.pop();
+    costCode = costCode.join("").split("}{");
+    let gradient = "linear-gradient(to right, ";
+    let colorsVisited = [];
+    let colorsToDisplay = [];
+    for (let code of costCode) {
+      // console.log(`loop iteration:`);
+      // console.log(` -> code: ${code}`);
+      if (colorsVisited.includes(code)) {
+        // console.log(` -> code already present. skipping...`);
+        continue;
+      }
+      colorsVisited.push(code);
+      // console.log(` -> code added to visited.`, colorsVisited);
+      if (code.includes("/")) {
+        // console.log(` -> target to add: `, this.state.colorCodes[code][1]);
+        colorsToDisplay = colorsToDisplay.concat(
+          this.state.colorCodes[code][1]
+        );
+        // console.log(` -> code added to colorsToDisplay: `, colorsToDisplay);
+        continue;
+      }
+      colorsToDisplay.push(this.state.colorCodes[code][1].join(", "));
+      // console.log(` -> code added to colorsToDisplay: `, colorsToDisplay);
+    }
+    // console.log(`colorsToDisplay after loop: `, colorsToDisplay);
+    if (colorsToDisplay[colorsToDisplay.length - 1] !== "rgba(0, 0, 0, .1)") {
+      while (colorsToDisplay[0] === "rgba(0, 0, 0, .1)") {
+        colorsToDisplay.shift();
+      }
+    }
+    // console.log(`gradient: `, gradient);
+    // console.log(`colorsToDisplay: `, colorsToDisplay);
+    if (colorsToDisplay.length === 1) {
+      style.background = colorsToDisplay[0];
+      return style;
+    }
+    gradient += colorsToDisplay.join(", ");
+    gradient += ")";
+    style.background = gradient;
+    return style;
+  }
   showManaCostSymbol(costCode) {
-    // break down costCode into manaCostArray
-    // iterate through manaCostArray
-    // build image element template with each manaCost as source
-    // return stringified element
-    // debugger;
     if (!costCode) {
       return null;
     }
@@ -58,7 +117,9 @@ class Card extends React.Component {
       elements.push(
         <span className="align-top">
           <img
-            src={`images/mana/${this.state.colorCodes[costCode[manaCost]]}.png`}
+            src={`images/mana/${
+              this.state.colorCodes[costCode[manaCost]][0]
+            }.png`}
             width="15px"
             height="15px"
             style={{
@@ -72,6 +133,7 @@ class Card extends React.Component {
     }
     return elements;
   }
+  componentDidMount() {}
   render() {
     let name = (
       <div
@@ -92,9 +154,7 @@ class Card extends React.Component {
           this.handleFilterClick("manaCost", this.props.card.manaCost);
         }}
       >
-        {/* <strong>Mana Cost:</strong> */}
         {this.showManaCostSymbol(this.props.card.manaCost)}
-        {/* {this.props.card.manaCost} */}
       </div>
     );
     let colors = (
@@ -104,7 +164,6 @@ class Card extends React.Component {
           this.handleFilterClick("colors", this.props.card.colors);
         }}
       >
-        {/* <strong>Colors:</strong> */}
         {this.props.card.colors}
       </div>
     );
@@ -115,7 +174,6 @@ class Card extends React.Component {
           this.handleFilterClick("type", this.props.card.type);
         }}
       >
-        {/* <strong>Type:</strong> */}
         {this.props.card.type}
       </div>
     );
@@ -126,7 +184,6 @@ class Card extends React.Component {
           this.handleFilterClick("editionId", this.props.card.editionId);
         }}
       >
-        {/* <strong>Edition:</strong> */}
         {this.props.card.editionId}
       </span>
     );
@@ -137,33 +194,33 @@ class Card extends React.Component {
           this.handleFilterClick("rarity", this.props.card.rarity);
         }}
       >
-        {/* <strong>Rarity:</strong> */}
         {this.props.card.rarity}
       </span>
     );
     let text = (
-      <div
+      <span
         className="col"
+        style={this.buildGradientCode(this.props.card.manaCost)}
         onClick={() => {
           this.handleFilterClick("text", this.props.card.text);
         }}
       >
         <strong>Text:</strong> {this.props.card.text}
-      </div>
+      </span>
     );
     let flavor = (
-      <div
+      <span
         className="col"
+        style={this.buildGradientCode(this.props.card.manaCost)}
         onClick={() => {
           this.handleFilterClick("flavor", this.props.card.flavor);
         }}
       >
         <strong>Flavor:</strong> {this.props.card.flavor}
-      </div>
+      </span>
     );
     let loyalty = (
       <span
-        // className="col"
         onClick={() => {
           this.handleFilterClick("loyalty", this.props.card.loyalty);
         }}
@@ -174,7 +231,6 @@ class Card extends React.Component {
     );
     let power = (
       <span
-        // className="col"
         onClick={() => {
           this.handleFilterClick("power", this.props.card.power);
         }}
@@ -185,7 +241,6 @@ class Card extends React.Component {
     );
     let toughness = (
       <span
-        // className="col"
         onClick={() => {
           this.handleFilterClick("toughness", this.props.card.toughness);
         }}
@@ -196,9 +251,8 @@ class Card extends React.Component {
     );
     return (
       <div className="col border border-dark">
-        <div className="row bg-primary text-light">
+        <div className="row text-light bg-dark">
           {name}
-          {/* {colors} */}
           {this.props.card.manaCost !== undefined ? manaCost : null}
         </div>
         <div className="row bg-secondary text-light">
@@ -211,12 +265,29 @@ class Card extends React.Component {
         <div className="row">{this.props.card.text ? text : null}</div>
         <div className="row">{this.props.card.flavor ? flavor : ""}</div>
         <div className="row">
-          <div className="col text-right">
+          <div
+            className="col text-right"
+            style={this.buildGradientCode(this.props.card.manaCost)}
+          >
             {this.props.card.loyalty ? loyalty : ""}&nbsp;
             {this.props.card.power ? power : ""}&nbsp;
             {this.props.card.toughness ? toughness : ""}
           </div>
         </div>
+        {/* <button
+          onClick={() => {
+            console.log(this.buildGradientCode(this.props.card.manaCost));
+          }}
+        >
+          buildGradientCode
+        </button>
+        <button
+          onClick={() => {
+            console.log(this.props);
+          }}
+        >
+          props
+        </button> */}
       </div>
     );
   }

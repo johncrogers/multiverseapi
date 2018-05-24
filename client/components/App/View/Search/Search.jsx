@@ -357,7 +357,7 @@ class Search extends React.Component {
     }
   }
   changeResultsPerPage(number) {
-    this.setState({ cardsPerPage: number }, () => {
+    this.setState({ cardsPerPage: number, page: 0 }, () => {
       this.loadViewData();
     });
   }

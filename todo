@@ -160,11 +160,26 @@ RESULTS:
 
 
 
+FINISH:
+  ☐ Gradient:
+    ☐ two color
+    ☐ Title || text parameter
+    ☐ Text Border
+    ☐ RGB transparency
+  ☐ WELCOME:
+    ☐ Hey everybody!
+    ☐ Context is key:
+      ☐ 
+
+
 
 
 ☐ Intro:
   ☐ Project name, team members.
+  ☐ Gist of it:
+    ☐ 
   ☐ Use case:
+    ☐ GOAL: With a focus on the user experience throughout, I'm striving to build the lightest, most intuitive, and builder-friendly experience as possible.
     ☐ Lower barrier
     ☐ Make building easier
   ☐ Stack:
