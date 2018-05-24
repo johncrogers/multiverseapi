@@ -163,6 +163,20 @@ class Collect extends React.Component {
           removeCollection={this.removeCollection}
           updateCollection={this.updateCollection}
         />
+        <div className="row">
+          <div className="col">
+            <div className="container-fluid text-center text-secondary">
+              <small>
+                The literal and graphical information presented on this site
+                about Magic: The Gathering, including card images, the mana
+                symbols, and Oracle text, is copyright Wizards of the Coast,
+                LLC, a subsidiary of Hasbro, Inc. This website is not produced
+                by, endorsed by, supported by, or affiliated with Wizards of the
+                Coast.
+              </small>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

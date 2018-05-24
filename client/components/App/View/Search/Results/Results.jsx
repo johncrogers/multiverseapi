@@ -2,6 +2,7 @@ import React from "react";
 import ResultsHeader from "./Header/ResultsHeader.jsx";
 import ResultsBody from "./Body/ResultsBody.jsx";
 import ResultsFooter from "./Footer/ResultsFooter.jsx";
+import Options from "./Options/Options.jsx";
 class Results extends React.Component {
   constructor(props) {
     super(props);
@@ -9,6 +10,11 @@ class Results extends React.Component {
   }
 
   render() {
+    const emptyCards = (
+      <div className="row">
+        <div className="col text-center">No cards loaded.</div>
+      </div>
+    );
     return (
       <span className="col-6">
         <ResultsHeader
@@ -20,7 +26,15 @@ class Results extends React.Component {
           viewNextResults={this.props.viewNextResults}
           changeResultsPerPage={this.props.changeResultsPerPage}
         />
-        {/* <br /> */}
+        <Options
+          changeView={this.props.changeView}
+          details={this.props.view.details}
+          show={this.props.show}
+          page={this.props.page}
+          viewPreviousResults={this.props.viewPreviousResults}
+          viewNextResults={this.props.viewNextResults}
+          changeResultsPerPage={this.props.changeResultsPerPage}
+        />
         <ResultsBody
           collectionId={this.props.collectionId}
           collectionName={this.props.collectionName}
@@ -35,7 +49,7 @@ class Results extends React.Component {
           addCardToSelection={this.props.addCardToSelection}
           addCardToCollection={this.props.addCardToCollection}
         />
-        <ResultsFooter
+        <Options
           changeView={this.props.changeView}
           details={this.props.view.details}
           show={this.props.show}

@@ -20,6 +20,7 @@ class Details extends React.Component {
           cards={this.props.view.cards}
           removeCard={this.props.removeCard}
         />
+        <hr />
       </div>
     );
   }

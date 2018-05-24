@@ -7,33 +7,31 @@ class ResultsBodyPageSelector extends React.Component {
 
   render() {
     return (
-      <div className="col-4 text-right">
+      <div className="col-4">
         <div className="row">
-          <div className="col text-center align-middle font-italic">
-            <h6>
+          <div className="col text-middle">
+            <div className="text-center align-middle">
               <strong>Navigate:</strong>
-            </h6>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col text-center align-middle">
-            <a
-              href="#"
-              onClick={() => {
-                this.props.viewPreviousResults();
-              }}
-            >
-              Prev
-            </a>
-            &nbsp;|&nbsp;
-            <a
-              href="#"
-              onClick={() => {
-                this.props.viewNextResults();
-              }}
-            >
-              Next
-            </a>
+            </div>
+            <div className="text-center align-middle">
+              <a
+                href="#"
+                onClick={() => {
+                  this.props.viewPreviousResults();
+                }}
+              >
+                Prev
+              </a>
+              &nbsp;|&nbsp;
+              <a
+                href="#"
+                onClick={() => {
+                  this.props.viewNextResults();
+                }}
+              >
+                Next
+              </a>
+            </div>
           </div>
         </div>
       </div>
