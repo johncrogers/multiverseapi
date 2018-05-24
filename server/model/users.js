@@ -1,6 +1,7 @@
-let db = require("./db.js").knex;
+// let db = require("./db.js").knex;
 
 module.exports.authenticateUser = (filters) => {
+  let db = require("./db.js").knex;
   console.log(`Retrieving user ${filters.username} details.`);
   return db.select().from('Users').where(filters)
     .then((DATA) => {
@@ -13,6 +14,7 @@ module.exports.authenticateUser = (filters) => {
     });
 }
 module.exports.createUser = (userDetails) => {
+  let db = require("./db.js").knex;
   console.log(userDetails);
   console.log(`Adding user.`);
   return db("Users").insert(userDetails).then(() => {

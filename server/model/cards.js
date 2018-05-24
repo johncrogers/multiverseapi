@@ -1,6 +1,7 @@
-let db = require("./db.js").knex;
+// let db = require("./db.js").knex;
 
 module.exports.retrieveEditions = () => {
+  let db = require("./db.js").knex;
   console.log(`Retrieving edition list.`);
   return db.select('name', 'code').from('Editions')
     .then(editionList => {
@@ -13,6 +14,7 @@ module.exports.retrieveEditions = () => {
 }
 
 module.exports.retrieveEdition = (filters) => {
+  let db = require("./db.js").knex;
   console.log(`Retrieving edition ${filters.code} details.`);
   return db.select().from('Editions').where(filters)
     .then((DATA) => {
@@ -25,6 +27,7 @@ module.exports.retrieveEdition = (filters) => {
 }
 
 module.exports.retrieveEditionCards = (filters) => {
+  let db = require("./db.js").knex;
   console.log(`Retrieving edition ${filters.editionId} cards.`);
   return db.select('*').from('cards').where(filters)
     .then((DATA) => {

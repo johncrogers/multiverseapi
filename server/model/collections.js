@@ -1,7 +1,8 @@
-const db = require('./db.js').knex;
+// const db = require('./db.js').knex;
 // const sample = require('./populate/sample.js').data
 
 module.exports.saveCollection = (details, cards) => {
+  let db = require("./db.js").knex;
   console.log(`Saving new collection ${JSON.stringify(details)}...`);
   return db('Collections').insert(details)
     .then(() => {
@@ -29,6 +30,7 @@ module.exports.saveCollection = (details, cards) => {
 
 
 module.exports.retrieveUserCollectionIds = (filters) => {
+  let db = require("./db.js").knex;
   console.log("input at model: ", filters);
   // console.log(`Retrieving user ${filters.userId} collection list.`);
   return db('Collections').select('name', 'id').where(filters)
@@ -41,6 +43,7 @@ module.exports.retrieveUserCollectionIds = (filters) => {
 }
 
 module.exports.retrieveCollection = (filters) => {
+  let db = require("./db.js").knex;
   console.log(JSON.stringify(filters));
   console.log(`Retrieving collection id: ${filters.id}.`);
   return db('Collections').select().where(filters)
@@ -54,6 +57,7 @@ module.exports.retrieveCollection = (filters) => {
 }
 
 module.exports.retrieveCollectionCards = (filters) => {
+  let db = require("./db.js").knex;
   console.log(`Retrieving collection ${filters.collection_id} cards.`);
   // return db.table('Cards').innerJoin('cards_collections', 'Cards.multiverseId', '=', 'cards_collections.multiverseId')
   // return db.raw(`SELECT * FROM Cards`)
@@ -67,6 +71,7 @@ module.exports.retrieveCollectionCards = (filters) => {
     });
 }
 module.exports.deleteCollection = (id) => {
+  let db = require("./db.js").knex;
   return db('Collections').where('id', '=', id).del()
     .then(() => {
       console.log(`collection ${id} deleted.`);
@@ -83,6 +88,7 @@ module.exports.deleteCollection = (id) => {
     })
 }
 module.exports.deleteCollectionCards = (id) => {
+  let db = require("./db.js").knex;
   return db('cards_collections').where('collection_id', '=', id).del()
     .then(() => {
       console.log(`cards removed`);
@@ -91,6 +97,7 @@ module.exports.deleteCollectionCards = (id) => {
     })
 }
 module.exports.deleteCollectionCard = (id) => {
+  let db = require("./db.js").knex;
   return db('cards_collections').where('id', '=', id).del()
     .then(() => {
       console.log(`card removed`);
@@ -99,6 +106,7 @@ module.exports.deleteCollectionCard = (id) => {
     })
 }
 module.exports.updateCollection = (update) => {
+  let db = require("./db.js").knex;
   console.log('update in model: ', update);
   let change = {};
   change[update.field] = update.update;
@@ -115,6 +123,7 @@ module.exports.updateCollection = (update) => {
 }
 
 module.exports.addCardToCollection = (card) => {
+  let db = require("./db.js").knex;
   return db('cards_collections').insert(card)
     .then(() => {
       console.log(` -> Card saved.`);
