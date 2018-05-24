@@ -6,14 +6,14 @@ class Logout extends React.Component {
   }
   render() {
     return (
-      <a
-        href="#"
+      <button
+        className="btn btn-danger btn-sm border border-light"
         onClick={() => {
           this.props.logout();
         }}
       >
         Log Out
-      </a>
+      </button>
     );
   }
 }

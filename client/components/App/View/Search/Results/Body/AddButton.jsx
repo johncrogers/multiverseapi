@@ -16,6 +16,9 @@ class AddButton extends React.Component {
             this.props.collectionId
           );
         }}
+        data-toggle="tooltip"
+        data-placement="right"
+        title="Tooltip on right"
       >
         Add to {'"' + this.props.collectionName + '"'}
       </button>

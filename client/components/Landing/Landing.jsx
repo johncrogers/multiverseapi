@@ -67,29 +67,38 @@ class Landing extends React.Component {
           <div className="col">{logo}</div>
         </div>
         <div className="row bg-dark text-light text-center h-100">
-          <div className="col">
+          <div className="col text-center">
             <br />
-            <button
-              className="btn btn-sm btn-primary border border-light"
-              onClick={() => {
-                this.setState({ show: "Authenticate", auth: "Login" }, () => {
-                  // console.log(`Login`, this.state);
-                });
-              }}
-            >
-              Log in
-            </button>&nbsp;|&nbsp;
-            <button
-              className="btn btn-sm btn-success border border-light"
-              onClick={() => {
-                this.setState({ show: "Authenticate", auth: "Signup" }, () => {
-                  // console.log(`Signup`, this.state);
-                });
-              }}
-            >
-              Sign up
-            </button>
-            <br />
+            <div className="row">
+              <div className="col text-center">
+                <button
+                  className="btn btn-sm btn-primary border border-light"
+                  onClick={() => {
+                    this.setState(
+                      { show: "Authenticate", auth: "Login" },
+                      () => {
+                        // console.log(`Login`, this.state);
+                      }
+                    );
+                  }}
+                >
+                  Log in
+                </button>&nbsp;|&nbsp;
+                <button
+                  className="btn btn-sm btn-success border border-light"
+                  onClick={() => {
+                    this.setState(
+                      { show: "Authenticate", auth: "Signup" },
+                      () => {
+                        // console.log(`Signup`, this.state);
+                      }
+                    );
+                  }}
+                >
+                  Sign up
+                </button>
+              </div>
+            </div>
             <br />
           </div>
         </div>

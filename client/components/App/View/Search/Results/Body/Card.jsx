@@ -2,12 +2,75 @@ import React from "react";
 class Card extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      colorCodes: {
+        R: "r",
+        G: "g",
+        U: "u",
+        B: "b",
+        W: "w",
+        "G/U": "gu",
+        "B/G": "bg",
+        "B/R": "br",
+        "U/B": "ub",
+        "R/W": "rw",
+        "U/R": "ur",
+        "R/G": "rg",
+        "W/B": "wb",
+        "W/U": "wu",
+        "G/W": "gw",
+        "0": "0",
+        "1": "1",
+        "2": "2",
+        "3": "3",
+        "4": "4",
+        "5": "5",
+        "6": "6",
+        "7": "7",
+        "8": "8",
+        "9": "9",
+        X: "x"
+      }
+    };
   }
   handleFilterClick(property, value) {
     this.props.filters[property] === value
       ? this.props.removeFilter(property, value)
       : this.props.addFilter(property, value);
+  }
+  showManaCostSymbol(costCode) {
+    // break down costCode into manaCostArray
+    // iterate through manaCostArray
+    // build image element template with each manaCost as source
+    // return stringified element
+    // debugger;
+    if (!costCode) {
+      return null;
+    }
+    let elements = [];
+
+    costCode = costCode.split("");
+    costCode.shift();
+    costCode.pop();
+    costCode = costCode.join("").split("}{");
+
+    for (let manaCost in costCode) {
+      elements.push(
+        <span className="align-top">
+          <img
+            src={`images/mana/${this.state.colorCodes[costCode[manaCost]]}.png`}
+            width="15px"
+            height="15px"
+            style={{
+              marginLeft: "1px",
+              marginRight: "1px",
+              marginBottom: "2px"
+            }}
+          />
+        </span>
+      );
+    }
+    return elements;
   }
   render() {
     let name = (
@@ -17,8 +80,9 @@ class Card extends React.Component {
           this.handleFilterClick("name", this.props.card.name);
         }}
       >
-        {/* <strong>Name:</strong> */}
-        {this.props.card.name}
+        <span className="align-middle">
+          <strong>{this.props.card.name}</strong>
+        </span>
       </div>
     );
     let manaCost = (
@@ -29,7 +93,8 @@ class Card extends React.Component {
         }}
       >
         {/* <strong>Mana Cost:</strong> */}
-        {this.props.card.manaCost}
+        {this.showManaCostSymbol(this.props.card.manaCost)}
+        {/* {this.props.card.manaCost} */}
       </div>
     );
     let colors = (

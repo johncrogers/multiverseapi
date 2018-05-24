@@ -16,10 +16,21 @@ class Sidebar extends React.Component {
             </h4>
           </div>
         </div>
-        <CollectionSelector
-          collectionIds={this.props.collectionIds}
-          retrieveCollectionDetails={this.props.retrieveCollectionDetails}
-        />
+        <div className="col">
+          <div className="row">
+            <div className="col">
+              <strong>Select a collection:</strong>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col">
+              <CollectionSelector
+                collectionIds={this.props.collectionIds}
+                retrieveCollectionDetails={this.props.retrieveCollectionDetails}
+              />
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

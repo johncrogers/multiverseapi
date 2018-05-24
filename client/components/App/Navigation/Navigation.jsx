@@ -18,24 +18,24 @@ class Navigation extends React.Component {
     );
     const username = this.props.username;
     const search = (
-      <a
-        href="#"
+      <button
+        className="btn btn-primary btn-sm border border-light"
         onClick={() => {
           this.props.changeView("Search");
         }}
       >
         Search
-      </a>
+      </button>
     );
     const collect = (
-      <a
-        href="#"
+      <button
+        className="btn btn-success btn-sm border border-light"
         onClick={() => {
           this.props.changeView("Collect");
         }}
       >
         Collect
-      </a>
+      </button>
     );
     const logout = username ? <Logout logout={this.props.logout} /> : null;
     return (
@@ -51,9 +51,11 @@ class Navigation extends React.Component {
         <div className="col-4 text-right">
           <span className=" text-light">
             Welcome back, {this.props.username}!
-          </span>&nbsp;
-          <span className="">{search}</span>&nbsp;
-          <span className="">{collect}</span>&nbsp;
+          </span>&nbsp;&nbsp;&nbsp;
+          <span className="">{search}</span>
+          <span className="text-light">&nbsp;|&nbsp;</span>
+          <span className="">{collect}</span>
+          <span className="text-light">&nbsp;|&nbsp;</span>
           <span className="">{logout}</span>
         </div>
       </div>

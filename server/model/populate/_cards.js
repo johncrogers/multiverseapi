@@ -12,13 +12,13 @@ for (let editionIndex = 0; editionIndex < editions.length; editionIndex++) {
       "type": card["type"],
       "editionId": editions[editionIndex],
       "rarity": card["rarity"],
-      "colors": JSON.stringify(card["colors"]),
+      "colors": card["colors"],
       "text": card["text"],
       "flavor": card["flavor"],
       "power": card["power"],
       "toughness": card["toughness"],
       "loyalty": card["loyalty"],
-      "legality": JSON.stringify(card["legalities"]),
+      "legality": card["legalities"],
     });
   });
   db.knex("Cards").insert(collectionToInsert)

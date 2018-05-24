@@ -32,6 +32,15 @@ class Contribute extends React.Component {
                   <div className="col" style={{ paddingTop: "30px" }}>
                     <img
                       className="align-middle"
+                      src="images/bootstrap.png"
+                      alt="Bootstrap"
+                      height="100px"
+                      width="100px"
+                    />
+                  </div>
+                  <div className="col" style={{ paddingTop: "30px" }}>
+                    <img
+                      className="align-middle"
                       src="images/react.svg"
                       alt="React"
                       height="100px"
