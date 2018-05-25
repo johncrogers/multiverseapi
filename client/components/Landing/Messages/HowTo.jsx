@@ -28,9 +28,10 @@ class HowTo extends React.Component {
               <p className="lead">
                 <p className="display-6 text-justify">
                   This application is intended to speed up the filtering process
-                  dramatically. Every point on cards can be clicked to add a
-                  filter to the search. Once added, you can simply change the
-                  text in the input in order to modify your search.
+                  dramatically. Every point on the cards can be clicked to add a
+                  filter to your search. Once added, you can simply change the
+                  text in the input in order to modify the specificity your
+                  search.
                 </p>
               </p>
             </div>
@@ -77,7 +78,7 @@ class HowTo extends React.Component {
               <hr />
               <p className="lead">
                 <p className="display-6 text-justify">
-                  Editing a collections is easy in the Multiverse. You can edit
+                  Editing a collection is easy in the Multiverse. You can edit
                   them directly from the search, or open them in the collection
                   editor itself.
                 </p>
