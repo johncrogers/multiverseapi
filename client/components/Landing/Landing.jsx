@@ -110,20 +110,6 @@ class Landing extends React.Component {
                 className="btn btn-secondary"
                 onClick={() => {
                   this.setState(
-                    { show: "Messages", message: "Contribute", auth: "" },
-                    () => {
-                      // console.log(`click Contribute`, this.state);
-                    }
-                  );
-                }}
-              >
-                Contribute
-              </button>
-              <button
-                type="button"
-                className="btn btn-secondary"
-                onClick={() => {
-                  this.setState(
                     { show: "Messages", message: "Home", auth: "" },
                     () => {
                       // console.log(`click Home`, this.state);
@@ -132,6 +118,34 @@ class Landing extends React.Component {
                 }}
               >
                 Home
+              </button>
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={() => {
+                  this.setState(
+                    { show: "Messages", message: "HowTo", auth: "" },
+                    () => {
+                      // console.log(`click HowTo`, this.state);
+                    }
+                  );
+                }}
+              >
+                How To Use
+              </button>
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={() => {
+                  this.setState(
+                    { show: "Messages", message: "Contribute", auth: "" },
+                    () => {
+                      // console.log(`click Contribute`, this.state);
+                    }
+                  );
+                }}
+              >
+                Contribute
               </button>
               <button
                 type="button"

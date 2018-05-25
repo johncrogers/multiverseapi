@@ -32,16 +32,14 @@ class ResultsHeader extends React.Component {
             <div className="row">
               <div className="col text-justify">
                 <div className="container">
-                  The story of Arabian Nights is set on one of the planes of
-                  Rabiah, which experienced an event called the Thousandfold
-                  Refraction, creating one thousand and one identical planes.
-                  The story told the life of the planeswalker Taysir – he was
-                  refracted into five pieces by the Thousandfold Refraction, and
-                  manipulated by Queen Naliah into becoming one again,
-                  reigniting his planeswalker spark. He chose to leave, however,
-                  and Naliah afterwards cast a spell that prevented
-                  planeswalkers from ever coming to the 1001 versions of Rabiah
-                  ever again.
+                  The written Guildpact that was drawn up following the events
+                  of Dissension has done little to keep the peace on Ravnica.
+                  The rise of the Guildless, a rebel faction causing trouble on
+                  the streets, and the inter-guild rivalries are becoming
+                  problematic, and Jace Beleren, newly returned from Zendikar,
+                  works with Niv-Mizzet, leader of the Izzet, to find a
+                  solution. Gideon Jura arrives from Zendikar and learns of the
+                  Consortium. He starts to seek out Jace.
                 </div>
               </div>
             </div>

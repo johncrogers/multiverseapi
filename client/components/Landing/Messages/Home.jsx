@@ -11,6 +11,7 @@ class Home extends React.Component {
         <div className="container">
           <h1 className="display-4">Welcome to Multiverse.</h1>
           <hr />
+
           <p className="lead text-justify">
             This application is a labor of love. Love for web development and
             Magic: The Gathering. The game has grown to have well over 30,000
