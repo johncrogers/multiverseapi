@@ -13,7 +13,6 @@ class HowTo extends React.Component {
           <hr />
           <div className="row">
             <div className="col text-center">
-              <hr />
               <p className="lead">
                 <p className="display-6 text-center">
                   Multiverse has two main features. Search, and Collect.
