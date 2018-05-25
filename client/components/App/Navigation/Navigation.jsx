@@ -43,15 +43,18 @@ class Navigation extends React.Component {
         className="row bg-dark  border border-dark"
         style={{ height: "170px" }}
       >
-        <div className="col-8 align-middle">
+        <div className="col align-middle">
           <span className="media  align-middle">
             <span className="media-body align-self-center">{logo}</span>
           </span>
         </div>
-        <div className="col-4 text-right">
-          <span className=" text-light">
+        <div
+          className="col text-right"
+          style={{ marginTop: "5px", marginRight: "5px", padding: "0px" }}
+        >
+          {/* <span className=" text-light">
             Welcome back, {this.props.username}!
-          </span>&nbsp;&nbsp;&nbsp;
+          </span>&nbsp; <br /> */}
           <span className="">{search}</span>
           <span className="text-light">&nbsp;|&nbsp;</span>
           <span className="">{collect}</span>

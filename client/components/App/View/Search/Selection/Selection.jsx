@@ -11,7 +11,7 @@ class Selection extends React.Component {
   render() {
     return (
       <div className="col-2">
-        <div className="row bg-info text-light">
+        <div className="row bg-primary text-light">
           <div className="col border border-dark">
             <h4>
               <span className="align-middle">SELECTION:</span>

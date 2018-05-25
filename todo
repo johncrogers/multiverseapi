@@ -162,14 +162,17 @@ RESULTS:
 
 FINISH:
   ☐ Gradient:
-    ☐ two color
-    ☐ Title || text parameter
-    ☐ Text Border
-    ☐ RGB transparency
+    ✔ two color @done(18-05-24 19:05)
+    ✔ Title || text parameter @done(18-05-24 19:05)
+    ✔ Text Border @done(18-05-24 19:05)
+    ✔ RGB transparency @done(18-05-24 19:05)
   ☐ WELCOME:
     ☐ Hey everybody!
     ☐ Context is key:
-      ☐ 
+      ☐ what MTG is
+      ☐ barriers to entry
+  ☐ How to use this site
+    ☐ Filters
 
 
 
@@ -177,7 +180,6 @@ FINISH:
 ☐ Intro:
   ☐ Project name, team members.
   ☐ Gist of it:
-    ☐ 
   ☐ Use case:
     ☐ GOAL: With a focus on the user experience throughout, I'm striving to build the lightest, most intuitive, and builder-friendly experience as possible.
     ☐ Lower barrier
@@ -195,4 +197,3 @@ FINISH:
     ☐ Save collections of search results.
     ☐ Edit saved collections.
     ☐ Search by edition, block, or format.
-    ☐ 
