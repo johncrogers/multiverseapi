@@ -10,7 +10,7 @@ let errors = {
 }
 // SETUP
 const server = express();
-const port = 8080;
+const port = process.env.PORT || 8080;
 server.use(cors());
 server.use(bodyParser.json());
 server.use(express.static(__dirname + "/../client/dist"));
